@@ -1,6 +1,6 @@
 ﻿namespace HotelWebApplication.Models
 {
-    public class IPriceRuleService
+    public class PriceRule
     {
         public int Id { get; set; }
 
