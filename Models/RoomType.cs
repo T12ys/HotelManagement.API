@@ -6,7 +6,7 @@ namespace HotelWebApplication.Models
     {
         public int Id { get; set; }
 
-        public string Code { get; set; } = null!; // enum-friendly (e.g. STANDARD, DELUXE) В дальнейшем проверить лучше сделать просто string или все же перейти на enum !!!
+        public string Code { get; set; } = null!; // enum-friendly (e.g. STANDARD, DELUXE) В дальнейшем проверить лучше сделать просто string или все же перейти на enum 
 
         public string Name { get; set; } = null!;
 
@@ -24,10 +24,8 @@ namespace HotelWebApplication.Models
 
         public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
 
-        // Many-to-Many
         public ICollection<Tag> Tags { get; set; } = new List<Tag>();
 
-        // One-to-Many
         public ICollection<RoomPhoto> Photos { get; set; } = new List<RoomPhoto>();
     }
 }

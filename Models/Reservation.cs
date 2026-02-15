@@ -18,7 +18,6 @@ namespace HotelWebApplication.Models
 
         public DateTime StartDate { get; set; }
 
-        // EndDate exclusive
         public DateTime EndDate { get; set; }
 
         public decimal TotalPrice { get; set; }

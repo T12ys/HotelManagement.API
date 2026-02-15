@@ -23,7 +23,7 @@ public class HotelDbContext : DbContext
     public DbSet<RoomPhoto> RoomPhotos => Set<RoomPhoto>();
 
 
-    public DbSet<IPriceRuleService> PriceRules => Set<IPriceRuleService>();
+    public DbSet<PriceRule> PriceRules => Set<PriceRule>();
 
 
     public DbSet<Reservation> Reservations => Set<Reservation>();
@@ -120,7 +120,7 @@ public class HotelDbContext : DbContext
         });
 
 
-        modelBuilder.Entity<IPriceRuleService>(pr =>
+        modelBuilder.Entity<PriceRule>(pr =>
         {
             pr.HasKey(x => x.Id);
             pr.HasIndex(x => new { x.RoomTypeId, x.StartDate });
