@@ -3,9 +3,7 @@ using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
 namespace HotelWebApplication.Data;
-// Я не смог убрать предупреждение "Validation 30000 No Type Specified for the Decimal Column" при миграции
-// как я понял оно требует что бы все decimal поля были явно указаны в длине до и после запятой но даже после явного указание предупреждение не пропадает
-// Пробовал 2 варианта .HasPrecision(18, 2) как просилось в ошибке и .HasColumnType("decimal(18,2)") как посоветовал чат гпт оба не работают 
+
 public class HotelDbContext : DbContext
 {
     public HotelDbContext(DbContextOptions<HotelDbContext> options)
@@ -22,7 +20,7 @@ public class HotelDbContext : DbContext
     public DbSet<Tag> Tags => Set<Tag>();
     public DbSet<RoomPhoto> RoomPhotos => Set<RoomPhoto>();
 
-
+    //fixed
     public DbSet<PriceRule> PriceRules => Set<PriceRule>();
 
 
@@ -97,7 +95,7 @@ public class HotelDbContext : DbContext
                 j => j.HasKey("RoomTypeId", "TagId")
               );
             rt.Property(x => x.BasePrice)
-            .HasPrecision(18, 2);
+                .HasColumnType("decimal(18,2)");  //fixed
         });
 
       
@@ -120,18 +118,27 @@ public class HotelDbContext : DbContext
         });
 
 
+        // ИСПРАВЛЕНО: используем класс вместо интерфейса
         modelBuilder.Entity<PriceRule>(pr =>
         {
             pr.HasKey(x => x.Id);
+
+            // ✅ ИСПРАВЛЕНО: используйте x вместо pr в анонимном объекте
             pr.HasIndex(x => new { x.RoomTypeId, x.StartDate });
+
             pr.HasOne(x => x.RoomType)
               .WithMany()
               .HasForeignKey(x => x.RoomTypeId)
               .OnDelete(DeleteBehavior.SetNull);
-            pr.Property(x => x.Price)
-            .HasPrecision(18, 2);
-        });
 
+            pr.Property(x => x.Price)
+                .HasColumnType("decimal(18,2)");
+
+            // Дополнительно (рекомендуется):
+            pr.Property(x => x.StartDate).IsRequired();
+            pr.Property(x => x.EndDate).IsRequired();
+            pr.Property(x => x.Priority).HasDefaultValue(0);
+        });
 
         modelBuilder.Entity<Reservation>(r =>
         {
@@ -150,8 +157,9 @@ public class HotelDbContext : DbContext
              .WithOne(ri => ri.Reservation)
              .HasForeignKey(ri => ri.ReservationId)
              .OnDelete(DeleteBehavior.Cascade);
+            // ИСПРАВЛЕНО: правильная настройка decimal
             r.Property(x => x.TotalPrice)
-            .HasPrecision(18, 2);
+                .HasColumnType("decimal(18,2)");
         });
 
 
@@ -160,8 +168,9 @@ public class HotelDbContext : DbContext
         {
             ri.HasKey(x => x.Id);
             ri.Property(x => x.Name).IsRequired().HasMaxLength(200);
+            // ИСПРАВЛЕНО: правильная настройка decimal
             ri.Property(x => x.Price)
-            .HasPrecision(18, 2);
+                .HasColumnType("decimal(18,2)");
         });
     }
 }

@@ -82,7 +82,9 @@ namespace HotelWebApplication.Migrations
                         .HasColumnType("decimal(18,2)");
 
                     b.Property<int>("Priority")
-                        .HasColumnType("int");
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasDefaultValue(0);
 
                     b.Property<int?>("RoomTypeId")
                         .HasColumnType("int");
