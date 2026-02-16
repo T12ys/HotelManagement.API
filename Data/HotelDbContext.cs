@@ -1,5 +1,4 @@
 ﻿using HotelWebApplication.Models;
-using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
 namespace HotelWebApplication.Data;
@@ -35,28 +34,45 @@ public class HotelDbContext : DbContext
         modelBuilder.Entity<User>(u =>
         {
             u.HasKey(x => x.Id);
-            u.HasIndex(x => x.Email).IsUnique();
+            u.HasIndex(x => x.Email)
+             .IsUnique(); // уникальный email
             u.Property(x => x.Email)
-            .IsRequired()
-            .HasMaxLength(200);
+             .IsRequired()
+             .HasMaxLength(200);
             u.Property(x => x.DisplayName)
-            .IsRequired()
-            .HasMaxLength(100);
+             .IsRequired()
+             .HasMaxLength(100);
             u.Property(x => x.PasswordHash)
-            .IsRequired();
+             .IsRequired();
             u.Property(x => x.Salt)
-            .IsRequired();
+             .IsRequired();
             u.Property(x => x.SecurityStamp)
-            .IsRequired();
+             .IsRequired();
+            u.Property(x => x.Role)
+             .IsRequired()
+             .HasConversion<int>(); // храним enum как int в БД
+            u.Property(x => x.CreatedAt)
+             .IsRequired();
+            u.Property(x => x.IsActive)
+             .HasDefaultValue(true);
         });
 
 
         modelBuilder.Entity<RefreshToken>(rt =>
         {
             rt.HasKey(x => x.Id);
-            rt.HasIndex(x => x.Token).IsUnique();
+            rt.HasIndex(x => x.Token)
+              .IsUnique(); // уникальный токен
+            rt.Property(x => x.Token)
+              .IsRequired();
+            rt.Property(x => x.ExpiresAt)
+              .IsRequired();
+            rt.Property(x => x.CreatedAt)
+              .HasDefaultValueSql("GETUTCDATE()"); // время создания
+
+            // Связь с User
             rt.HasOne(x => x.User)
-              .WithMany()
+              .WithMany() // если не создаем коллекцию токенов в User
               .HasForeignKey(x => x.UserId)
               .OnDelete(DeleteBehavior.Cascade);
         });
