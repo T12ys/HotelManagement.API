@@ -331,3 +331,4 @@ C:\Users\User\source\repos\HotelManagement.API\obj\Debug\net8.0\refint\HotelWebA
 C:\Users\User\source\repos\HotelManagement.API\obj\Debug\net8.0\HotelWebApplication.pdb
 C:\Users\User\source\repos\HotelManagement.API\obj\Debug\net8.0\HotelWebApplication.genruntimeconfig.cache
 C:\Users\User\source\repos\HotelManagement.API\obj\Debug\net8.0\ref\HotelWebApplication.dll
+C:\Users\User\source\repos\HotelManagement.API\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt

@@ -7,9 +7,16 @@
     <UserSecretsId>w</UserSecretsId>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Compile Remove="Mappings\**" />
+    <Content Remove="Mappings\**" />
+    <EmbeddedResource Remove="Mappings\**" />
+    <None Remove="Mappings\**" />
+  </ItemGroup>
+
 <ItemGroup>
     <Folder Include="DTOs\" />
-    <Folder Include="Mappings\" />
+	<Folder Include="Mappings\" />
   </ItemGroup>
 
 <ItemGroup>
