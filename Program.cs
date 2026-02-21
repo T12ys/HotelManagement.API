@@ -106,7 +106,25 @@ builder.Services.AddAuthorization(options =>
     options.AddPolicy("Moderator", p => p.RequireRole("Moderator"));
 });
 
+
+
+
+
+// CORS
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowFrontend", policy =>
+    {
+        policy.WithOrigins("http://localhost:5173") //адрес React
+              .AllowAnyHeader()
+              .AllowAnyMethod()
+              .AllowCredentials();
+    });
+});
+
 var app = builder.Build();
+
+
 
 
 // Middleware order
@@ -132,6 +150,8 @@ app.Lifetime.ApplicationStarted.Register(() =>
     Process.Start(psi);
 });
 
+
+app.UseCors("AllowFrontend");
 app.UseAuthentication();
 app.UseAuthorization();
 

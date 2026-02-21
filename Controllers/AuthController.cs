@@ -90,7 +90,7 @@ public class AuthController : ControllerBase
             Secure = _env.IsProduction(),
             Expires = DateTime.UtcNow.AddDays(
         int.Parse(_cfg["Jwt:RefreshTokenDays"] ?? "7")),
-            SameSite = SameSiteMode.Strict,
+            SameSite = SameSiteMode.Lax,
             Path = "/"
         };
         Response.Cookies.Append("refreshToken", refreshToken, cookieOptions);

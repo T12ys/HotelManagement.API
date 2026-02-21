@@ -54,6 +54,8 @@ public class AuthService : IAuthService
         _db.RefreshTokens.Add(refreshEntity);
         await _db.SaveChangesAsync(ct);
 
+        Console.WriteLine($"Login attempt: {dto.Email} / {dto.Password}");
+
         return new AuthResponseDto
         {
             AccessToken = access,
