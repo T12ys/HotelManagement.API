@@ -1,9 +1,8 @@
-﻿namespace HotelWebApplication.Enums
+﻿namespace HotelWebApplication.Enums;
+
+public enum UserRole
 {
-    public enum UserRole
-    {
-        Admin = 0,
-        Moderator = 1,
-        Customer = 2
-    }
+    Admin = 0,
+    Moderator = 1,
+    Customer = 2
 }

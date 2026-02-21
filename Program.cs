@@ -1,6 +1,7 @@
 using FluentValidation;
 using FluentValidation.AspNetCore;
 using HotelWebApplication.Data;
+using HotelWebApplication.Mappings;
 using HotelWebApplication.Middlewares;
 using HotelWebApplication.Services;
 using HotelWebApplication.Services.Interfaces;
@@ -28,8 +29,12 @@ builder.Services.AddFluentValidationAutoValidation();
 // AutoMapper
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
-// AuthService
+// Services
 builder.Services.AddScoped<IAuthService, AuthService>();
+builder.Services.AddScoped<IFileStorageService, LocalFileStorageService>();
+builder.Services.AddScoped<IRoomTypeService, RoomTypeService>();
+builder.Services.AddScoped<IRoomService, RoomService>();
+builder.Services.AddScoped<ITagService, TagService>();
 
 // Swagger (Swashbuckle 10.x pattern)
 builder.Services.AddEndpointsApiExplorer();
@@ -102,12 +107,14 @@ builder.Services.AddAuthentication(options =>
 
 builder.Services.AddAuthorization(options =>
 {
-    options.AddPolicy("Admin", p => p.RequireRole("Admin"));
-    options.AddPolicy("Moderator", p => p.RequireRole("Moderator"));
+    options.AddPolicy("RoomTypeWrite", p => p.RequireRole("Admin"));
+    options.AddPolicy("RoomTypeDelete", p => p.RequireRole("Admin"));
+    options.AddPolicy("PhotoManagement", p => p.RequireRole("Admin", "Moderator"));
+    options.AddPolicy("RoomWrite", p => p.RequireRole("Admin", "Moderator"));
+    options.AddPolicy("RoomDelete", p => p.RequireRole("Admin"));
+    options.AddPolicy("TagWrite", p => p.RequireRole("Admin", "Moderator"));
+    options.AddPolicy("TagDelete", p => p.RequireRole("Admin"));
 });
-
-
-
 
 
 // CORS
@@ -123,9 +130,6 @@ builder.Services.AddCors(options =>
 });
 
 var app = builder.Build();
-
-
-
 
 // Middleware order
 app.UseDeveloperExceptionPage();
@@ -152,6 +156,10 @@ app.Lifetime.ApplicationStarted.Register(() =>
 
 
 app.UseCors("AllowFrontend");
+
+// enable static files to serve /uploads
+app.UseStaticFiles();
+
 app.UseAuthentication();
 app.UseAuthorization();
 

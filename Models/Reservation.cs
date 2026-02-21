@@ -6,18 +6,15 @@ namespace HotelWebApplication.Models
     {
         public Guid Id { get; set; } = Guid.NewGuid();
 
-        public int RoomTypeId { get; set; }
-
-        public RoomType RoomType { get; set; } = null!;
+        // 🔥 Теперь бронь привязана к Room
+        public int RoomId { get; set; }
+        public Room Room { get; set; } = null!;
 
         public string CustomerName { get; set; } = null!;
-
         public string CustomerEmail { get; set; } = null!;
-
         public string CustomerPhone { get; set; } = null!;
 
         public DateTime StartDate { get; set; }
-
         public DateTime EndDate { get; set; }
 
         public decimal TotalPrice { get; set; }
@@ -25,23 +22,19 @@ namespace HotelWebApplication.Models
         public ReservationStatus Status { get; set; } = ReservationStatus.Pending;
 
         public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
-
         public DateTime UpdatedAt { get; set; } = DateTime.UtcNow;
 
         public DateTime? PaidAt { get; set; }
-
-        // Если бронь "удерживается"
         public DateTime? HeldUntil { get; set; }
 
         public string? Notes { get; set; }
 
-        // web / admin
         public string Source { get; set; } = "web";
 
-        // Для оптимистичной блокировки
+        // оптимистичная блокировка
         public byte[]? ConcurrencyToken { get; set; }
 
-        public ICollection<ReservationItem> ReservationItems { get; set; } = new List<ReservationItem>();
-
+        public ICollection<ReservationItem> ReservationItems { get; set; }
+            = new List<ReservationItem>();
     }
 }

@@ -18,6 +18,7 @@ public class HotelDbContext : DbContext
     public DbSet<RoomType> RoomTypes => Set<RoomType>();
     public DbSet<Tag> Tags => Set<Tag>();
     public DbSet<RoomPhoto> RoomPhotos => Set<RoomPhoto>();
+    public DbSet<Room> Rooms => Set<Room>();
 
     //fixed
     public DbSet<PriceRule> PriceRules => Set<PriceRule>();
@@ -112,6 +113,10 @@ public class HotelDbContext : DbContext
               );
             rt.Property(x => x.BasePrice)
                 .HasColumnType("decimal(18,2)");  //fixed
+            rt.HasMany(x => x.Rooms)
+              .WithOne(x => x.RoomType)
+              .HasForeignKey(x => x.RoomTypeId)
+              .OnDelete(DeleteBehavior.Restrict);
         });
 
       
@@ -159,26 +164,26 @@ public class HotelDbContext : DbContext
         modelBuilder.Entity<Reservation>(r =>
         {
             r.HasKey(x => x.Id);
-            r.HasIndex(x => new { x.RoomTypeId, x.StartDate, x.EndDate, x.Status });
+
+            // индекс теперь по RoomId
+            r.HasIndex(x => new { x.RoomId, x.StartDate, x.EndDate, x.Status });
 
             r.Property(x => x.ConcurrencyToken)
              .IsRowVersion();
 
-            r.HasOne(x => x.RoomType)
+            r.HasOne(x => x.Room)
              .WithMany()
-             .HasForeignKey(x => x.RoomTypeId)
+             .HasForeignKey(x => x.RoomId)
              .OnDelete(DeleteBehavior.Restrict);
 
             r.HasMany(x => x.ReservationItems)
              .WithOne(ri => ri.Reservation)
              .HasForeignKey(ri => ri.ReservationId)
              .OnDelete(DeleteBehavior.Cascade);
-            // ИСПРАВЛЕНО: правильная настройка decimal
+
             r.Property(x => x.TotalPrice)
-                .HasColumnType("decimal(18,2)");
+             .HasColumnType("decimal(18,2)");
         });
-
-
 
         modelBuilder.Entity<ReservationItem>(ri =>
         {
@@ -187,6 +192,23 @@ public class HotelDbContext : DbContext
             // ИСПРАВЛЕНО: правильная настройка decimal
             ri.Property(x => x.Price)
                 .HasColumnType("decimal(18,2)");
+        });
+
+        modelBuilder.Entity<Room>(r =>
+        {
+            r.HasKey(x => x.Id);
+
+            r.Property(x => x.Number)
+             .IsRequired()
+             .HasMaxLength(50);
+
+            r.Property(x => x.IsAvailable)
+             .HasDefaultValue(true);
+
+            r.HasOne(x => x.RoomType)
+             .WithMany() // не обязательно добавлять коллекцию Rooms в RoomType
+             .HasForeignKey(x => x.RoomTypeId)
+             .OnDelete(DeleteBehavior.Restrict);
         });
     }
 }
