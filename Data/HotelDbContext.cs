@@ -204,11 +204,6 @@ public class HotelDbContext : DbContext
 
             r.Property(x => x.IsAvailable)
              .HasDefaultValue(true);
-
-            r.HasOne(x => x.RoomType)
-             .WithMany() // не обязательно добавлять коллекцию Rooms в RoomType
-             .HasForeignKey(x => x.RoomTypeId)
-             .OnDelete(DeleteBehavior.Restrict);
         });
     }
 }

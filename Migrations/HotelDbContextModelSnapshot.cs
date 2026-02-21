@@ -173,7 +173,7 @@ namespace HotelWebApplication.Migrations
                     b.Property<DateTime?>("PaidAt")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("RoomTypeId")
+                    b.Property<int>("RoomId")
                         .HasColumnType("int");
 
                     b.Property<string>("Source")
@@ -194,7 +194,7 @@ namespace HotelWebApplication.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("RoomTypeId", "StartDate", "EndDate", "Status");
+                    b.HasIndex("RoomId", "StartDate", "EndDate", "Status");
 
                     b.ToTable("Reservations");
                 });
@@ -226,6 +226,40 @@ namespace HotelWebApplication.Migrations
                     b.HasIndex("ReservationId");
 
                     b.ToTable("ReservationItems");
+                });
+
+            modelBuilder.Entity("HotelWebApplication.Models.Room", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("Floor")
+                        .HasColumnType("int");
+
+                    b.Property<bool>("IsAvailable")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bit")
+                        .HasDefaultValue(true);
+
+                    b.Property<string>("Number")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<int>("RoomTypeId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("RoomTypeId");
+
+                    b.ToTable("Rooms");
                 });
 
             modelBuilder.Entity("HotelWebApplication.Models.RoomPhoto", b =>
@@ -422,13 +456,13 @@ namespace HotelWebApplication.Migrations
 
             modelBuilder.Entity("HotelWebApplication.Models.Reservation", b =>
                 {
-                    b.HasOne("HotelWebApplication.Models.RoomType", "RoomType")
+                    b.HasOne("HotelWebApplication.Models.Room", "Room")
                         .WithMany()
-                        .HasForeignKey("RoomTypeId")
+                        .HasForeignKey("RoomId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
-                    b.Navigation("RoomType");
+                    b.Navigation("Room");
                 });
 
             modelBuilder.Entity("HotelWebApplication.Models.ReservationItem", b =>
@@ -440,6 +474,17 @@ namespace HotelWebApplication.Migrations
                         .IsRequired();
 
                     b.Navigation("Reservation");
+                });
+
+            modelBuilder.Entity("HotelWebApplication.Models.Room", b =>
+                {
+                    b.HasOne("HotelWebApplication.Models.RoomType", "RoomType")
+                        .WithMany("Rooms")
+                        .HasForeignKey("RoomTypeId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.Navigation("RoomType");
                 });
 
             modelBuilder.Entity("HotelWebApplication.Models.RoomPhoto", b =>
@@ -476,6 +521,8 @@ namespace HotelWebApplication.Migrations
             modelBuilder.Entity("HotelWebApplication.Models.RoomType", b =>
                 {
                     b.Navigation("Photos");
+
+                    b.Navigation("Rooms");
                 });
 #pragma warning restore 612, 618
         }
