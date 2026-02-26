@@ -40,7 +40,6 @@ C:\Users\Elshan\source\repos\HotelManagementAPI\bin\Debug\net8.0\Microsoft.Exten
 C:\Users\Elshan\source\repos\HotelManagementAPI\bin\Debug\net8.0\Microsoft.Extensions.Logging.dll
 C:\Users\Elshan\source\repos\HotelManagementAPI\bin\Debug\net8.0\Microsoft.Extensions.Logging.Abstractions.dll
 C:\Users\Elshan\source\repos\HotelManagementAPI\bin\Debug\net8.0\Microsoft.Extensions.Options.dll
-C:\Users\Elshan\source\repos\HotelManagementAPI\bin\Debug\net8.0\Microsoft.Extensions.Primitives.dll
 C:\Users\Elshan\source\repos\HotelManagementAPI\bin\Debug\net8.0\Microsoft.Identity.Client.dll
 C:\Users\Elshan\source\repos\HotelManagementAPI\bin\Debug\net8.0\Microsoft.Identity.Client.Extensions.Msal.dll
 C:\Users\Elshan\source\repos\HotelManagementAPI\bin\Debug\net8.0\Microsoft.IdentityModel.Abstractions.dll
@@ -63,7 +62,6 @@ C:\Users\Elshan\source\repos\HotelManagementAPI\bin\Debug\net8.0\System.Composit
 C:\Users\Elshan\source\repos\HotelManagementAPI\bin\Debug\net8.0\System.Composition.Runtime.dll
 C:\Users\Elshan\source\repos\HotelManagementAPI\bin\Debug\net8.0\System.Composition.TypedParts.dll
 C:\Users\Elshan\source\repos\HotelManagementAPI\bin\Debug\net8.0\System.Configuration.ConfigurationManager.dll
-C:\Users\Elshan\source\repos\HotelManagementAPI\bin\Debug\net8.0\System.Diagnostics.DiagnosticSource.dll
 C:\Users\Elshan\source\repos\HotelManagementAPI\bin\Debug\net8.0\System.Diagnostics.EventLog.dll
 C:\Users\Elshan\source\repos\HotelManagementAPI\bin\Debug\net8.0\System.IdentityModel.Tokens.Jwt.dll
 C:\Users\Elshan\source\repos\HotelManagementAPI\bin\Debug\net8.0\System.Memory.Data.dll
@@ -165,3 +163,4 @@ C:\Users\Elshan\source\repos\HotelManagementAPI\obj\Debug\net8.0\refint\HotelWeb
 C:\Users\Elshan\source\repos\HotelManagementAPI\obj\Debug\net8.0\HotelWebApplication.pdb
 C:\Users\Elshan\source\repos\HotelManagementAPI\obj\Debug\net8.0\HotelWebApplication.genruntimeconfig.cache
 C:\Users\Elshan\source\repos\HotelManagementAPI\obj\Debug\net8.0\ref\HotelWebApplication.dll
+C:\Users\Elshan\source\repos\HotelManagementAPI\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt

@@ -1,8 +1,6 @@
 using FluentValidation;
 using FluentValidation.AspNetCore;
 using HotelWebApplication.Data;
-using HotelWebApplication.Mappings;
-using HotelWebApplication.Middlewares;
 using HotelWebApplication.Services;
 using HotelWebApplication.Services.Interfaces;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
