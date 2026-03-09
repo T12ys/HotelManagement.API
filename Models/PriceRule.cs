@@ -1,25 +1,20 @@
-﻿namespace HotelWebApplication.Models
+﻿using HotelWebApplication.Enums;
+
+namespace HotelWebApplication.Models;
+
+public class PriceRule
 {
-    public class PriceRule
-    {
-        public int Id { get; set; }
-
-        // null = глобальное правило (для всех типов номеров)
-        public int? RoomTypeId { get; set; }
-
-        public RoomType? RoomType { get; set; }
-
-        public DateTime StartDate { get; set; }
-
-        public DateTime EndDate { get; set; }
-
-        // Если IsPercentage = false → это фиксированная цена
-        // Если true → это % надбавка/скидка
-        public decimal Price { get; set; }
-
-        public bool IsPercentage { get; set; }
-
-        // Чем выше Priority — тем важнее правило
-        public int Priority { get; set; }
-    }
+    public int Id { get; set; }
+    public string Name { get; set; } = null!;
+    public RuleType RuleType { get; set; }
+    public int? RoomTypeId { get; set; }
+    public RoomType? RoomType { get; set; }
+    public DateTime StartDate { get; set; }
+    public DateTime EndDate { get; set; }
+    public bool IsIncrease { get; set; }   
+    public bool IsPercent { get; set; }                    
+    public decimal Value { get; set; }                    
+    public bool IsActive { get; set; } = true;
+    public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
+    public DateTime UpdatedAt { get; set; } = DateTime.UtcNow;
 }

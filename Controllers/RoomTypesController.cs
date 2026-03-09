@@ -34,6 +34,16 @@ public class RoomTypesController : ControllerBase
         return result == null ? NotFound() : Ok(result);
     }
 
+    
+    [HttpGet("{id:int}/rooms")]
+    [AllowAnonymous]
+    public async Task<ActionResult<PagedResult<RoomResponseDto>>> GetRoomsByTypeId(int id,[FromQuery] PagedRequest request,CancellationToken ct)
+    {
+        var result = await _service.GetRoomsByTypeIdAsync(id, request, ct);
+        return Ok(result);
+    }
+
+
     [HttpPost]
     [Authorize(Policy = "RoomTypeWrite")]
     public async Task<IActionResult> Create([FromForm] CreateRoomTypeDto dto,[FromForm] List<IFormFile>? photos, CancellationToken ct)

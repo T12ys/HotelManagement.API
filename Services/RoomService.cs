@@ -33,8 +33,7 @@ public class RoomService : IRoomService
         if (!string.IsNullOrWhiteSpace(request.Search))
         {
             var s = request.Search.ToLower();
-            query = query.Where(x =>
-                x.Number.ToLower().Contains(s));
+            query = query.Where(x => x.Number.ToLower().Contains(s));
         }
 
         query = query.ApplySorting(request.SortBy);

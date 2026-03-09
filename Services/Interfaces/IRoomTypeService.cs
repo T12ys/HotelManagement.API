@@ -10,6 +10,8 @@ public interface IRoomTypeService
     Task<PagedResult<RoomTypeResponseDto>> GetPagedAsync(RoomTypeFilterRequest request, CancellationToken ct = default);
 
     Task<RoomTypeResponseDto?> GetByIdAsync(int id, CancellationToken ct = default);
+    
+    Task<PagedResult<RoomResponseDto>> GetRoomsByTypeIdAsync(int roomTypeId, PagedRequest request,CancellationToken ct = default);
 
     // ADMIN ONLY
 
@@ -24,4 +26,5 @@ public interface IRoomTypeService
     Task AddPhotosAsync(int roomTypeId, IEnumerable<IFormFile> photos, CancellationToken ct = default);
 
     Task DeletePhotoAsync(int photoId, CancellationToken ct = default);
+
 }

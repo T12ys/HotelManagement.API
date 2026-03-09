@@ -35,6 +35,7 @@ builder.Services.AddScoped<IFileStorageService, LocalFileStorageService>();
 builder.Services.AddScoped<IRoomTypeService, RoomTypeService>();
 builder.Services.AddScoped<IRoomService, RoomService>();
 builder.Services.AddScoped<ITagService, TagService>();
+builder.Services.AddScoped<IPriceRuleService, PriceRuleService>();
 
 // Swagger (Swashbuckle 10.x pattern)
 builder.Services.AddEndpointsApiExplorer();
@@ -114,6 +115,8 @@ builder.Services.AddAuthorization(options =>
     options.AddPolicy("RoomDelete", p => p.RequireRole("Admin"));
     options.AddPolicy("TagWrite", p => p.RequireRole("Admin", "Moderator"));
     options.AddPolicy("TagDelete", p => p.RequireRole("Admin"));
+    options.AddPolicy("PriceRuleWrite", p => p.RequireRole("Admin", "Moderator"));
+    options.AddPolicy("PriceRuleDelete", p => p.RequireRole("Admin"));
 });
 
 

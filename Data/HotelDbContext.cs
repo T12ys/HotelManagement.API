@@ -1,4 +1,5 @@
-﻿using HotelWebApplication.Models;
+﻿using HotelWebApplication.Data;
+using HotelWebApplication.Models;
 using Microsoft.EntityFrameworkCore;
 
 namespace HotelWebApplication.Data;
@@ -9,20 +10,16 @@ public class HotelDbContext : DbContext
         : base(options)
     { }
 
-
     public DbSet<User> Users => Set<User>();
     public DbSet<RefreshToken> RefreshTokens => Set<RefreshToken>();
     public DbSet<AuditLog> AuditLogs => Set<AuditLog>();
-
 
     public DbSet<RoomType> RoomTypes => Set<RoomType>();
     public DbSet<Tag> Tags => Set<Tag>();
     public DbSet<RoomPhoto> RoomPhotos => Set<RoomPhoto>();
     public DbSet<Room> Rooms => Set<Room>();
 
-    //fixed
     public DbSet<PriceRule> PriceRules => Set<PriceRule>();
-
 
     public DbSet<Reservation> Reservations => Set<Reservation>();
     public DbSet<ReservationItem> ReservationItems => Set<ReservationItem>();
@@ -31,53 +28,33 @@ public class HotelDbContext : DbContext
     {
         base.OnModelCreating(modelBuilder);
 
-
         modelBuilder.Entity<User>(u =>
         {
             u.HasKey(x => x.Id);
-            u.HasIndex(x => x.Email)
-             .IsUnique(); // уникальный email
-            u.Property(x => x.Email)
-             .IsRequired()
-             .HasMaxLength(200);
-            u.Property(x => x.DisplayName)
-             .IsRequired()
-             .HasMaxLength(100);
-            u.Property(x => x.PasswordHash)
-             .IsRequired();
-            u.Property(x => x.Salt)
-             .IsRequired();
-            u.Property(x => x.SecurityStamp)
-             .IsRequired();
-            u.Property(x => x.Role)
-             .IsRequired()
-             .HasConversion<int>(); // храним enum как int в БД
-            u.Property(x => x.CreatedAt)
-             .IsRequired();
-            u.Property(x => x.IsActive)
-             .HasDefaultValue(true);
+            u.HasIndex(x => x.Email).IsUnique();
+            u.Property(x => x.Email).IsRequired().HasMaxLength(200);
+            u.Property(x => x.DisplayName).IsRequired().HasMaxLength(100);
+            u.Property(x => x.PasswordHash).IsRequired();
+            u.Property(x => x.Salt).IsRequired();
+            u.Property(x => x.SecurityStamp).IsRequired();
+            u.Property(x => x.Role).IsRequired().HasConversion<int>();
+            u.Property(x => x.CreatedAt).IsRequired();
+            u.Property(x => x.IsActive).HasDefaultValue(true);
         });
-
 
         modelBuilder.Entity<RefreshToken>(rt =>
         {
             rt.HasKey(x => x.Id);
-            rt.HasIndex(x => x.Token)
-              .IsUnique(); // уникальный токен
-            rt.Property(x => x.Token)
-              .IsRequired();
-            rt.Property(x => x.ExpiresAt)
-              .IsRequired();
-            rt.Property(x => x.CreatedAt)
-              .HasDefaultValueSql("GETUTCDATE()"); // время создания
+            rt.HasIndex(x => x.Token).IsUnique();
+            rt.Property(x => x.Token).IsRequired();
+            rt.Property(x => x.ExpiresAt).IsRequired();
+            rt.Property(x => x.CreatedAt).HasDefaultValueSql("GETUTCDATE()");
 
-            // Связь с User
             rt.HasOne(x => x.User)
-              .WithMany() // если не создаем коллекцию токенов в User
+              .WithMany()
               .HasForeignKey(x => x.UserId)
               .OnDelete(DeleteBehavior.Cascade);
         });
-
 
         modelBuilder.Entity<AuditLog>(al =>
         {
@@ -87,7 +64,6 @@ public class HotelDbContext : DbContext
               .HasForeignKey(x => x.ActorUserId)
               .OnDelete(DeleteBehavior.SetNull);
         });
-
 
         modelBuilder.Entity<RoomType>(rt =>
         {
@@ -103,73 +79,65 @@ public class HotelDbContext : DbContext
               .WithMany(t => t.RoomTypes)
               .UsingEntity<Dictionary<string, object>>(
                 "RoomTypeTag",
-                r => r.HasOne<Tag>()
-                .WithMany()
-                .HasForeignKey("TagId"),
-                t => t.HasOne<RoomType>()
-                .WithMany()
-                .HasForeignKey("RoomTypeId"),
+                r => r.HasOne<Tag>().WithMany().HasForeignKey("TagId"),
+                t => t.HasOne<RoomType>().WithMany().HasForeignKey("RoomTypeId"),
                 j => j.HasKey("RoomTypeId", "TagId")
               );
-            rt.Property(x => x.BasePrice)
-                .HasColumnType("decimal(18,2)");  //fixed
+
+            rt.Property(x => x.BasePrice).HasColumnType("decimal(18,2)");
+
             rt.HasMany(x => x.Rooms)
               .WithOne(x => x.RoomType)
               .HasForeignKey(x => x.RoomTypeId)
               .OnDelete(DeleteBehavior.Restrict);
         });
 
-      
         modelBuilder.Entity<RoomPhoto>(rp =>
         {
             rp.HasKey(x => x.Id);
             rp.Property(x => x.Url).IsRequired();
         });
 
-
         modelBuilder.Entity<Tag>(t =>
         {
             t.HasKey(x => x.Id);
-            t.Property(x => x.Name)
-            .IsRequired()
-            .HasMaxLength(100);
-            t.Property(x => x.Slug)
-            .IsRequired()
-            .HasMaxLength(100);
+            t.Property(x => x.Name).IsRequired().HasMaxLength(100);
+            t.Property(x => x.Slug).IsRequired().HasMaxLength(100);
         });
 
-
-        // ИСПРАВЛЕНО: используем класс вместо интерфейса
         modelBuilder.Entity<PriceRule>(pr =>
         {
             pr.HasKey(x => x.Id);
 
-            // ✅ ИСПРАВЛЕНО: используйте x вместо pr в анонимном объекте
-            pr.HasIndex(x => new { x.RoomTypeId, x.StartDate });
+            pr.Property(x => x.Name)
+              .IsRequired()
+              .HasMaxLength(200);
+
+            pr.Property(x => x.Value)
+              .HasColumnType("decimal(18,2)");
+
+            pr.Property(x => x.RuleType)
+              .HasConversion<int>();
+
+            pr.Property(x => x.StartDate).IsRequired();
+            pr.Property(x => x.EndDate).IsRequired();
+            pr.Property(x => x.IsActive).HasDefaultValue(true);
+            pr.Property(x => x.CreatedAt).IsRequired();
+            pr.Property(x => x.UpdatedAt).IsRequired();
+
+            pr.HasIndex(x => new { x.RoomTypeId, x.StartDate, x.EndDate });
 
             pr.HasOne(x => x.RoomType)
               .WithMany()
               .HasForeignKey(x => x.RoomTypeId)
-              .OnDelete(DeleteBehavior.SetNull);
-
-            pr.Property(x => x.Price)
-                .HasColumnType("decimal(18,2)");
-
-            // Дополнительно (рекомендуется):
-            pr.Property(x => x.StartDate).IsRequired();
-            pr.Property(x => x.EndDate).IsRequired();
-            pr.Property(x => x.Priority).HasDefaultValue(0);
+              .OnDelete(DeleteBehavior.Cascade);
         });
 
         modelBuilder.Entity<Reservation>(r =>
         {
             r.HasKey(x => x.Id);
-
-            // индекс теперь по RoomId
             r.HasIndex(x => new { x.RoomId, x.StartDate, x.EndDate, x.Status });
-
-            r.Property(x => x.ConcurrencyToken)
-             .IsRowVersion();
+            r.Property(x => x.ConcurrencyToken).IsRowVersion();
 
             r.HasOne(x => x.Room)
              .WithMany()
@@ -181,29 +149,21 @@ public class HotelDbContext : DbContext
              .HasForeignKey(ri => ri.ReservationId)
              .OnDelete(DeleteBehavior.Cascade);
 
-            r.Property(x => x.TotalPrice)
-             .HasColumnType("decimal(18,2)");
+            r.Property(x => x.TotalPrice).HasColumnType("decimal(18,2)");
         });
 
         modelBuilder.Entity<ReservationItem>(ri =>
         {
             ri.HasKey(x => x.Id);
             ri.Property(x => x.Name).IsRequired().HasMaxLength(200);
-            // ИСПРАВЛЕНО: правильная настройка decimal
-            ri.Property(x => x.Price)
-                .HasColumnType("decimal(18,2)");
+            ri.Property(x => x.Price).HasColumnType("decimal(18,2)");
         });
 
         modelBuilder.Entity<Room>(r =>
         {
             r.HasKey(x => x.Id);
-
-            r.Property(x => x.Number)
-             .IsRequired()
-             .HasMaxLength(50);
-
-            r.Property(x => x.IsAvailable)
-             .HasDefaultValue(true);
+            r.Property(x => x.Number).IsRequired().HasMaxLength(50);
+            r.Property(x => x.IsAvailable).HasDefaultValue(true);
         });
     }
 }

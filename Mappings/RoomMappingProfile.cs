@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using HotelWebApplication.DTOs.PriceDTOs;
 using HotelWebApplication.DTOs.RoomDTOs;
 using HotelWebApplication.Models;
 
@@ -51,5 +52,23 @@ public class RoomMappingProfile : Profile
         // ROOM PHOTO
 
         CreateMap<RoomPhoto, RoomPhotoResponseDto>();
+
+
+        // PRICE RULE
+
+        CreateMap<PriceRule, PriceRuleResponseDto>();
+
+
+        CreateMap<CreatePriceRuleDto, PriceRule>()
+            .ForMember(dest => dest.Id, opt => opt.Ignore())
+            .ForMember(dest => dest.RoomType, opt => opt.Ignore())
+            .ForMember(dest => dest.CreatedAt, opt => opt.Ignore())
+            .ForMember(dest => dest.UpdatedAt, opt => opt.Ignore());
+
+        CreateMap<UpdatePriceRuleDto, PriceRule>()
+            .ForMember(dest => dest.RoomTypeId, opt => opt.Ignore())
+            .ForMember(dest => dest.RoomType, opt => opt.Ignore())
+            .ForMember(dest => dest.CreatedAt, opt => opt.Ignore())
+            .ForMember(dest => dest.UpdatedAt, opt => opt.Ignore());
     }
 }
