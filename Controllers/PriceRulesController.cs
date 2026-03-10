@@ -1,5 +1,6 @@
 ﻿using HotelWebApplication.Common.Pagination;
 using HotelWebApplication.DTOs.PriceDTOs;
+using HotelWebApplication.Services;
 using HotelWebApplication.Services.Interfaces;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -45,6 +46,14 @@ public class PriceRulesController : ControllerBase
     {
         var result = await _service.GetByIdAsync(id, ct);
         return result == null ? NotFound() : Ok(result);
+    }
+
+    [HttpGet("all")]
+    [AllowAnonymous]
+    public async Task<IActionResult> GetAll([FromQuery] int? roomTypeId, [FromQuery] PagedRequest request)
+    {
+        var result = await _service.GetAllAsync(roomTypeId, request);
+        return Ok(result);
     }
 
     [HttpGet("calculate")]

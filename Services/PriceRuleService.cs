@@ -80,6 +80,34 @@ public class PriceRuleService : IPriceRuleService
         return rule == null ? null : _mapper.Map<PriceRuleResponseDto>(rule);
     }
 
+    public async Task<PagedResult<PriceRuleResponseDto>> GetAllAsync(
+    int? roomTypeId,
+    PagedRequest request,
+    CancellationToken ct = default)
+    {
+        var query = _db.PriceRules.AsNoTracking().AsQueryable();
+
+        if (roomTypeId.HasValue)
+            query = query.Where(x => x.RoomTypeId == roomTypeId || x.RoomTypeId == null);
+
+        if (!string.IsNullOrWhiteSpace(request.Search))
+        {
+            var s = request.Search.ToLower();
+            query = query.Where(x => x.Name.ToLower().Contains(s));
+        }
+
+        query = query.ApplySorting(request.SortBy);
+
+        var total = await query.CountAsync(ct);
+        var items = await query
+            .Skip((request.Page - 1) * request.PageSize)
+            .Take(request.PageSize)
+            .ProjectTo<PriceRuleResponseDto>(_mapper.ConfigurationProvider)
+            .ToListAsync(ct);
+
+        return new PagedResult<PriceRuleResponseDto>(items, total, request.Page, request.PageSize);
+    }
+
     // WRITE
 
     public async Task<int> CreateAsync(CreatePriceRuleDto dto, CancellationToken ct = default)

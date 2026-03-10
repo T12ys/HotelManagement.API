@@ -9,6 +9,8 @@ public interface IPriceRuleService
 
     Task<PagedResult<PriceRuleResponseDto>> GetRulesForPeriodAsync(PeriodRulesRequestDto dto, CancellationToken ct = default);
 
+    Task<PagedResult<PriceRuleResponseDto>> GetAllAsync(int? roomTypeId, PagedRequest request, CancellationToken ct = default);
+
     Task<PriceRuleResponseDto?> GetByIdAsync(int id, CancellationToken ct = default);
 
     Task<int> CreateAsync(CreatePriceRuleDto dto, CancellationToken ct = default);
