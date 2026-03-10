@@ -30,10 +30,10 @@ public class LocalFileStorageService : IFileStorageService
             throw new InvalidOperationException("Invalid file type");
 
         var webRoot = _env.WebRootPath
-                      ?? Path.Combine(Directory.GetCurrentDirectory(), "wwwroot");
+                      ?? Path.Combine(Directory.GetCurrentDirectory(), "wwwroot"); 
 
         var uploadsRoot = Path.Combine(webRoot, _uploadFolder);
-        Directory.CreateDirectory(uploadsRoot);
+        Directory.CreateDirectory(uploadsRoot); 
 
         var fileName = $"{Guid.NewGuid():N}{ext}";
         var fullPath = Path.Combine(uploadsRoot, fileName);

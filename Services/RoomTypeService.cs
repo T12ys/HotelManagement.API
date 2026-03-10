@@ -117,6 +117,52 @@ public class RoomTypeService : IRoomTypeService
             : _mapper.Map<RoomTypeResponseDto>(entity);
     }
 
+
+    public async Task<PagedResult<RoomResponseDto>> GetRoomsByTypeIdAsync(
+        int roomTypeId,
+        PagedRequest request,
+        CancellationToken ct = default)
+    {
+        // Проверяем существование типа комнаты
+        var roomTypeExists = await _db.RoomTypes
+            .AnyAsync(x => x.Id == roomTypeId, ct);
+
+        if (!roomTypeExists)
+            throw new KeyNotFoundException("RoomType not found");
+
+        // Получаем комнаты данного типа
+        var query = _db.Rooms
+            .Where(x => x.RoomTypeId == roomTypeId)  // ← Фильтр по типу
+            .AsNoTracking()
+            .AsQueryable();
+
+        // Поиск по номеру комнаты
+        if (!string.IsNullOrWhiteSpace(request.Search))
+        {
+            var s = request.Search.ToLower();
+            query = query.Where(x => x.Number.ToLower().Contains(s));
+        }
+
+        // Сортировка
+        query = query.ApplySorting(request.SortBy ?? "Number:asc");
+
+        // Подсчёт общего количества
+        var total = await query.CountAsync(ct);
+
+        // Пагинация
+        var items = await query
+            .Skip((request.Page - 1) * request.PageSize)
+            .Take(request.PageSize)
+            .ProjectTo<RoomResponseDto>(_mapper.ConfigurationProvider)
+            .ToListAsync(ct);
+
+        return new PagedResult<RoomResponseDto>(
+            items,
+            total,
+            request.Page,
+            request.PageSize);
+    }
+
     // =========================
     // ADMIN
     // =========================
