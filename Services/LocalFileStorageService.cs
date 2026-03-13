@@ -2,6 +2,8 @@
 
 namespace HotelWebApplication.Services;
 
+//Не используется
+
 public class LocalFileStorageService : IFileStorageService
 {
     private readonly IWebHostEnvironment _env;

@@ -30,7 +30,8 @@ builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
 // Services
 builder.Services.AddScoped<IAuthService, AuthService>();
-builder.Services.AddScoped<IFileStorageService, LocalFileStorageService>();
+//builder.Services.AddScoped<IFileStorageService, LocalFileStorageService>(); - не используется в продакшене
+builder.Services.AddScoped<IFileStorageService, CloudinaryFileStorageService>();
 builder.Services.AddScoped<IRoomTypeService, RoomTypeService>();
 builder.Services.AddScoped<IRoomService, RoomService>();
 builder.Services.AddScoped<ITagService, TagService>();
@@ -167,8 +168,7 @@ app.Lifetime.ApplicationStarted.Register(() =>
 
 app.UseCors("AllowFrontend");
 
-// enable static files to serve /uploads
-app.UseStaticFiles();
+// enable static files to serve /uploads app.UseStaticFiles();
 
 app.UseAuthentication();
 app.UseAuthorization();

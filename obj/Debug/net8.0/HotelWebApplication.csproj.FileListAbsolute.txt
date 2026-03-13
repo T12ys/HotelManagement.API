@@ -164,3 +164,5 @@ C:\Users\Elshan\source\repos\HotelManagementAPI\obj\Debug\net8.0\HotelWebApplica
 C:\Users\Elshan\source\repos\HotelManagementAPI\obj\Debug\net8.0\HotelWebApplication.genruntimeconfig.cache
 C:\Users\Elshan\source\repos\HotelManagementAPI\obj\Debug\net8.0\ref\HotelWebApplication.dll
 C:\Users\Elshan\source\repos\HotelManagementAPI\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt
+C:\Users\Elshan\source\repos\HotelManagementAPI\bin\Debug\net8.0\CloudinaryDotNet.dll
+C:\Users\Elshan\source\repos\HotelManagementAPI\bin\Debug\net8.0\Newtonsoft.Json.dll
