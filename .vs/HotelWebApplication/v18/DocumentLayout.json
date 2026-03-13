@@ -1,0 +1,402 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\Elshan\\source\\repos\\HotelManagementAPI\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{594C47E0-970F-3A58-F5D7-EAB015877E10}|HotelWebApplication.csproj|c:\\users\\elshan\\source\\repos\\hotelmanagementapi\\.gitignore||{3B902123-F8A7-4915-9F01-361F908088D0}",
+      "RelativeMoniker": "D:0:0:{594C47E0-970F-3A58-F5D7-EAB015877E10}|HotelWebApplication.csproj|solutionrelative:.gitignore||{3B902123-F8A7-4915-9F01-361F908088D0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{594C47E0-970F-3A58-F5D7-EAB015877E10}|HotelWebApplication.csproj|c:\\users\\elshan\\source\\repos\\hotelmanagementapi\\validators\\reservationvalidators\\createreservationdtovalidator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{594C47E0-970F-3A58-F5D7-EAB015877E10}|HotelWebApplication.csproj|solutionrelative:validators\\reservationvalidators\\createreservationdtovalidator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{594C47E0-970F-3A58-F5D7-EAB015877E10}|HotelWebApplication.csproj|c:\\users\\elshan\\source\\repos\\hotelmanagementapi\\dtos\\auditlogdtos\\auditlogfilterrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{594C47E0-970F-3A58-F5D7-EAB015877E10}|HotelWebApplication.csproj|solutionrelative:dtos\\auditlogdtos\\auditlogfilterrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{594C47E0-970F-3A58-F5D7-EAB015877E10}|HotelWebApplication.csproj|c:\\users\\elshan\\source\\repos\\hotelmanagementapi\\dtos\\auditlogdtos\\auditlogresponsedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{594C47E0-970F-3A58-F5D7-EAB015877E10}|HotelWebApplication.csproj|solutionrelative:dtos\\auditlogdtos\\auditlogresponsedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{594C47E0-970F-3A58-F5D7-EAB015877E10}|HotelWebApplication.csproj|c:\\users\\elshan\\source\\repos\\hotelmanagementapi\\controllers\\auditlogscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{594C47E0-970F-3A58-F5D7-EAB015877E10}|HotelWebApplication.csproj|solutionrelative:controllers\\auditlogscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{594C47E0-970F-3A58-F5D7-EAB015877E10}|HotelWebApplication.csproj|c:\\users\\elshan\\source\\repos\\hotelmanagementapi\\services\\reservationservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{594C47E0-970F-3A58-F5D7-EAB015877E10}|HotelWebApplication.csproj|solutionrelative:services\\reservationservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{594C47E0-970F-3A58-F5D7-EAB015877E10}|HotelWebApplication.csproj|c:\\users\\elshan\\source\\repos\\hotelmanagementapi\\controllers\\paymentscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{594C47E0-970F-3A58-F5D7-EAB015877E10}|HotelWebApplication.csproj|solutionrelative:controllers\\paymentscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{594C47E0-970F-3A58-F5D7-EAB015877E10}|HotelWebApplication.csproj|c:\\users\\elshan\\source\\repos\\hotelmanagementapi\\dtos\\reservationdtos\\reservationfilterrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{594C47E0-970F-3A58-F5D7-EAB015877E10}|HotelWebApplication.csproj|solutionrelative:dtos\\reservationdtos\\reservationfilterrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{594C47E0-970F-3A58-F5D7-EAB015877E10}|HotelWebApplication.csproj|c:\\users\\elshan\\source\\repos\\hotelmanagementapi\\dtos\\reservationdtos\\createreservationdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{594C47E0-970F-3A58-F5D7-EAB015877E10}|HotelWebApplication.csproj|solutionrelative:dtos\\reservationdtos\\createreservationdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{594C47E0-970F-3A58-F5D7-EAB015877E10}|HotelWebApplication.csproj|c:\\users\\elshan\\source\\repos\\hotelmanagementapi\\controllers\\reservationscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{594C47E0-970F-3A58-F5D7-EAB015877E10}|HotelWebApplication.csproj|solutionrelative:controllers\\reservationscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{594C47E0-970F-3A58-F5D7-EAB015877E10}|HotelWebApplication.csproj|c:\\users\\elshan\\source\\repos\\hotelmanagementapi\\backgroundjobs\\reservationcompletionjob.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{594C47E0-970F-3A58-F5D7-EAB015877E10}|HotelWebApplication.csproj|solutionrelative:backgroundjobs\\reservationcompletionjob.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{594C47E0-970F-3A58-F5D7-EAB015877E10}|HotelWebApplication.csproj|c:\\users\\elshan\\source\\repos\\hotelmanagementapi\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{594C47E0-970F-3A58-F5D7-EAB015877E10}|HotelWebApplication.csproj|solutionrelative:appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{594C47E0-970F-3A58-F5D7-EAB015877E10}|HotelWebApplication.csproj|c:\\users\\elshan\\source\\repos\\hotelmanagementapi\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{594C47E0-970F-3A58-F5D7-EAB015877E10}|HotelWebApplication.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{594C47E0-970F-3A58-F5D7-EAB015877E10}|HotelWebApplication.csproj|c:\\users\\elshan\\source\\repos\\hotelmanagementapi\\enums\\reservationstatus.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{594C47E0-970F-3A58-F5D7-EAB015877E10}|HotelWebApplication.csproj|solutionrelative:enums\\reservationstatus.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{594C47E0-970F-3A58-F5D7-EAB015877E10}|HotelWebApplication.csproj|c:\\users\\elshan\\source\\repos\\hotelmanagementapi\\dtos\\reservationdtos\\reservationitemresponsedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{594C47E0-970F-3A58-F5D7-EAB015877E10}|HotelWebApplication.csproj|solutionrelative:dtos\\reservationdtos\\reservationitemresponsedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{594C47E0-970F-3A58-F5D7-EAB015877E10}|HotelWebApplication.csproj|c:\\users\\elshan\\source\\repos\\hotelmanagementapi\\mappings\\mappingprofile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{594C47E0-970F-3A58-F5D7-EAB015877E10}|HotelWebApplication.csproj|solutionrelative:mappings\\mappingprofile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{594C47E0-970F-3A58-F5D7-EAB015877E10}|HotelWebApplication.csproj|c:\\users\\elshan\\source\\repos\\hotelmanagementapi\\dtos\\reservationdtos\\reservationitemdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{594C47E0-970F-3A58-F5D7-EAB015877E10}|HotelWebApplication.csproj|solutionrelative:dtos\\reservationdtos\\reservationitemdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{594C47E0-970F-3A58-F5D7-EAB015877E10}|HotelWebApplication.csproj|c:\\users\\elshan\\source\\repos\\hotelmanagementapi\\validators\\reservationvalidators\\updatereservationdtovalidator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{594C47E0-970F-3A58-F5D7-EAB015877E10}|HotelWebApplication.csproj|solutionrelative:validators\\reservationvalidators\\updatereservationdtovalidator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{594C47E0-970F-3A58-F5D7-EAB015877E10}|HotelWebApplication.csproj|c:\\users\\elshan\\source\\repos\\hotelmanagementapi\\dtos\\reservationdtos\\mockpaymentdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{594C47E0-970F-3A58-F5D7-EAB015877E10}|HotelWebApplication.csproj|solutionrelative:dtos\\reservationdtos\\mockpaymentdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{594C47E0-970F-3A58-F5D7-EAB015877E10}|HotelWebApplication.csproj|c:\\users\\elshan\\source\\repos\\hotelmanagementapi\\dtos\\reservationdtos\\updatereservationdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{594C47E0-970F-3A58-F5D7-EAB015877E10}|HotelWebApplication.csproj|solutionrelative:dtos\\reservationdtos\\updatereservationdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{594C47E0-970F-3A58-F5D7-EAB015877E10}|HotelWebApplication.csproj|c:\\users\\elshan\\source\\repos\\hotelmanagementapi\\dtos\\reservationdtos\\reservationresponsedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{594C47E0-970F-3A58-F5D7-EAB015877E10}|HotelWebApplication.csproj|solutionrelative:dtos\\reservationdtos\\reservationresponsedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{594C47E0-970F-3A58-F5D7-EAB015877E10}|HotelWebApplication.csproj|c:\\users\\elshan\\source\\repos\\hotelmanagementapi\\services\\interfaces\\ireservationservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{594C47E0-970F-3A58-F5D7-EAB015877E10}|HotelWebApplication.csproj|solutionrelative:services\\interfaces\\ireservationservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 2,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{0ad07096-bba9-4900-a651-0598d26f6d24}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": ".gitignore",
+              "DocumentMoniker": "C:\\Users\\Elshan\\source\\repos\\HotelManagementAPI\\.gitignore",
+              "RelativeDocumentMoniker": ".gitignore",
+              "ToolTip": "C:\\Users\\Elshan\\source\\repos\\HotelManagementAPI\\.gitignore",
+              "RelativeToolTip": ".gitignore",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAEAAAAA7AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2026-03-13T12:47:46.042Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "AuditLogFilterRequest.cs",
+              "DocumentMoniker": "C:\\Users\\Elshan\\source\\repos\\HotelManagementAPI\\DTOs\\AuditLogDTOs\\AuditLogFilterRequest.cs",
+              "RelativeDocumentMoniker": "DTOs\\AuditLogDTOs\\AuditLogFilterRequest.cs",
+              "ToolTip": "C:\\Users\\Elshan\\source\\repos\\HotelManagementAPI\\DTOs\\AuditLogDTOs\\AuditLogFilterRequest.cs",
+              "RelativeToolTip": "DTOs\\AuditLogDTOs\\AuditLogFilterRequest.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-13T12:29:09.334Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "AuditLogResponseDto.cs",
+              "DocumentMoniker": "C:\\Users\\Elshan\\source\\repos\\HotelManagementAPI\\DTOs\\AuditLogDTOs\\AuditLogResponseDto.cs",
+              "RelativeDocumentMoniker": "DTOs\\AuditLogDTOs\\AuditLogResponseDto.cs",
+              "ToolTip": "C:\\Users\\Elshan\\source\\repos\\HotelManagementAPI\\DTOs\\AuditLogDTOs\\AuditLogResponseDto.cs",
+              "RelativeToolTip": "DTOs\\AuditLogDTOs\\AuditLogResponseDto.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAzAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-13T12:28:41.993Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "AuditLogsController.cs",
+              "DocumentMoniker": "C:\\Users\\Elshan\\source\\repos\\HotelManagementAPI\\Controllers\\AuditLogsController.cs",
+              "RelativeDocumentMoniker": "Controllers\\AuditLogsController.cs",
+              "ToolTip": "C:\\Users\\Elshan\\source\\repos\\HotelManagementAPI\\Controllers\\AuditLogsController.cs",
+              "RelativeToolTip": "Controllers\\AuditLogsController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAGkAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-13T12:27:03.482Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "CreateReservationDto.cs",
+              "DocumentMoniker": "C:\\Users\\Elshan\\source\\repos\\HotelManagementAPI\\DTOs\\ReservationDTOs\\CreateReservationDto.cs",
+              "RelativeDocumentMoniker": "DTOs\\ReservationDTOs\\CreateReservationDto.cs",
+              "ToolTip": "C:\\Users\\Elshan\\source\\repos\\HotelManagementAPI\\DTOs\\ReservationDTOs\\CreateReservationDto.cs",
+              "RelativeToolTip": "DTOs\\ReservationDTOs\\CreateReservationDto.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-13T12:13:08.333Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "C:\\Users\\Elshan\\source\\repos\\HotelManagementAPI\\appsettings.json",
+              "RelativeDocumentMoniker": "appsettings.json",
+              "ToolTip": "C:\\Users\\Elshan\\source\\repos\\HotelManagementAPI\\appsettings.json",
+              "RelativeToolTip": "appsettings.json",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAABQAAAAWAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2026-03-13T12:03:04.514Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "ReservationCompletionJob.cs",
+              "DocumentMoniker": "C:\\Users\\Elshan\\source\\repos\\HotelManagementAPI\\BackgroundJobs\\ReservationCompletionJob.cs",
+              "RelativeDocumentMoniker": "BackgroundJobs\\ReservationCompletionJob.cs",
+              "ToolTip": "C:\\Users\\Elshan\\source\\repos\\HotelManagementAPI\\BackgroundJobs\\ReservationCompletionJob.cs",
+              "RelativeToolTip": "BackgroundJobs\\ReservationCompletionJob.cs",
+              "ViewState": "AgIAABEAAAAAAAAAAAAQwAoAAAAOAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-13T11:58:59.292Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "ReservationStatus.cs",
+              "DocumentMoniker": "C:\\Users\\Elshan\\source\\repos\\HotelManagementAPI\\Enums\\ReservationStatus.cs",
+              "RelativeDocumentMoniker": "Enums\\ReservationStatus.cs",
+              "ToolTip": "C:\\Users\\Elshan\\source\\repos\\HotelManagementAPI\\Enums\\ReservationStatus.cs",
+              "RelativeToolTip": "Enums\\ReservationStatus.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-13T11:51:57.063Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "MappingProfile.cs",
+              "DocumentMoniker": "C:\\Users\\Elshan\\source\\repos\\HotelManagementAPI\\Mappings\\MappingProfile.cs",
+              "RelativeDocumentMoniker": "Mappings\\MappingProfile.cs",
+              "ToolTip": "C:\\Users\\Elshan\\source\\repos\\HotelManagementAPI\\Mappings\\MappingProfile.cs",
+              "RelativeToolTip": "Mappings\\MappingProfile.cs",
+              "ViewState": "AgIAACAAAAAAAAAAAAAcwDAAAAA8AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-13T11:46:05.714Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "ReservationItemResponseDto.cs",
+              "DocumentMoniker": "C:\\Users\\Elshan\\source\\repos\\HotelManagementAPI\\DTOs\\ReservationDTOs\\ReservationItemResponseDto.cs",
+              "RelativeDocumentMoniker": "DTOs\\ReservationDTOs\\ReservationItemResponseDto.cs",
+              "ToolTip": "C:\\Users\\Elshan\\source\\repos\\HotelManagementAPI\\DTOs\\ReservationDTOs\\ReservationItemResponseDto.cs",
+              "RelativeToolTip": "DTOs\\ReservationDTOs\\ReservationItemResponseDto.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAqwAcAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-13T11:45:35.449Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "ReservationItemDto.cs",
+              "DocumentMoniker": "C:\\Users\\Elshan\\source\\repos\\HotelManagementAPI\\DTOs\\ReservationDTOs\\ReservationItemDto.cs",
+              "RelativeDocumentMoniker": "DTOs\\ReservationDTOs\\ReservationItemDto.cs",
+              "ToolTip": "C:\\Users\\Elshan\\source\\repos\\HotelManagementAPI\\DTOs\\ReservationDTOs\\ReservationItemDto.cs",
+              "RelativeToolTip": "DTOs\\ReservationDTOs\\ReservationItemDto.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAqwAUAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-13T11:45:24.271Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "UpdateReservationDtoValidator.cs",
+              "DocumentMoniker": "C:\\Users\\Elshan\\source\\repos\\HotelManagementAPI\\Validators\\ReservationValidators\\UpdateReservationDtoValidator.cs",
+              "RelativeDocumentMoniker": "Validators\\ReservationValidators\\UpdateReservationDtoValidator.cs",
+              "ToolTip": "C:\\Users\\Elshan\\source\\repos\\HotelManagementAPI\\Validators\\ReservationValidators\\UpdateReservationDtoValidator.cs",
+              "RelativeToolTip": "Validators\\ReservationValidators\\UpdateReservationDtoValidator.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABgAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-13T11:43:39.019Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "CreateReservationDtoValidator.cs",
+              "DocumentMoniker": "C:\\Users\\Elshan\\source\\repos\\HotelManagementAPI\\Validators\\ReservationValidators\\CreateReservationDtoValidator.cs",
+              "RelativeDocumentMoniker": "Validators\\ReservationValidators\\CreateReservationDtoValidator.cs",
+              "ToolTip": "C:\\Users\\Elshan\\source\\repos\\HotelManagementAPI\\Validators\\ReservationValidators\\CreateReservationDtoValidator.cs",
+              "RelativeToolTip": "Validators\\ReservationValidators\\CreateReservationDtoValidator.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAAAcAAAAqAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-13T11:43:18.618Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "ReservationFilterRequest.cs",
+              "DocumentMoniker": "C:\\Users\\Elshan\\source\\repos\\HotelManagementAPI\\DTOs\\ReservationDTOs\\ReservationFilterRequest.cs",
+              "RelativeDocumentMoniker": "DTOs\\ReservationDTOs\\ReservationFilterRequest.cs",
+              "ToolTip": "C:\\Users\\Elshan\\source\\repos\\HotelManagementAPI\\DTOs\\ReservationDTOs\\ReservationFilterRequest.cs",
+              "RelativeToolTip": "DTOs\\ReservationDTOs\\ReservationFilterRequest.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAqwAoAAAAnAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-13T11:42:39.553Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "MockPaymentDto.cs",
+              "DocumentMoniker": "C:\\Users\\Elshan\\source\\repos\\HotelManagementAPI\\DTOs\\ReservationDTOs\\MockPaymentDto.cs",
+              "RelativeDocumentMoniker": "DTOs\\ReservationDTOs\\MockPaymentDto.cs",
+              "ToolTip": "C:\\Users\\Elshan\\source\\repos\\HotelManagementAPI\\DTOs\\ReservationDTOs\\MockPaymentDto.cs",
+              "RelativeToolTip": "DTOs\\ReservationDTOs\\MockPaymentDto.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-13T11:42:24.809Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 19,
+              "Title": "UpdateReservationDto.cs",
+              "DocumentMoniker": "C:\\Users\\Elshan\\source\\repos\\HotelManagementAPI\\DTOs\\ReservationDTOs\\UpdateReservationDto.cs",
+              "RelativeDocumentMoniker": "DTOs\\ReservationDTOs\\UpdateReservationDto.cs",
+              "ToolTip": "C:\\Users\\Elshan\\source\\repos\\HotelManagementAPI\\DTOs\\ReservationDTOs\\UpdateReservationDto.cs",
+              "RelativeToolTip": "DTOs\\ReservationDTOs\\UpdateReservationDto.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-13T11:42:14.254Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 20,
+              "Title": "ReservationResponseDto.cs",
+              "DocumentMoniker": "C:\\Users\\Elshan\\source\\repos\\HotelManagementAPI\\DTOs\\ReservationDTOs\\ReservationResponseDto.cs",
+              "RelativeDocumentMoniker": "DTOs\\ReservationDTOs\\ReservationResponseDto.cs",
+              "ToolTip": "C:\\Users\\Elshan\\source\\repos\\HotelManagementAPI\\DTOs\\ReservationDTOs\\ReservationResponseDto.cs",
+              "RelativeToolTip": "DTOs\\ReservationDTOs\\ReservationResponseDto.cs",
+              "ViewState": "AgIAABkAAAAAAAAAAAAywCcAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-13T11:41:37.786Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "PaymentsController.cs",
+              "DocumentMoniker": "C:\\Users\\Elshan\\source\\repos\\HotelManagementAPI\\Controllers\\PaymentsController.cs",
+              "RelativeDocumentMoniker": "Controllers\\PaymentsController.cs",
+              "ToolTip": "C:\\Users\\Elshan\\source\\repos\\HotelManagementAPI\\Controllers\\PaymentsController.cs",
+              "RelativeToolTip": "Controllers\\PaymentsController.cs",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAADcAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-13T11:34:28.58Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "ReservationsController.cs",
+              "DocumentMoniker": "C:\\Users\\Elshan\\source\\repos\\HotelManagementAPI\\Controllers\\ReservationsController.cs",
+              "RelativeDocumentMoniker": "Controllers\\ReservationsController.cs",
+              "ToolTip": "C:\\Users\\Elshan\\source\\repos\\HotelManagementAPI\\Controllers\\ReservationsController.cs",
+              "RelativeToolTip": "Controllers\\ReservationsController.cs",
+              "ViewState": "AgIAADcAAAAAAAAAAAA9wEMAAABQAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-13T11:33:08.617Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 21,
+              "Title": "IReservationService.cs",
+              "DocumentMoniker": "C:\\Users\\Elshan\\source\\repos\\HotelManagementAPI\\Services\\Interfaces\\IReservationService.cs",
+              "RelativeDocumentMoniker": "Services\\Interfaces\\IReservationService.cs",
+              "ToolTip": "C:\\Users\\Elshan\\source\\repos\\HotelManagementAPI\\Services\\Interfaces\\IReservationService.cs",
+              "RelativeToolTip": "Services\\Interfaces\\IReservationService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAB4AAABDAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-13T11:29:50.772Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\Elshan\\source\\repos\\HotelManagementAPI\\Program.cs",
+              "RelativeDocumentMoniker": "Program.cs",
+              "ToolTip": "C:\\Users\\Elshan\\source\\repos\\HotelManagementAPI\\Program.cs",
+              "RelativeToolTip": "Program.cs",
+              "ViewState": "AgIAACIAAAAAAAAAAAAAACgAAAARAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-13T11:25:01.386Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "ReservationService.cs",
+              "DocumentMoniker": "C:\\Users\\Elshan\\source\\repos\\HotelManagementAPI\\Services\\ReservationService.cs",
+              "RelativeDocumentMoniker": "Services\\ReservationService.cs",
+              "ToolTip": "C:\\Users\\Elshan\\source\\repos\\HotelManagementAPI\\Services\\ReservationService.cs",
+              "RelativeToolTip": "Services\\ReservationService.cs",
+              "ViewState": "AgIAAJ4AAAAAAAAAAAAIwEkAAAAsAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-13T11:24:08.543Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

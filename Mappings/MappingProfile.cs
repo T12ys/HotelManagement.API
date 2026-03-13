@@ -1,13 +1,14 @@
 ﻿using AutoMapper;
 using HotelWebApplication.DTOs.PriceDTOs;
+using HotelWebApplication.DTOs.ReservationDTOs;
 using HotelWebApplication.DTOs.RoomDTOs;
 using HotelWebApplication.Models;
 
 namespace HotelWebApplication.Mappings;
 
-public class RoomMappingProfile : Profile
+public class MappingProfile : Profile
 {
-    public RoomMappingProfile()
+    public MappingProfile()
     {
         // ROOM
 
@@ -70,5 +71,19 @@ public class RoomMappingProfile : Profile
             .ForMember(dest => dest.RoomType, opt => opt.Ignore())
             .ForMember(dest => dest.CreatedAt, opt => opt.Ignore())
             .ForMember(dest => dest.UpdatedAt, opt => opt.Ignore());
+
+        // RESERVATION
+        CreateMap<Reservation, ReservationResponseDto>()
+            .ForMember(dest => dest.RoomNumber,
+                opt => opt.MapFrom(src => src.Room != null ? src.Room.Number : src.RoomId.ToString()))
+            .ForMember(dest => dest.NightsCount,
+                opt => opt.MapFrom(src => (int)(src.EndDate - src.StartDate).TotalDays))
+            .ForMember(dest => dest.Items,
+                opt => opt.MapFrom(src => src.ReservationItems));
+
+        // RESERVATION ITEM
+        CreateMap<ReservationItem, ReservationItemResponseDto>()
+            .ForMember(dest => dest.Total,
+                opt => opt.MapFrom(src => src.Price * src.Quantity));
     }
 }

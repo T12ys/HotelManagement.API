@@ -1,5 +1,6 @@
 using FluentValidation;
 using FluentValidation.AspNetCore;
+using HotelWebApplication.BackgroundJobs;
 using HotelWebApplication.Data;
 using HotelWebApplication.Services;
 using HotelWebApplication.Services.Interfaces;
@@ -34,6 +35,11 @@ builder.Services.AddScoped<IRoomTypeService, RoomTypeService>();
 builder.Services.AddScoped<IRoomService, RoomService>();
 builder.Services.AddScoped<ITagService, TagService>();
 builder.Services.AddScoped<IPriceRuleService, PriceRuleService>();
+builder.Services.AddScoped<IAuditLogService, AuditLogService>();
+builder.Services.AddScoped<IReservationService, ReservationService>();
+
+// Фоновая задача
+builder.Services.AddHostedService<ReservationCompletionJob>();
 
 // Swagger (Swashbuckle 10.x pattern)
 builder.Services.AddEndpointsApiExplorer();
@@ -115,6 +121,9 @@ builder.Services.AddAuthorization(options =>
     options.AddPolicy("TagDelete", p => p.RequireRole("Admin"));
     options.AddPolicy("PriceRuleWrite", p => p.RequireRole("Admin", "Moderator"));
     options.AddPolicy("PriceRuleDelete", p => p.RequireRole("Admin"));
+    options.AddPolicy("ReservationRead", p => p.RequireRole("Admin", "Moderator"));
+    options.AddPolicy("ReservationWrite", p => p.RequireRole("Admin", "Moderator"));
+    options.AddPolicy("ReservationCancel", p => p.RequireRole("Admin", "Moderator"));
 });
 
 
