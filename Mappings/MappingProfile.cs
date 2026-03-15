@@ -33,13 +33,19 @@ public class MappingProfile : Profile
             .ForMember(dest => dest.Tags, opt => opt.Ignore())
             .ForMember(dest => dest.Photos, opt => opt.Ignore())
             .ForMember(dest => dest.Rooms, opt => opt.Ignore())
-            .ForMember(dest => dest.CreatedAt, opt => opt.Ignore());
+            .ForMember(dest => dest.CreatedAt, opt => opt.Ignore())
+            .ForMember(dest => dest.MaxOccupancyAdults, opt => opt.MapFrom(src => src.MaxOccupancyAdults))
+            .ForMember(dest => dest.MaxOccupancyChildren, opt => opt.MapFrom(src => src.MaxOccupancyChildren))
+            .ForMember(dest => dest.Capacity, opt => opt.MapFrom(src => src.MaxOccupancyAdults + src.MaxOccupancyChildren));
 
         CreateMap<UpdateRoomTypeDto, RoomType>()
             .ForMember(dest => dest.Tags, opt => opt.Ignore())
             .ForMember(dest => dest.Photos, opt => opt.Ignore())
             .ForMember(dest => dest.Rooms, opt => opt.Ignore())
-            .ForMember(dest => dest.CreatedAt, opt => opt.Ignore());
+            .ForMember(dest => dest.CreatedAt, opt => opt.Ignore())
+            .ForMember(dest => dest.MaxOccupancyAdults, opt => opt.MapFrom(src => src.MaxOccupancyAdults))
+            .ForMember(dest => dest.MaxOccupancyChildren, opt => opt.MapFrom(src => src.MaxOccupancyChildren))
+            .ForMember(dest => dest.Capacity, opt => opt.MapFrom(src => src.MaxOccupancyAdults + src.MaxOccupancyChildren));
 
         // TAG
 

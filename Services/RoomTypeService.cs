@@ -198,6 +198,7 @@ public class RoomTypeService : IRoomTypeService
                 });
             }
         }
+        entity.Capacity = entity.MaxOccupancyAdults + entity.MaxOccupancyChildren;
 
         _db.RoomTypes.Add(entity);
         await _db.SaveChangesAsync(ct);
@@ -205,7 +206,7 @@ public class RoomTypeService : IRoomTypeService
         return entity.Id;
     }
 
-    public async Task UpdateAsync(int id,UpdateRoomTypeDto dto, CancellationToken ct = default)
+    public async Task UpdateAsync(int id, UpdateRoomTypeDto dto, CancellationToken ct = default)
     {
         var entity = await _db.RoomTypes
             .Include(x => x.Tags)
@@ -216,6 +217,18 @@ public class RoomTypeService : IRoomTypeService
 
         _mapper.Map(dto, entity);
 
+        entity.Tags.Clear();
+
+        if (dto.TagIds?.Any() == true)
+        {
+            var tags = await _db.Tags
+                .Where(t => dto.TagIds.Contains(t.Id))
+                .ToListAsync(ct);
+
+            foreach (var tag in tags)
+                entity.Tags.Add(tag);
+        }
+        entity.Capacity = entity.MaxOccupancyAdults + entity.MaxOccupancyChildren;
         await _db.SaveChangesAsync(ct);
     }
 

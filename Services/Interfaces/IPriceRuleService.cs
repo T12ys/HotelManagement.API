@@ -1,5 +1,6 @@
 ﻿using HotelWebApplication.Common.Pagination;
 using HotelWebApplication.DTOs.PriceDTOs;
+using HotelWebApplication.DTOs.RoomDTOs;
 
 namespace HotelWebApplication.Services.Interfaces;
 
@@ -20,4 +21,6 @@ public interface IPriceRuleService
     Task DeleteAsync(int id, CancellationToken ct = default);
 
     Task<PriceCalculationResponseDto> CalculatePriceAsync(PriceCalculationRequestDto dto, CancellationToken ct = default);
+
+    Task<PagedResult<RoomTypeResponseDto>> GetDiscountedRoomTypesAsync(PagedRequest request, CancellationToken ct = default);
 }

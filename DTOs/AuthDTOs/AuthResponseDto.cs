@@ -10,5 +10,6 @@ public class AuthResponseDto
     public string? RefreshToken { get; set; } // optional for non-cookie flows
     public Guid UserId { get; set; }
     public string Email { get; set; } = null!;
+    public string DisplayName { get; set; } = null!;
     public UserRole Role { get; set; }
 }

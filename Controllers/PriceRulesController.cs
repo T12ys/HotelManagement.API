@@ -1,5 +1,6 @@
 ﻿using HotelWebApplication.Common.Pagination;
 using HotelWebApplication.DTOs.PriceDTOs;
+using HotelWebApplication.DTOs.RoomDTOs;
 using HotelWebApplication.Services;
 using HotelWebApplication.Services.Interfaces;
 using Microsoft.AspNetCore.Authorization;
@@ -87,5 +88,14 @@ public class PriceRulesController : ControllerBase
     {
         await _service.DeleteAsync(id, ct);
         return NoContent();
+    }
+
+    [HttpGet("discounted")]
+    [AllowAnonymous]
+    public async Task<ActionResult<PagedResult<RoomTypeResponseDto>>> GetDiscounted(
+    [FromQuery] PagedRequest request,
+    CancellationToken ct)
+    {
+        return Ok(await _service.GetDiscountedRoomTypesAsync(request, ct));
     }
 }

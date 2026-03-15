@@ -60,9 +60,10 @@ public class AuthService : IAuthService
         {
             AccessToken = access,
             AccessTokenExpiresAt = expiresAt,
-            RefreshToken = refresh, // клиент получает оригинал
+            RefreshToken = refresh,
             UserId = user.Id,
             Email = user.Email,
+            DisplayName = user.DisplayName,
             Role = user.Role
         };
     }
@@ -108,9 +109,10 @@ public class AuthService : IAuthService
         {
             AccessToken = access,
             AccessTokenExpiresAt = expiresAt,
-            RefreshToken = newRefresh, // клиент получает новый оригинал
+            RefreshToken = newRefresh,
             UserId = user.Id,
             Email = user.Email,
+            DisplayName = user.DisplayName,
             Role = user.Role
         };
     }
@@ -174,6 +176,7 @@ public class AuthService : IAuthService
             RefreshToken = refresh,
             UserId = user.Id,
             Email = user.Email,
+            DisplayName = user.DisplayName,
             Role = user.Role
         };
     }

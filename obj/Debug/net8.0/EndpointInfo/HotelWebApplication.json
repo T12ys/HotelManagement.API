@@ -757,6 +757,67 @@
         }
       }
     },
+    "/api/price-rules/discounted": {
+      "get": {
+        "tags": [
+          "PriceRules"
+        ],
+        "parameters": [
+          {
+            "name": "Page",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "PageSize",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "SortBy",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Search",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/RoomTypeResponseDtoPagedResult"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RoomTypeResponseDtoPagedResult"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RoomTypeResponseDtoPagedResult"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/api/reservations": {
       "post": {
         "tags": [
@@ -1553,6 +1614,14 @@
                     "type": "integer",
                     "format": "int32"
                   },
+                  "MaxOccupancyAdults": {
+                    "type": "integer",
+                    "format": "int32"
+                  },
+                  "MaxOccupancyChildren": {
+                    "type": "integer",
+                    "format": "int32"
+                  },
                   "BasePrice": {
                     "type": "number",
                     "format": "double"
@@ -1587,6 +1656,12 @@
                   "style": "form"
                 },
                 "Capacity": {
+                  "style": "form"
+                },
+                "MaxOccupancyAdults": {
+                  "style": "form"
+                },
+                "MaxOccupancyChildren": {
                   "style": "form"
                 },
                 "BasePrice": {
@@ -2781,6 +2856,14 @@
             "type": "integer",
             "format": "int32"
           },
+          "maxOccupancyAdults": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "maxOccupancyChildren": {
+            "type": "integer",
+            "format": "int32"
+          },
           "basePrice": {
             "type": "number",
             "format": "double"
@@ -2975,6 +3058,14 @@
             "nullable": true
           },
           "capacity": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "maxOccupancyAdults": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "maxOccupancyChildren": {
             "type": "integer",
             "format": "int32"
           },

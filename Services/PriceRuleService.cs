@@ -4,6 +4,7 @@ using HotelWebApplication.Common.Extensions;
 using HotelWebApplication.Common.Pagination;
 using HotelWebApplication.Data;
 using HotelWebApplication.DTOs.PriceDTOs;
+using HotelWebApplication.DTOs.RoomDTOs;
 using HotelWebApplication.Models;
 using HotelWebApplication.Services.Interfaces;
 using Microsoft.EntityFrameworkCore;
@@ -219,6 +220,59 @@ public class PriceRuleService : IPriceRuleService
 
     // HELPERS
 
+    public async Task<PagedResult<RoomTypeResponseDto>> GetDiscountedRoomTypesAsync(PagedRequest request, CancellationToken ct = default)
+    {
+        var today = DateTime.UtcNow.Date;
+
+        var roomTypes = await _db.RoomTypes
+            .Include(x => x.Photos)
+            .Include(x => x.Tags)
+            .AsNoTracking()
+            .Where(x => x.IsActive)
+            .ToListAsync(ct);
+
+        var rules = await _db.PriceRules
+            .AsNoTracking()
+            .Where(x => x.IsActive
+                && x.StartDate <= today
+                && x.EndDate >= today)
+            .ToListAsync(ct);
+
+        var discounted = roomTypes
+            .Where(roomType =>
+            {
+                var basePrice = roomType.BasePrice;
+                var threshold = basePrice * 0.85m;
+
+                var roomRules = rules
+                    .Where(r => r.RoomTypeId == roomType.Id || r.RoomTypeId == null)
+                    .ToList();
+
+                var finalPrice = basePrice;
+                foreach (var rule in roomRules)
+                {
+                    var delta = rule.IsPercent
+                        ? Math.Round(basePrice * rule.Value / 100, 2)
+                        : rule.Value;
+
+                    if (!rule.IsIncrease) delta = -delta;
+                    finalPrice += delta;
+                }
+
+                return finalPrice <= threshold;
+            })
+            .ToList();
+
+        var total = discounted.Count;
+
+        var items = discounted
+            .Skip((request.Page - 1) * request.PageSize)
+            .Take(request.PageSize)
+            .Select(x => _mapper.Map<RoomTypeResponseDto>(x))
+            .ToList();
+
+        return new PagedResult<RoomTypeResponseDto>(items, total, request.Page, request.PageSize);
+    }
     private async Task<List<PriceRule>> LoadRulesForRangeAsync(
         int roomTypeId,
         DateTime from,

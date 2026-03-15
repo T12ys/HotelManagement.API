@@ -408,6 +408,47 @@
   },
   {
     "ContainingType": "HotelWebApplication.Controllers.PriceRulesController",
+    "Method": "GetDiscounted",
+    "RelativePath": "api/price-rules/discounted",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "Page",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "PageSize",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "SortBy",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Search",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "HotelWebApplication.Common.Pagination.PagedResult\u00601[[HotelWebApplication.DTOs.RoomDTOs.RoomTypeResponseDto, HotelWebApplication, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "HotelWebApplication.Controllers.PriceRulesController",
     "Method": "GetRulesForPeriod",
     "RelativePath": "api/price-rules/period",
     "HttpMethod": "GET",
@@ -803,6 +844,16 @@
       },
       {
         "Name": "Capacity",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "MaxOccupancyAdults",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "MaxOccupancyChildren",
         "Type": "System.Int32",
         "IsRequired": false
       },

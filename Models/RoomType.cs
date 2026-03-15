@@ -12,7 +12,7 @@ public class RoomType
 
     public string Description { get; set; } = null!;
 
-    public int Capacity { get; set; }
+    public int Capacity { get; set; } 
 
     public int MaxOccupancyAdults { get; set; }
 
