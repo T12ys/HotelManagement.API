@@ -194,7 +194,7 @@ public class PriceRuleService : IPriceRuleService
                 });
             }
 
-            var minPrice = basePrice / 10;
+            var minPrice = basePrice * 0.30m;
             if (dailyPrice < minPrice) dailyPrice = minPrice;
 
             dailyBreakdown.Add(new DailyPriceDto

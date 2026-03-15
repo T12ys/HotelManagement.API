@@ -1538,6 +1538,22 @@
             }
           },
           {
+            "name": "CheckIn",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "format": "date-time"
+            }
+          },
+          {
+            "name": "CheckOut",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "format": "date-time"
+            }
+          },
+          {
             "name": "Page",
             "in": "query",
             "schema": {
@@ -2657,6 +2673,14 @@
             "format": "int32"
           },
           "roomNumber": {
+            "type": "string",
+            "nullable": true
+          },
+          "roomTypeId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "roomTypeName": {
             "type": "string",
             "nullable": true
           },

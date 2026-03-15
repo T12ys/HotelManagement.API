@@ -163,7 +163,6 @@ C:\Users\Elshan\source\repos\HotelManagementAPI\obj\Debug\net8.0\refint\HotelWeb
 C:\Users\Elshan\source\repos\HotelManagementAPI\obj\Debug\net8.0\HotelWebApplication.pdb
 C:\Users\Elshan\source\repos\HotelManagementAPI\obj\Debug\net8.0\HotelWebApplication.genruntimeconfig.cache
 C:\Users\Elshan\source\repos\HotelManagementAPI\obj\Debug\net8.0\ref\HotelWebApplication.dll
-C:\Users\Elshan\source\repos\HotelManagementAPI\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt
 C:\Users\Elshan\source\repos\HotelManagementAPI\bin\Debug\net8.0\CloudinaryDotNet.dll
 C:\Users\Elshan\source\repos\HotelManagementAPI\bin\Debug\net8.0\Newtonsoft.Json.dll
 C:\Users\User\source\repos\HotelManagement.API\bin\Debug\net8.0\appsettings.Development.json
@@ -334,3 +333,4 @@ C:\Users\User\source\repos\HotelManagement.API\obj\Debug\net8.0\refint\HotelWebA
 C:\Users\User\source\repos\HotelManagement.API\obj\Debug\net8.0\HotelWebApplication.pdb
 C:\Users\User\source\repos\HotelManagement.API\obj\Debug\net8.0\HotelWebApplication.genruntimeconfig.cache
 C:\Users\User\source\repos\HotelManagement.API\obj\Debug\net8.0\ref\HotelWebApplication.dll
+C:\Users\Elshan\source\repos\HotelManagementAPI\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt

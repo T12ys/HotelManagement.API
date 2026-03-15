@@ -4,6 +4,7 @@ using HotelWebApplication.Common.Extensions;
 using HotelWebApplication.Common.Pagination;
 using HotelWebApplication.Data;
 using HotelWebApplication.DTOs.RoomDTOs;
+using HotelWebApplication.Enums;
 using HotelWebApplication.Models;
 using HotelWebApplication.Services.Interfaces;
 using Microsoft.EntityFrameworkCore;
@@ -16,7 +17,7 @@ public class RoomTypeService : IRoomTypeService
     private readonly IMapper _mapper;
     private readonly IFileStorageService _fileStorage;
 
-    public RoomTypeService(HotelDbContext db,IMapper mapper, IFileStorageService fileStorage)
+    public RoomTypeService(HotelDbContext db, IMapper mapper, IFileStorageService fileStorage)
     {
         _db = db;
         _mapper = mapper;
@@ -33,7 +34,7 @@ public class RoomTypeService : IRoomTypeService
             .AsNoTracking()
             .AsQueryable();
 
-        // 🔎 Text search
+        // Text search
         if (!string.IsNullOrWhiteSpace(request.Search))
         {
             var s = request.Search.ToLower();
@@ -86,6 +87,24 @@ public class RoomTypeService : IRoomTypeService
                 x.Tags.Any(t => request.TagIds.Contains(t.Id)));
         }
 
+        // Availability filter — показываем только типы у которых есть
+        // хотя бы одна комната без пересекающейся активной брони
+        if (request.CheckIn.HasValue && request.CheckOut.HasValue)
+        {
+            var checkIn = request.CheckIn.Value.Date;
+            var checkOut = request.CheckOut.Value.Date;
+
+            query = query.Where(rt =>
+                rt.Rooms.Any(room =>
+                    room.IsAvailable &&
+                    !_db.Reservations.Any(res =>
+                        res.RoomId == room.Id &&
+                        (res.Status == ReservationStatus.Pending ||
+                         res.Status == ReservationStatus.Confirmed) &&
+                        res.StartDate < checkOut &&
+                        res.EndDate > checkIn)));
+        }
+
         // Sorting
         query = query.ApplySorting(request.SortBy);
 
@@ -117,39 +136,32 @@ public class RoomTypeService : IRoomTypeService
             : _mapper.Map<RoomTypeResponseDto>(entity);
     }
 
-
     public async Task<PagedResult<RoomResponseDto>> GetRoomsByTypeIdAsync(
         int roomTypeId,
         PagedRequest request,
         CancellationToken ct = default)
     {
-        // Проверяем существование типа комнаты
         var roomTypeExists = await _db.RoomTypes
             .AnyAsync(x => x.Id == roomTypeId, ct);
 
         if (!roomTypeExists)
             throw new KeyNotFoundException("RoomType not found");
 
-        // Получаем комнаты данного типа
         var query = _db.Rooms
-            .Where(x => x.RoomTypeId == roomTypeId)  // ← Фильтр по типу
+            .Where(x => x.RoomTypeId == roomTypeId)
             .AsNoTracking()
             .AsQueryable();
 
-        // Поиск по номеру комнаты
         if (!string.IsNullOrWhiteSpace(request.Search))
         {
             var s = request.Search.ToLower();
             query = query.Where(x => x.Number.ToLower().Contains(s));
         }
 
-        // Сортировка
         query = query.ApplySorting(request.SortBy ?? "Number:asc");
 
-        // Подсчёт общего количества
         var total = await query.CountAsync(ct);
 
-        // Пагинация
         var items = await query
             .Skip((request.Page - 1) * request.PageSize)
             .Take(request.PageSize)
@@ -163,15 +175,12 @@ public class RoomTypeService : IRoomTypeService
             request.PageSize);
     }
 
-    // =========================
     // ADMIN
-    // =========================
 
     public async Task<int> CreateAsync(CreateRoomTypeDto dto, IEnumerable<IFormFile>? photos, CancellationToken ct = default)
     {
         var entity = _mapper.Map<RoomType>(dto);
 
-        // Tags
         if (dto.TagIds?.Any() == true)
         {
             var tags = await _db.Tags
@@ -182,15 +191,12 @@ public class RoomTypeService : IRoomTypeService
                 entity.Tags.Add(tag);
         }
 
-        // Photos
         if (photos?.Any() == true)
         {
             int sort = 0;
-
             foreach (var file in photos)
             {
                 var url = await _fileStorage.SaveFileAsync(file, ct);
-
                 entity.Photos.Add(new RoomPhoto
                 {
                     Url = url,
@@ -198,6 +204,7 @@ public class RoomTypeService : IRoomTypeService
                 });
             }
         }
+
         entity.Capacity = entity.MaxOccupancyAdults + entity.MaxOccupancyChildren;
 
         _db.RoomTypes.Add(entity);
@@ -228,6 +235,7 @@ public class RoomTypeService : IRoomTypeService
             foreach (var tag in tags)
                 entity.Tags.Add(tag);
         }
+
         entity.Capacity = entity.MaxOccupancyAdults + entity.MaxOccupancyChildren;
         await _db.SaveChangesAsync(ct);
     }
@@ -248,20 +256,18 @@ public class RoomTypeService : IRoomTypeService
         await _db.SaveChangesAsync(ct);
     }
 
-    // =========================
-    // MODERATOR - PHOTOS
-    // =========================
+    // PHOTOS
 
-    public async Task AddPhotosAsync(int roomTypeId,IEnumerable<IFormFile> photos, CancellationToken ct = default)
+    public async Task AddPhotosAsync(int roomTypeId, IEnumerable<IFormFile> photos, CancellationToken ct = default)
     {
         var entity = await _db.RoomTypes
-            .FirstOrDefaultAsync(x => x.Id == roomTypeId, ct) ?? throw new KeyNotFoundException("RoomType not found");
-        int sort = 0;
+            .FirstOrDefaultAsync(x => x.Id == roomTypeId, ct)
+            ?? throw new KeyNotFoundException("RoomType not found");
 
+        int sort = 0;
         foreach (var file in photos)
         {
             var url = await _fileStorage.SaveFileAsync(file, ct);
-
             entity.Photos.Add(new RoomPhoto
             {
                 Url = url,

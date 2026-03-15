@@ -152,18 +152,18 @@ app.UseSwaggerUI(c =>
     c.RoutePrefix = "swagger"; // доступно на /swagger
 });
 
-var swaggerUrl = "http://localhost:5207/swagger/index.html";
+//var swaggerUrl = "http://localhost:5207/swagger/index.html";
 
-//не для продакшена
-app.Lifetime.ApplicationStarted.Register(() =>
-{
-    var psi = new ProcessStartInfo
-    {
-        FileName = swaggerUrl,
-        UseShellExecute = true
-    };
-    Process.Start(psi);
-});
+////не для продакшена
+//app.Lifetime.ApplicationStarted.Register(() =>
+//{
+//    var psi = new ProcessStartInfo
+//    {
+//        FileName = swaggerUrl,
+//        UseShellExecute = true
+//    };
+//    Process.Start(psi);
+//});
 
 
 app.UseCors("AllowFrontend");

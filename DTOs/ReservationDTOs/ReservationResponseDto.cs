@@ -7,7 +7,11 @@ public class ReservationResponseDto
     public Guid Id { get; set; }
 
     public int RoomId { get; set; }
-    public string RoomNumber { get; set; } = null!;   // Room.Number для удобства UI
+    public string RoomNumber { get; set; } = null!;
+
+    // Тип комнаты — нужен для группировки в календаре
+    public int RoomTypeId { get; set; }
+    public string RoomTypeName { get; set; } = null!;
 
     public string CustomerName { get; set; } = null!;
     public string CustomerEmail { get; set; } = null!;
@@ -26,10 +30,6 @@ public class ReservationResponseDto
     public DateTime UpdatedAt { get; set; }
 
     public DateTime? PaidAt { get; set; }
-
-    /// <summary>
-    /// До какого момента бронь удерживается (hold 15 минут)
-    /// </summary>
     public DateTime? HeldUntil { get; set; }
 
     public string? Notes { get; set; }
