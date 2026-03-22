@@ -38,6 +38,7 @@ builder.Services.AddScoped<ITagService, TagService>();
 builder.Services.AddScoped<IPriceRuleService, PriceRuleService>();
 builder.Services.AddScoped<IAuditLogService, AuditLogService>();
 builder.Services.AddScoped<IReservationService, ReservationService>();
+builder.Services.AddScoped<IUserService, UserService>();
 
 // Фоновая задача
 builder.Services.AddHostedService<ReservationCompletionJob>();
@@ -125,6 +126,8 @@ builder.Services.AddAuthorization(options =>
     options.AddPolicy("ReservationRead", p => p.RequireRole("Admin", "Moderator"));
     options.AddPolicy("ReservationWrite", p => p.RequireRole("Admin", "Moderator"));
     options.AddPolicy("ReservationCancel", p => p.RequireRole("Admin", "Moderator"));
+    options.AddPolicy("UserRead", p => p.RequireRole("Admin", "Moderator"));
+    options.AddPolicy("UserRoleWrite", p => p.RequireRole("Admin"));
 });
 
 
@@ -152,18 +155,18 @@ app.UseSwaggerUI(c =>
     c.RoutePrefix = "swagger"; // доступно на /swagger
 });
 
-//var swaggerUrl = "http://localhost:5207/swagger/index.html";
+var swaggerUrl = "http://localhost:5207/swagger/index.html";
 
-////не для продакшена
-//app.Lifetime.ApplicationStarted.Register(() =>
-//{
-//    var psi = new ProcessStartInfo
-//    {
-//        FileName = swaggerUrl,
-//        UseShellExecute = true
-//    };
-//    Process.Start(psi);
-//});
+//не для продакшена
+app.Lifetime.ApplicationStarted.Register(() =>
+{
+    var psi = new ProcessStartInfo
+    {
+        FileName = swaggerUrl,
+        UseShellExecute = true
+    };
+   Process.Start(psi);
+});
 
 
 app.UseCors("AllowFrontend");

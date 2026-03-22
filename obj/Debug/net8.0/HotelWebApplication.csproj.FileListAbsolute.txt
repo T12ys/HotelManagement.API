@@ -326,7 +326,6 @@ C:\Users\User\source\repos\HotelManagement.API\obj\Debug\net8.0\staticwebassets.
 C:\Users\User\source\repos\HotelManagement.API\obj\Debug\net8.0\staticwebassets.development.json
 C:\Users\User\source\repos\HotelManagement.API\obj\Debug\net8.0\staticwebassets.build.endpoints.json
 C:\Users\User\source\repos\HotelManagement.API\obj\Debug\net8.0\swae.build.ex.cache
-C:\Users\User\source\repos\HotelManagement.API\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt
 C:\Users\User\source\repos\HotelManagement.API\obj\Debug\net8.0\HotelWeb.1325C6DF.Up2Date
 C:\Users\User\source\repos\HotelManagement.API\obj\Debug\net8.0\HotelWebApplication.dll
 C:\Users\User\source\repos\HotelManagement.API\obj\Debug\net8.0\refint\HotelWebApplication.dll
@@ -334,3 +333,4 @@ C:\Users\User\source\repos\HotelManagement.API\obj\Debug\net8.0\HotelWebApplicat
 C:\Users\User\source\repos\HotelManagement.API\obj\Debug\net8.0\HotelWebApplication.genruntimeconfig.cache
 C:\Users\User\source\repos\HotelManagement.API\obj\Debug\net8.0\ref\HotelWebApplication.dll
 C:\Users\Elshan\source\repos\HotelManagementAPI\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt
+C:\Users\User\source\repos\HotelManagement.API\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt

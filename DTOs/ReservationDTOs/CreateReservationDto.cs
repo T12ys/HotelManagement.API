@@ -4,6 +4,8 @@ public class CreateReservationDto
 {
     public int RoomTypeId { get; set; }
 
+    public Guid? UserId { get; set; }
+
     public string CustomerName { get; set; } = null!;
     public string CustomerEmail { get; set; } = null!;
     public string CustomerPhone { get; set; } = null!;

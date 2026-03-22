@@ -13,6 +13,7 @@ public class ReservationResponseDto
     public int RoomTypeId { get; set; }
     public string RoomTypeName { get; set; } = null!;
 
+    public Guid? UserId { get; set; }
     public string CustomerName { get; set; } = null!;
     public string CustomerEmail { get; set; } = null!;
     public string CustomerPhone { get; set; } = null!;

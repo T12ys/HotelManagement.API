@@ -50,6 +50,7 @@ public class ReservationService : IReservationService
             var reservation = new Reservation
             {
                 RoomId = room.Id,
+                UserId = dto.UserId, // ← добавить
                 CustomerName = dto.CustomerName,
                 CustomerEmail = dto.CustomerEmail,
                 CustomerPhone = dto.CustomerPhone,
@@ -321,6 +322,26 @@ public class ReservationService : IReservationService
         }
     }
 
+    public async Task<PagedResult<ReservationResponseDto>> GetMyReservationsAsync(Guid userId, PagedRequest request)
+    {
+        var query = _db.Reservations
+            .Include(r => r.Room).ThenInclude(room => room.RoomType)
+            .Include(r => r.ReservationItems)
+            .Where(r => r.UserId == userId)
+            .AsQueryable();
+
+        var total = await query.CountAsync();
+
+        var items = await query
+            .OrderByDescending(r => r.CreatedAt)
+            .Skip((request.Page - 1) * request.PageSize)
+            .Take(request.PageSize)
+            .ToListAsync();
+
+        return new PagedResult<ReservationResponseDto>(
+            items.Select(MapToResponse), total, request.Page, request.PageSize);
+    }
+
     private static ReservationResponseDto MapToResponse(Reservation r)
     {
         var nights = (int)(r.EndDate - r.StartDate).TotalDays;
@@ -328,6 +349,7 @@ public class ReservationService : IReservationService
         {
             Id = r.Id,
             RoomId = r.RoomId,
+            UserId = r.UserId,
             RoomNumber = r.Room?.Number ?? r.RoomId.ToString(),
             RoomTypeId = r.Room?.RoomTypeId ?? 0,
             RoomTypeName = r.Room?.RoomType?.Name ?? "—",

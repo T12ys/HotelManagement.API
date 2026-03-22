@@ -64,6 +64,7 @@ public class AuthService : IAuthService
             UserId = user.Id,
             Email = user.Email,
             DisplayName = user.DisplayName,
+            PhoneNumber = user.PhoneNumber,
             Role = user.Role
         };
     }
@@ -109,10 +110,11 @@ public class AuthService : IAuthService
         {
             AccessToken = access,
             AccessTokenExpiresAt = expiresAt,
-            RefreshToken = newRefresh,
+            RefreshToken = newRefresh,   
             UserId = user.Id,
             Email = user.Email,
             DisplayName = user.DisplayName,
+            PhoneNumber = user.PhoneNumber,
             Role = user.Role
         };
     }
@@ -143,6 +145,7 @@ public class AuthService : IAuthService
         {
             Email = dto.Email,
             DisplayName = dto.DisplayName,
+            PhoneNumber = dto.PhoneNumber,
             PasswordHash = pwdHash,
             Salt = salt,
             SecurityStamp = Guid.NewGuid().ToString(),
@@ -177,6 +180,7 @@ public class AuthService : IAuthService
             UserId = user.Id,
             Email = user.Email,
             DisplayName = user.DisplayName,
+            PhoneNumber = user.PhoneNumber,
             Role = user.Role
         };
     }

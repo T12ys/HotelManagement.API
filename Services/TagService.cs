@@ -15,13 +15,23 @@ public class TagService : ITagService
     private readonly HotelDbContext _db;
     private readonly IMapper _mapper;
 
-    public TagService(HotelDbContext db, IMapper mapper)
+    private readonly IConfiguration _cfg;
+
+    public TagService(HotelDbContext db, IMapper mapper, IConfiguration cfg)
     {
         _db = db;
         _mapper = mapper;
+        _cfg = cfg;
     }
 
     // READ
+
+    private static string Slugify(string input)
+    {
+        return System.Text.RegularExpressions.Regex
+            .Replace(input.ToLower().Trim(), @"[^a-z0-9]+", "-")
+            .Trim('-');
+    }
 
     public async Task<PagedResult<TagResponseDto>> GetPagedAsync(PagedRequest request, CancellationToken ct = default)
     {
@@ -32,9 +42,7 @@ public class TagService : ITagService
         if (!string.IsNullOrWhiteSpace(request.Search))
         {
             var s = request.Search.ToLower();
-            query = query.Where(x =>
-                x.Name.ToLower().Contains(s) ||
-                x.Slug.ToLower().Contains(s));
+            query = query.Where(x => x.Slug.ToLower().Contains(s));
         }
 
         query = query.ApplySorting(request.SortBy);
@@ -69,39 +77,50 @@ public class TagService : ITagService
 
     public async Task<int> CreateAsync(CreateTagDto dto, CancellationToken ct = default)
     {
-        var exists = await _db.Tags
-            .AnyAsync(x => x.Slug == dto.Slug, ct);
+        // en обязателен
+        if (!dto.Translations.ContainsKey("en") || string.IsNullOrWhiteSpace(dto.Translations["en"]))
+            throw new InvalidOperationException("English translation is required.");
 
+        // генерируем slug из en
+        var slug = Slugify(dto.Translations["en"]);
+
+        var exists = await _db.Tags.AnyAsync(x => x.Slug == slug, ct);
         if (exists)
-            throw new InvalidOperationException("Tag slug must be unique");
+            throw new InvalidOperationException("Tag with this name already exists.");
 
-        var entity = _mapper.Map<Tag>(dto);
+        var supportedLangs = _cfg.GetSection("SupportedLanguages").Get<string[]>() ?? [];
+        var filteredTranslations = dto.Translations
+            .Where(kv => supportedLangs.Contains(kv.Key) && !string.IsNullOrWhiteSpace(kv.Value))
+            .ToDictionary(kv => kv.Key, kv => kv.Value);
+
+        var entity = new Tag
+        {
+            Slug = slug,
+            Translations = filteredTranslations
+        };
 
         _db.Tags.Add(entity);
         await _db.SaveChangesAsync(ct);
-
         return entity.Id;
     }
 
     public async Task UpdateAsync(int id, CreateTagDto dto, CancellationToken ct = default)
     {
-        var entity = await _db.Tags
-            .FirstOrDefaultAsync(x => x.Id == id, ct);
+        var entity = await _db.Tags.FirstOrDefaultAsync(x => x.Id == id, ct)
+            ?? throw new KeyNotFoundException("Tag not found");
 
-        if (entity == null)
-            throw new KeyNotFoundException("Tag not found");
+        if (!dto.Translations.ContainsKey("en") || string.IsNullOrWhiteSpace(dto.Translations["en"]))
+            throw new InvalidOperationException("English translation is required.");
 
-        var slugExists = await _db.Tags
-            .AnyAsync(x => x.Slug == dto.Slug && x.Id != id, ct);
+        // slug не меняем — он уже установлен при создании
+        var supportedLangs = _cfg.GetSection("SupportedLanguages").Get<string[]>() ?? [];
+        var filteredTranslations = dto.Translations
+            .Where(kv => supportedLangs.Contains(kv.Key) && !string.IsNullOrWhiteSpace(kv.Value))
+            .ToDictionary(kv => kv.Key, kv => kv.Value);
 
-        if (slugExists)
-            throw new InvalidOperationException("Tag slug must be unique");
-
-        _mapper.Map(dto, entity);
-
+        entity.Translations = filteredTranslations;
         await _db.SaveChangesAsync(ct);
     }
-
     // DELETE (Admin only)
 
     public async Task DeleteAsync(int id, CancellationToken ct = default)

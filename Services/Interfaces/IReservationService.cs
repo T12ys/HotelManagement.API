@@ -34,4 +34,6 @@ public interface IReservationService
     /// Mock-оплата: Pending → Confirmed
     /// </summary>
     Task<ReservationResponseDto> ProcessMockPaymentAsync(Guid reservationId, bool simulateSuccess, string? ip = null);
+
+    Task<PagedResult<ReservationResponseDto>> GetMyReservationsAsync(Guid userId, PagedRequest request);
 }

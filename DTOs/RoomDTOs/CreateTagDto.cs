@@ -2,6 +2,5 @@
 
 public class CreateTagDto
 {
-    public string Name { get; set; } = null!;
-    public string Slug { get; set; } = null!;
+    public Dictionary<string, string> Translations { get; set; } = new();
 }

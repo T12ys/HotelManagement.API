@@ -29,8 +29,13 @@ public class ReservationsController : ControllerBase
     [ProducesResponseType(typeof(ReservationResponseDto), StatusCodes.Status201Created)]
     [ProducesResponseType(StatusCodes.Status409Conflict)]
     [ProducesResponseType(StatusCodes.Status422UnprocessableEntity)]
+    
     public async Task<IActionResult> Create([FromBody] CreateReservationDto dto)
     {
+        var userIdClaim = User.FindFirstValue(ClaimTypes.NameIdentifier);
+        if (userIdClaim != null)
+            dto.UserId = Guid.Parse(userIdClaim);
+
         try
         {
             var ip = HttpContext.Connection.RemoteIpAddress?.ToString();
