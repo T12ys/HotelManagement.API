@@ -280,7 +280,7 @@
               "RelativeDocumentMoniker": ".gitignore",
               "ToolTip": "C:\\Users\\User\\source\\repos\\HotelManagement.API\\.gitignore",
               "RelativeToolTip": ".gitignore",
-              "ViewState": "AgIAAB8AAAAAAAAAAAAYwCsAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAIAAAAAAAAAAAAAwBQAAAAHAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
               "WhenOpened": "2026-03-22T21:34:46.209Z",
               "EditorCaption": ""
@@ -295,8 +295,7 @@
               "RelativeToolTip": "Validators\\ReservationValidators\\CreateReservationDtoValidator.cs",
               "ViewState": "AgIAACIAAAAAAAAAAAAgwCwAAAAFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-22T20:50:51.433Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-03-22T20:50:51.433Z"
             },
             {
               "$type": "Document",
@@ -308,8 +307,7 @@
               "RelativeToolTip": "Validators\\RoomValidators\\CreateTagDtoValidator.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-16T16:44:44.111Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-03-16T16:44:44.111Z"
             },
             {
               "$type": "Document",
@@ -321,8 +319,7 @@
               "RelativeToolTip": "Services\\TagService.cs",
               "ViewState": "AgIAAGQAAAAAAAAAAAAcwHoAAAAFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-16T16:40:08.846Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-03-16T16:40:08.846Z"
             },
             {
               "$type": "Document",
@@ -334,8 +331,7 @@
               "RelativeToolTip": "appsettings.json",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABkAAAAuAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2026-03-22T18:39:47.443Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-03-22T18:39:47.443Z"
             },
             {
               "$type": "Document",
@@ -347,8 +343,7 @@
               "RelativeToolTip": "DTOs\\RoomDTOs\\CreateTagDto.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-16T16:40:49.031Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-03-16T16:40:49.031Z"
             },
             {
               "$type": "Document",
@@ -360,8 +355,7 @@
               "RelativeToolTip": "Validators\\AuthValidators\\RegisterValidator.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABcAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-22T13:15:12.664Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-03-22T13:15:12.664Z"
             },
             {
               "$type": "Document",
@@ -373,8 +367,7 @@
               "RelativeToolTip": "Validators\\RoomValidators\\CreateRoomDtoValidator.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-22T19:20:15.221Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-03-22T19:20:15.221Z"
             },
             {
               "$type": "Document",
@@ -386,8 +379,7 @@
               "RelativeToolTip": "Services\\Interfaces\\IReservationService.cs",
               "ViewState": "AgIAAAsAAAAAAAAAAAAQwCUAAABmAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-21T19:18:16.599Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-03-21T19:18:16.599Z"
             },
             {
               "$type": "Document",
@@ -399,8 +391,7 @@
               "RelativeToolTip": "Data\\HotelDbContext.cs",
               "ViewState": "AgIAAGUAAAAAAAAAAAAmwJgAAAAhAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-22T13:16:06.026Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-03-22T13:16:06.026Z"
             },
             {
               "$type": "Document",
@@ -412,8 +403,7 @@
               "RelativeToolTip": "Validators\\RoomValidators\\CreateRoomTypeDtoValidator.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABgAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-22T19:20:23.072Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-03-22T19:20:23.072Z"
             },
             {
               "$type": "Document",
