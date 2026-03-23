@@ -7,6 +7,7 @@ using HotelWebApplication.DTOs.RoomDTOs;
 using HotelWebApplication.Models;
 using HotelWebApplication.Services.Interfaces;
 using Microsoft.EntityFrameworkCore;
+using System.Text.Json;
 
 namespace HotelWebApplication.Services;
 
@@ -14,14 +15,15 @@ public class TagService : ITagService
 {
     private readonly HotelDbContext _db;
     private readonly IMapper _mapper;
-
     private readonly IConfiguration _cfg;
+    private readonly IAuditLogService _audit;
 
-    public TagService(HotelDbContext db, IMapper mapper, IConfiguration cfg)
+    public TagService(HotelDbContext db, IMapper mapper, IConfiguration cfg, IAuditLogService audit)
     {
         _db = db;
         _mapper = mapper;
         _cfg = cfg;
+        _audit = audit;
     }
 
     // READ
@@ -35,9 +37,7 @@ public class TagService : ITagService
 
     public async Task<PagedResult<TagResponseDto>> GetPagedAsync(PagedRequest request, CancellationToken ct = default)
     {
-        var query = _db.Tags
-            .AsNoTracking()
-            .AsQueryable();
+        var query = _db.Tags.AsNoTracking().AsQueryable();
 
         if (!string.IsNullOrWhiteSpace(request.Search))
         {
@@ -55,33 +55,26 @@ public class TagService : ITagService
             .ProjectTo<TagResponseDto>(_mapper.ConfigurationProvider)
             .ToListAsync(ct);
 
-        return new PagedResult<TagResponseDto>(
-            items,
-            total,
-            request.Page,
-            request.PageSize);
+        return new PagedResult<TagResponseDto>(items, total, request.Page, request.PageSize);
     }
 
     public async Task<TagResponseDto?> GetByIdAsync(int id, CancellationToken ct = default)
     {
-        var entity = await _db.Tags
-            .AsNoTracking()
-            .FirstOrDefaultAsync(x => x.Id == id, ct);
-
-        return entity == null
-            ? null
-            : _mapper.Map<TagResponseDto>(entity);
+        var entity = await _db.Tags.AsNoTracking().FirstOrDefaultAsync(x => x.Id == id, ct);
+        return entity == null ? null : _mapper.Map<TagResponseDto>(entity);
     }
 
     // WRITE
 
-    public async Task<int> CreateAsync(CreateTagDto dto, CancellationToken ct = default)
+    public async Task<int> CreateAsync(
+        CreateTagDto dto,
+        CancellationToken ct = default,
+        Guid? actorUserId = null,
+        string? ip = null)
     {
-        // en обязателен
         if (!dto.Translations.ContainsKey("en") || string.IsNullOrWhiteSpace(dto.Translations["en"]))
             throw new InvalidOperationException("English translation is required.");
 
-        // генерируем slug из en
         var slug = Slugify(dto.Translations["en"]);
 
         var exists = await _db.Tags.AnyAsync(x => x.Slug == slug, ct);
@@ -93,18 +86,31 @@ public class TagService : ITagService
             .Where(kv => supportedLangs.Contains(kv.Key) && !string.IsNullOrWhiteSpace(kv.Value))
             .ToDictionary(kv => kv.Key, kv => kv.Value);
 
-        var entity = new Tag
-        {
-            Slug = slug,
-            Translations = filteredTranslations
-        };
+        var entity = new Tag { Slug = slug, Translations = filteredTranslations };
 
         _db.Tags.Add(entity);
         await _db.SaveChangesAsync(ct);
+
+        await _audit.LogAsync(
+            actionType: "Create",
+            entityType: "Tag",
+            entityId: entity.Id.ToString(),
+            newValue: JsonSerializer.Serialize(new { entity.Slug, entity.Translations }),
+            actorUserId: actorUserId,
+            ip: ip);
+
         return entity.Id;
     }
 
-    public async Task UpdateAsync(int id, CreateTagDto dto, CancellationToken ct = default)
+    public Task<int> CreateAsync(CreateTagDto dto, CancellationToken ct = default)
+        => CreateAsync(dto, ct, null, null);
+
+    public async Task UpdateAsync(
+        int id,
+        CreateTagDto dto,
+        CancellationToken ct = default,
+        Guid? actorUserId = null,
+        string? ip = null)
     {
         var entity = await _db.Tags.FirstOrDefaultAsync(x => x.Id == id, ct)
             ?? throw new KeyNotFoundException("Tag not found");
@@ -112,7 +118,8 @@ public class TagService : ITagService
         if (!dto.Translations.ContainsKey("en") || string.IsNullOrWhiteSpace(dto.Translations["en"]))
             throw new InvalidOperationException("English translation is required.");
 
-        // slug не меняем — он уже установлен при создании
+        var oldSnapshot = JsonSerializer.Serialize(new { entity.Slug, entity.Translations });
+
         var supportedLangs = _cfg.GetSection("SupportedLanguages").Get<string[]>() ?? [];
         var filteredTranslations = dto.Translations
             .Where(kv => supportedLangs.Contains(kv.Key) && !string.IsNullOrWhiteSpace(kv.Value))
@@ -120,14 +127,43 @@ public class TagService : ITagService
 
         entity.Translations = filteredTranslations;
         await _db.SaveChangesAsync(ct);
-    }
-    // DELETE (Admin only)
 
-    public async Task DeleteAsync(int id, CancellationToken ct = default)
+        await _audit.LogAsync(
+            actionType: "Update",
+            entityType: "Tag",
+            entityId: id.ToString(),
+            oldValue: oldSnapshot,
+            newValue: JsonSerializer.Serialize(new { entity.Slug, entity.Translations }),
+            actorUserId: actorUserId,
+            ip: ip);
+    }
+
+    public Task UpdateAsync(int id, CreateTagDto dto, CancellationToken ct = default)
+        => UpdateAsync(id, dto, ct, null, null);
+
+    public async Task DeleteAsync(
+        int id,
+        CancellationToken ct = default,
+        Guid? actorUserId = null,
+        string? ip = null)
     {
-        var entity = await _db.Tags
-            .FirstOrDefaultAsync(x => x.Id == id, ct) ?? throw new KeyNotFoundException("Tag not found");
+        var entity = await _db.Tags.FirstOrDefaultAsync(x => x.Id == id, ct)
+            ?? throw new KeyNotFoundException("Tag not found");
+
+        var snapshot = JsonSerializer.Serialize(new { entity.Slug });
+
         _db.Tags.Remove(entity);
         await _db.SaveChangesAsync(ct);
+
+        await _audit.LogAsync(
+            actionType: "Delete",
+            entityType: "Tag",
+            entityId: id.ToString(),
+            oldValue: snapshot,
+            actorUserId: actorUserId,
+            ip: ip);
     }
+
+    public Task DeleteAsync(int id, CancellationToken ct = default)
+        => DeleteAsync(id, ct, null, null);
 }

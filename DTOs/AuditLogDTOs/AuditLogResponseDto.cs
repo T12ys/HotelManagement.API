@@ -9,7 +9,8 @@ public class AuditLogResponseDto
     public string? OldValue { get; set; }
     public string? NewValue { get; set; }
     public Guid? ActorUserId { get; set; }
-    public string? ActorName { get; set; }   // DisplayName актора
+    public string? ActorName { get; set; }
+    public string? ActorRole { get; set; }   // "Admin", "Moderator", "Customer", null (система)
     public string? IP { get; set; }
     public DateTime Timestamp { get; set; }
 }

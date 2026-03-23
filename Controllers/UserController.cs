@@ -1,6 +1,7 @@
 ﻿using HotelWebApplication.Common.Pagination;
 using HotelWebApplication.DTOs.ReservationDTOs;
 using HotelWebApplication.DTOs.UserDTOs;
+using HotelWebApplication.Services;
 using HotelWebApplication.Services.Interfaces;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -10,7 +11,7 @@ namespace HotelWebApplication.Controllers;
 
 [ApiController]
 [Route("api/[controller]")]
-[Authorize] // все эндпоинты требуют авторизацию
+[Authorize]
 public class UserController : ControllerBase
 {
     private readonly IUserService _userService;
@@ -22,11 +23,11 @@ public class UserController : ControllerBase
         _reservationService = reservationService;
     }
 
-    // Вспомогательный метод — достаём userId из JWT
     private Guid GetUserId() =>
         Guid.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier)!);
 
- 
+    private string? GetIp() => HttpContext.Connection.RemoteIpAddress?.ToString();
+
     // GET api/user/profile
     [HttpGet("profile")]
     public async Task<IActionResult> GetProfile()
@@ -39,7 +40,11 @@ public class UserController : ControllerBase
     [HttpPut("profile")]
     public async Task<IActionResult> UpdateProfile([FromBody] UpdateProfileDto dto)
     {
-        var updated = await _userService.UpdateProfileAsync(GetUserId(), dto);
+        var userId = GetUserId();
+        var updated = await ((UserService)_userService).UpdateProfileAsync(
+            userId, dto,
+            actorUserId: userId,
+            ip: GetIp());
         return Ok(updated);
     }
 
@@ -47,7 +52,11 @@ public class UserController : ControllerBase
     [HttpPost("change-password")]
     public async Task<IActionResult> ChangePassword([FromBody] ChangePasswordDto dto)
     {
-        await _userService.ChangePasswordAsync(GetUserId(), dto);
+        var userId = GetUserId();
+        await ((UserService)_userService).ChangePasswordAsync(
+            userId, dto,
+            actorUserId: userId,
+            ip: GetIp());
         return NoContent();
     }
 
@@ -59,12 +68,15 @@ public class UserController : ControllerBase
         return Ok(result);
     }
 
-    // PUT api/user/{userId}/role — только Admin
+    // PUT api/user/{userId}/role
     [HttpPut("{userId:guid}/role")]
     [Authorize(Policy = "UserRoleWrite")]
     public async Task<IActionResult> UpdateUserRole(Guid userId, [FromBody] UpdateUserRoleDto dto)
     {
-        var updated = await _userService.UpdateUserRoleAsync(userId, dto);
+        var updated = await ((UserService)_userService).UpdateUserRoleAsync(
+            userId, dto,
+            actorUserId: GetUserId(),
+            ip: GetIp());
         return Ok(updated);
     }
 
@@ -88,7 +100,7 @@ public class UserController : ControllerBase
         if (daysUntilCheckIn < 7)
             return BadRequest(new { message = "Отменить бронирование можно не позднее чем за 7 дней до заезда." });
 
-        await _reservationService.CancelAsync(reservationId, GetUserId());
+        await _reservationService.CancelAsync(reservationId, GetUserId(), GetIp());
         return NoContent();
     }
 }

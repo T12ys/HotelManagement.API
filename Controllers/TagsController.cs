@@ -1,8 +1,10 @@
 ﻿using HotelWebApplication.Common.Pagination;
 using HotelWebApplication.DTOs.RoomDTOs;
+using HotelWebApplication.Services;
 using HotelWebApplication.Services.Interfaces;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using System.Security.Claims;
 
 namespace HotelWebApplication.Controllers;
 
@@ -19,7 +21,8 @@ public class TagsController : ControllerBase
 
     [HttpGet]
     [AllowAnonymous]
-    public async Task<ActionResult<PagedResult<TagResponseDto>>> GetPaged([FromQuery] PagedRequest request, CancellationToken ct)
+    public async Task<ActionResult<PagedResult<TagResponseDto>>> GetPaged(
+        [FromQuery] PagedRequest request, CancellationToken ct)
     {
         return Ok(await _service.GetPagedAsync(request, ct));
     }
@@ -36,7 +39,10 @@ public class TagsController : ControllerBase
     [Authorize(Policy = "TagWrite")]
     public async Task<IActionResult> Create([FromBody] CreateTagDto dto, CancellationToken ct)
     {
-        var id = await _service.CreateAsync(dto, ct);
+        var id = await ((TagService)_service).CreateAsync(
+            dto, ct,
+            actorUserId: GetCurrentUserId(),
+            ip: GetIp());
         return CreatedAtAction(nameof(GetById), new { id }, null);
     }
 
@@ -44,7 +50,10 @@ public class TagsController : ControllerBase
     [Authorize(Policy = "TagWrite")]
     public async Task<IActionResult> Update(int id, [FromBody] CreateTagDto dto, CancellationToken ct)
     {
-        await _service.UpdateAsync(id, dto, ct);
+        await ((TagService)_service).UpdateAsync(
+            id, dto, ct,
+            actorUserId: GetCurrentUserId(),
+            ip: GetIp());
         return NoContent();
     }
 
@@ -52,7 +61,20 @@ public class TagsController : ControllerBase
     [Authorize(Policy = "TagDelete")]
     public async Task<IActionResult> Delete(int id, CancellationToken ct)
     {
-        await _service.DeleteAsync(id, ct);
+        await ((TagService)_service).DeleteAsync(
+            id, ct,
+            actorUserId: GetCurrentUserId(),
+            ip: GetIp());
         return NoContent();
     }
+
+    // ── helpers ──────────────────────────────────────────────────────────────
+
+    private Guid? GetCurrentUserId()
+    {
+        var claim = User.FindFirstValue(ClaimTypes.NameIdentifier);
+        return claim != null ? Guid.Parse(claim) : null;
+    }
+
+    private string? GetIp() => HttpContext.Connection.RemoteIpAddress?.ToString();
 }

@@ -1,0 +1,284 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\Elshan\\source\\repos\\HotelManagementAPI\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{594C47E0-970F-3A58-F5D7-EAB015877E10}|HotelWebApplication.csproj|c:\\users\\elshan\\source\\repos\\hotelmanagementapi\\.gitignore||{3B902123-F8A7-4915-9F01-361F908088D0}",
+      "RelativeMoniker": "D:0:0:{594C47E0-970F-3A58-F5D7-EAB015877E10}|HotelWebApplication.csproj|solutionrelative:.gitignore||{3B902123-F8A7-4915-9F01-361F908088D0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{594C47E0-970F-3A58-F5D7-EAB015877E10}|HotelWebApplication.csproj|c:\\users\\elshan\\source\\repos\\hotelmanagementapi\\controllers\\tagscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{594C47E0-970F-3A58-F5D7-EAB015877E10}|HotelWebApplication.csproj|solutionrelative:controllers\\tagscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{594C47E0-970F-3A58-F5D7-EAB015877E10}|HotelWebApplication.csproj|c:\\users\\elshan\\source\\repos\\hotelmanagementapi\\controllers\\auditlogscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{594C47E0-970F-3A58-F5D7-EAB015877E10}|HotelWebApplication.csproj|solutionrelative:controllers\\auditlogscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{594C47E0-970F-3A58-F5D7-EAB015877E10}|HotelWebApplication.csproj|c:\\users\\elshan\\source\\repos\\hotelmanagementapi\\dtos\\auditlogdtos\\auditlogresponsedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{594C47E0-970F-3A58-F5D7-EAB015877E10}|HotelWebApplication.csproj|solutionrelative:dtos\\auditlogdtos\\auditlogresponsedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{594C47E0-970F-3A58-F5D7-EAB015877E10}|HotelWebApplication.csproj|c:\\users\\elshan\\source\\repos\\hotelmanagementapi\\controllers\\roomtypescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{594C47E0-970F-3A58-F5D7-EAB015877E10}|HotelWebApplication.csproj|solutionrelative:controllers\\roomtypescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{594C47E0-970F-3A58-F5D7-EAB015877E10}|HotelWebApplication.csproj|c:\\users\\elshan\\source\\repos\\hotelmanagementapi\\controllers\\roomscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{594C47E0-970F-3A58-F5D7-EAB015877E10}|HotelWebApplication.csproj|solutionrelative:controllers\\roomscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{594C47E0-970F-3A58-F5D7-EAB015877E10}|HotelWebApplication.csproj|c:\\users\\elshan\\source\\repos\\hotelmanagementapi\\controllers\\pricerulescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{594C47E0-970F-3A58-F5D7-EAB015877E10}|HotelWebApplication.csproj|solutionrelative:controllers\\pricerulescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{594C47E0-970F-3A58-F5D7-EAB015877E10}|HotelWebApplication.csproj|c:\\users\\elshan\\source\\repos\\hotelmanagementapi\\controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{594C47E0-970F-3A58-F5D7-EAB015877E10}|HotelWebApplication.csproj|solutionrelative:controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{594C47E0-970F-3A58-F5D7-EAB015877E10}|HotelWebApplication.csproj|c:\\users\\elshan\\source\\repos\\hotelmanagementapi\\services\\priceruleservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{594C47E0-970F-3A58-F5D7-EAB015877E10}|HotelWebApplication.csproj|solutionrelative:services\\priceruleservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{594C47E0-970F-3A58-F5D7-EAB015877E10}|HotelWebApplication.csproj|c:\\users\\elshan\\source\\repos\\hotelmanagementapi\\services\\tagservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{594C47E0-970F-3A58-F5D7-EAB015877E10}|HotelWebApplication.csproj|solutionrelative:services\\tagservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{594C47E0-970F-3A58-F5D7-EAB015877E10}|HotelWebApplication.csproj|c:\\users\\elshan\\source\\repos\\hotelmanagementapi\\services\\userservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{594C47E0-970F-3A58-F5D7-EAB015877E10}|HotelWebApplication.csproj|solutionrelative:services\\userservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{594C47E0-970F-3A58-F5D7-EAB015877E10}|HotelWebApplication.csproj|c:\\users\\elshan\\source\\repos\\hotelmanagementapi\\services\\roomservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{594C47E0-970F-3A58-F5D7-EAB015877E10}|HotelWebApplication.csproj|solutionrelative:services\\roomservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{594C47E0-970F-3A58-F5D7-EAB015877E10}|HotelWebApplication.csproj|c:\\users\\elshan\\source\\repos\\hotelmanagementapi\\services\\roomtypeservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{594C47E0-970F-3A58-F5D7-EAB015877E10}|HotelWebApplication.csproj|solutionrelative:services\\roomtypeservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{594C47E0-970F-3A58-F5D7-EAB015877E10}|HotelWebApplication.csproj|c:\\users\\elshan\\source\\repos\\hotelmanagementapi\\dtos\\auditlogdtos\\auditlogfilterrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{594C47E0-970F-3A58-F5D7-EAB015877E10}|HotelWebApplication.csproj|solutionrelative:dtos\\auditlogdtos\\auditlogfilterrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{594C47E0-970F-3A58-F5D7-EAB015877E10}|HotelWebApplication.csproj|c:\\users\\elshan\\source\\repos\\hotelmanagementapi\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{594C47E0-970F-3A58-F5D7-EAB015877E10}|HotelWebApplication.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 1,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\Elshan\\source\\repos\\HotelManagementAPI\\Program.cs",
+              "RelativeDocumentMoniker": "Program.cs",
+              "ToolTip": "C:\\Users\\Elshan\\source\\repos\\HotelManagementAPI\\Program.cs",
+              "RelativeToolTip": "Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAIEAAABEAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-16T15:20:24.809Z",
+              "IsPinned": true,
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": ".gitignore",
+              "DocumentMoniker": "C:\\Users\\Elshan\\source\\repos\\HotelManagementAPI\\.gitignore",
+              "RelativeDocumentMoniker": ".gitignore",
+              "ToolTip": "C:\\Users\\Elshan\\source\\repos\\HotelManagementAPI\\.gitignore",
+              "RelativeToolTip": ".gitignore",
+              "ViewState": "AgIAACEAAAAAAAAAAAAAADAAAAAEAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2026-03-23T11:51:15.723Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{0ad07096-bba9-4900-a651-0598d26f6d24}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "TagsController.cs",
+              "DocumentMoniker": "C:\\Users\\Elshan\\source\\repos\\HotelManagementAPI\\Controllers\\TagsController.cs",
+              "RelativeDocumentMoniker": "Controllers\\TagsController.cs",
+              "ToolTip": "C:\\Users\\Elshan\\source\\repos\\HotelManagementAPI\\Controllers\\TagsController.cs",
+              "RelativeToolTip": "Controllers\\TagsController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAE8AAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-23T11:15:33.858Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "UserController.cs",
+              "DocumentMoniker": "C:\\Users\\Elshan\\source\\repos\\HotelManagementAPI\\Controllers\\UserController.cs",
+              "RelativeDocumentMoniker": "Controllers\\UserController.cs",
+              "ToolTip": "C:\\Users\\Elshan\\source\\repos\\HotelManagementAPI\\Controllers\\UserController.cs",
+              "RelativeToolTip": "Controllers\\UserController.cs",
+              "ViewState": "AgIAAFAAAAAAAAAAAAAAwFwAAABPAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-23T11:14:52.379Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "PriceRulesController.cs",
+              "DocumentMoniker": "C:\\Users\\Elshan\\source\\repos\\HotelManagementAPI\\Controllers\\PriceRulesController.cs",
+              "RelativeDocumentMoniker": "Controllers\\PriceRulesController.cs",
+              "ToolTip": "C:\\Users\\Elshan\\source\\repos\\HotelManagementAPI\\Controllers\\PriceRulesController.cs",
+              "RelativeToolTip": "Controllers\\PriceRulesController.cs",
+              "ViewState": "AgIAAGAAAAAAAAAAAADwv3MAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-23T11:14:40.381Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "RoomsController.cs",
+              "DocumentMoniker": "C:\\Users\\Elshan\\source\\repos\\HotelManagementAPI\\Controllers\\RoomsController.cs",
+              "RelativeDocumentMoniker": "Controllers\\RoomsController.cs",
+              "ToolTip": "C:\\Users\\Elshan\\source\\repos\\HotelManagementAPI\\Controllers\\RoomsController.cs",
+              "RelativeToolTip": "Controllers\\RoomsController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAFsAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-23T11:14:27.71Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "RoomTypesController.cs",
+              "DocumentMoniker": "C:\\Users\\Elshan\\source\\repos\\HotelManagementAPI\\Controllers\\RoomTypesController.cs",
+              "RelativeDocumentMoniker": "Controllers\\RoomTypesController.cs",
+              "ToolTip": "C:\\Users\\Elshan\\source\\repos\\HotelManagementAPI\\Controllers\\RoomTypesController.cs",
+              "RelativeToolTip": "Controllers\\RoomTypesController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAHEAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-23T11:14:12.371Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "AuditLogsController.cs",
+              "DocumentMoniker": "C:\\Users\\Elshan\\source\\repos\\HotelManagementAPI\\Controllers\\AuditLogsController.cs",
+              "RelativeDocumentMoniker": "Controllers\\AuditLogsController.cs",
+              "ToolTip": "C:\\Users\\Elshan\\source\\repos\\HotelManagementAPI\\Controllers\\AuditLogsController.cs",
+              "RelativeToolTip": "Controllers\\AuditLogsController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAKYAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-23T11:13:57.933Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "UserService.cs",
+              "DocumentMoniker": "C:\\Users\\Elshan\\source\\repos\\HotelManagementAPI\\Services\\UserService.cs",
+              "RelativeDocumentMoniker": "Services\\UserService.cs",
+              "ToolTip": "C:\\Users\\Elshan\\source\\repos\\HotelManagementAPI\\Services\\UserService.cs",
+              "RelativeToolTip": "Services\\UserService.cs",
+              "ViewState": "AgIAAJ4AAAAAAAAAAAAswLQAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-23T11:13:01.841Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "TagService.cs",
+              "DocumentMoniker": "C:\\Users\\Elshan\\source\\repos\\HotelManagementAPI\\Services\\TagService.cs",
+              "RelativeDocumentMoniker": "Services\\TagService.cs",
+              "ToolTip": "C:\\Users\\Elshan\\source\\repos\\HotelManagementAPI\\Services\\TagService.cs",
+              "RelativeToolTip": "Services\\TagService.cs",
+              "ViewState": "AgIAAFMAAAAAAAAAAAAmwKgAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-23T11:12:44.198Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "PriceRuleService.cs",
+              "DocumentMoniker": "C:\\Users\\Elshan\\source\\repos\\HotelManagementAPI\\Services\\PriceRuleService.cs",
+              "RelativeDocumentMoniker": "Services\\PriceRuleService.cs",
+              "ToolTip": "C:\\Users\\Elshan\\source\\repos\\HotelManagementAPI\\Services\\PriceRuleService.cs",
+              "RelativeToolTip": "Services\\PriceRuleService.cs",
+              "ViewState": "AgIAAAoAAAAAAAAAAAAAAF4BAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-23T11:12:23.326Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "RoomService.cs",
+              "DocumentMoniker": "C:\\Users\\Elshan\\source\\repos\\HotelManagementAPI\\Services\\RoomService.cs",
+              "RelativeDocumentMoniker": "Services\\RoomService.cs",
+              "ToolTip": "C:\\Users\\Elshan\\source\\repos\\HotelManagementAPI\\Services\\RoomService.cs",
+              "RelativeToolTip": "Services\\RoomService.cs",
+              "ViewState": "AgIAAKcAAAAAAAAAAAA3wMAAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-23T11:11:55.459Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "RoomTypeService.cs",
+              "DocumentMoniker": "C:\\Users\\Elshan\\source\\repos\\HotelManagementAPI\\Services\\RoomTypeService.cs",
+              "RelativeDocumentMoniker": "Services\\RoomTypeService.cs",
+              "ToolTip": "C:\\Users\\Elshan\\source\\repos\\HotelManagementAPI\\Services\\RoomTypeService.cs",
+              "RelativeToolTip": "Services\\RoomTypeService.cs",
+              "ViewState": "AgIAACEAAAAAAAAAAAAAAGwBAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-23T11:11:33.326Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "AuditLogResponseDto.cs",
+              "DocumentMoniker": "C:\\Users\\Elshan\\source\\repos\\HotelManagementAPI\\DTOs\\AuditLogDTOs\\AuditLogResponseDto.cs",
+              "RelativeDocumentMoniker": "DTOs\\AuditLogDTOs\\AuditLogResponseDto.cs",
+              "ToolTip": "C:\\Users\\Elshan\\source\\repos\\HotelManagementAPI\\DTOs\\AuditLogDTOs\\AuditLogResponseDto.cs",
+              "RelativeToolTip": "DTOs\\AuditLogDTOs\\AuditLogResponseDto.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-23T11:10:38.89Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "AuditLogFilterRequest.cs",
+              "DocumentMoniker": "C:\\Users\\Elshan\\source\\repos\\HotelManagementAPI\\DTOs\\AuditLogDTOs\\AuditLogFilterRequest.cs",
+              "RelativeDocumentMoniker": "DTOs\\AuditLogDTOs\\AuditLogFilterRequest.cs",
+              "ToolTip": "C:\\Users\\Elshan\\source\\repos\\HotelManagementAPI\\DTOs\\AuditLogDTOs\\AuditLogFilterRequest.cs",
+              "RelativeToolTip": "DTOs\\AuditLogDTOs\\AuditLogFilterRequest.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABYAAAA6AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-23T11:10:09.983Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
