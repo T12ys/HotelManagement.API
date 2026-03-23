@@ -208,7 +208,7 @@ public class RoomTypeService : IRoomTypeService
         return entity.Id;
     }
 
-    // Перегрузка для обратной совместимости (вызов из контроллера без actor)
+    // Overload for backward compatibility (call from controller without actor)
     public Task<int> CreateAsync(CreateRoomTypeDto dto, IEnumerable<IFormFile>? photos, CancellationToken ct = default)
         => CreateAsync(dto, photos, ct, null, null);
 

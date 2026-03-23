@@ -1,0 +1,943 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>HotelWebApplication</name>
+    </assembly>
+    <members>
+        <member name="T:HotelWebApplication.BackgroundJobs.ReservationCompletionJob">
+            <summary>
+            Фоновая задача: каждый час переводит подтверждённые брони
+            у которых EndDate прошла → Completed.
+            </summary>
+        </member>
+        <member name="M:HotelWebApplication.Common.Extensions.QueryableExtensions.ApplySorting``1(System.Linq.IQueryable{``0},System.String)">
+            <summary>
+            Applies dynamic sorting to a query based on a comma-separated sort string.
+            Format: <c>"propertyName:asc,otherProperty:desc"</c>.
+            If <paramref name="sortBy"/> is null or empty, the query is returned unchanged.
+            </summary>
+            <typeparam name="T">The entity type being queried.</typeparam>
+            <param name="query">The source queryable.</param>
+            <param name="sortBy">
+            Sort expression string, e.g. <c>"basePrice:asc,name:desc"</c>.
+            Direction defaults to <c>asc</c> if omitted.
+            </param>
+            <returns>The queryable with ordering applied.</returns>
+        </member>
+        <member name="M:HotelWebApplication.Common.Extensions.QueryableExtensions.ApplyOrder``1(System.Linq.IQueryable{``0},System.String,System.String,System.Boolean)">
+            <summary>
+            Builds and applies a single ORDER BY / THEN BY expression to the query using reflection.
+            Uses <c>OrderBy</c> / <c>OrderByDescending</c> for the first sort clause
+            and <c>ThenBy</c> / <c>ThenByDescending</c> for subsequent clauses.
+            </summary>
+            <typeparam name="T">The entity type being queried.</typeparam>
+            <param name="source">The source queryable.</param>
+            <param name="propertyName">Name of the property to sort by.</param>
+            <param name="direction"><c>"asc"</c> for ascending, <c>"desc"</c> for descending.</param>
+            <param name="first"><c>true</c> if this is the first sort clause (uses OrderBy); <c>false</c> for ThenBy.</param>
+            <returns>The queryable with the ordering clause appended.</returns>
+        </member>
+        <member name="P:HotelWebApplication.Common.Pagination.RoomTypeFilterRequest.CheckIn">
+            <summary>
+            Availability filter: show only room types that
+            have at least one available room during the specified period.
+            Both fields must be filled in to activate the filter.
+            </summary>
+        </member>
+        <member name="T:HotelWebApplication.Controllers.AuditLogsController">
+            <summary>
+            Provides read-only access to the audit log.
+            Records are written automatically whenever a reservation, room, user or price rule is created, updated or deleted.
+            Accessible by Admin role only.
+            </summary>
+        </member>
+        <member name="M:HotelWebApplication.Controllers.AuditLogsController.GetAll(HotelWebApplication.DTOs.AuditLogDTOs.AuditLogFilterRequest)">
+            <summary>
+            Returns a paginated and filtered list of audit log entries.
+            Supports multi-select for users (<c>ActorUserIds</c>) and action types (<c>ActionTypes</c>),
+            filtering by actor role, entity type, entity Id, and date range.
+            Results are ordered by timestamp descending (newest first).
+            </summary>
+            <param name="filter">Filter and pagination parameters.</param>
+            <returns>Paginated list of audit log entries.</returns>
+            <response code="200">Returns the filtered audit log list.</response>
+            <response code="401">Authentication required.</response>
+            <response code="403">Admin role required.</response>
+        </member>
+        <member name="M:HotelWebApplication.Controllers.AuditLogsController.GetByEntity(System.String,System.String)">
+            <summary>
+            Returns all audit log entries for a specific entity (e.g. all changes made to a particular reservation).
+            Results are ordered by timestamp descending.
+            </summary>
+            <param name="entityType">Entity type name, e.g. <c>Reservation</c>, <c>Room</c>, <c>User</c>.</param>
+            <param name="entityId">String representation of the entity Id (GUID or integer).</param>
+            <returns>List of audit log entries for the given entity.</returns>
+            <response code="200">Returns the entity audit history.</response>
+            <response code="401">Authentication required.</response>
+            <response code="403">Admin role required.</response>
+        </member>
+        <member name="M:HotelWebApplication.Controllers.AuditLogsController.GetActionTypes">
+            <summary>
+            Returns a distinct list of all action type strings present in the audit log.
+            Intended for populating filter dropdowns on the frontend.
+            Example values: <c>Create</c>, <c>Update</c>, <c>Delete</c>, <c>Cancel</c>, <c>PaymentConfirmed</c>.
+            </summary>
+            <returns>Sorted list of unique action type strings.</returns>
+            <response code="200">Returns the list of action types.</response>
+        </member>
+        <member name="M:HotelWebApplication.Controllers.AuditLogsController.BuildStringList(System.Collections.Generic.List{System.String},System.String)">
+            <summary>
+            Merges a list and a single value into one deduplicated list.
+            </summary>
+        </member>
+        <member name="M:HotelWebApplication.Controllers.AuditLogsController.BuildGuidList(System.Collections.Generic.List{System.Guid},System.Nullable{System.Guid})">
+            <summary>
+            Merges a list of GUIDs and a single GUID into one deduplicated list.
+            </summary>
+        </member>
+        <member name="T:HotelWebApplication.Controllers.AuthController">
+            <summary>
+            Handles user authentication: login, registration, token refresh and logout.
+            Refresh tokens are stored in an HttpOnly cookie for security.
+            Access tokens are returned in the response body.
+            </summary>
+        </member>
+        <member name="M:HotelWebApplication.Controllers.AuthController.Login(HotelWebApplication.DTOs.AuthDTOs.LoginDto)">
+            <summary>
+            Authenticates a user with email and password.
+            Returns a JWT access token and sets an HttpOnly refresh token cookie.
+            </summary>
+            <param name="dto">User credentials (email + password).</param>
+            <returns>Access token, expiry time, user info and role.</returns>
+            <response code="200">Login successful. Returns access token and user data.</response>
+            <response code="401">Invalid email or password.</response>
+            <response code="422">Validation failed (empty fields, invalid email format).</response>
+        </member>
+        <member name="M:HotelWebApplication.Controllers.AuthController.Refresh(HotelWebApplication.DTOs.AuthDTOs.RefreshTokenRequestDto)">
+            <summary>
+            Issues a new access token using a valid refresh token.
+            The refresh token is read from the HttpOnly cookie first; falls back to the request body.
+            Old refresh token is rotated (revoked and replaced).
+            </summary>
+            <param name="dto">Optional body with refresh token (used if cookie is absent).</param>
+            <returns>New access token and updated user data.</returns>
+            <response code="200">Token refreshed successfully.</response>
+            <response code="401">Refresh token is missing, expired or already revoked.</response>
+        </member>
+        <member name="M:HotelWebApplication.Controllers.AuthController.Logout(HotelWebApplication.DTOs.AuthDTOs.RefreshTokenRequestDto)">
+            <summary>
+            Revokes the current refresh token and clears the refresh token cookie.
+            Requires a valid access token (Bearer).
+            </summary>
+            <param name="dto">Optional body with refresh token (used if cookie is absent).</param>
+            <response code="204">Logout successful.</response>
+            <response code="401">Access token is missing or invalid.</response>
+        </member>
+        <member name="M:HotelWebApplication.Controllers.AuthController.Register(HotelWebApplication.DTOs.AuthDTOs.RegisterDto)">
+            <summary>
+            Registers a new customer account.
+            Returns a JWT access token and sets a refresh token cookie — the user is logged in immediately.
+            </summary>
+            <param name="dto">Registration data: email, display name, phone (optional) and password.</param>
+            <returns>Access token and newly created user data.</returns>
+            <response code="200">Registration successful. Returns access token and user data.</response>
+            <response code="409">An account with this email already exists.</response>
+            <response code="422">Validation failed (weak password, invalid email, etc.).</response>
+        </member>
+        <member name="M:HotelWebApplication.Controllers.AuthController.SetRefreshTokenCookie(System.String,System.DateTime)">
+            <summary>
+            Writes the refresh token into an HttpOnly cookie.
+            Uses Secure flag in production and Lax SameSite for cross-origin requests.
+            </summary>
+        </member>
+        <member name="T:HotelWebApplication.Controllers.PaymentsController">
+            <summary>
+            Simulates payment processing for reservations.
+            This is a mock implementation — no real payment gateway is involved.
+            A successful payment transitions a reservation from <c>Pending</c> to <c>Confirmed</c>.
+            </summary>
+        </member>
+        <member name="M:HotelWebApplication.Controllers.PaymentsController.MockPayment(HotelWebApplication.DTOs.ReservationDTOs.MockPaymentDto)">
+            <summary>
+            Processes a mock payment for a reservation.
+            When <c>SimulateSuccess</c> is <c>true</c>, the reservation transitions from
+            <c>Pending</c> → <c>Confirmed</c> and <c>PaidAt</c> is set to the current UTC time.
+            When <c>SimulateSuccess</c> is <c>false</c>, a payment failure is simulated
+            and the reservation remains in <c>Pending</c> status.
+            Returns 422 if the 15-minute hold has expired — the user must create a new reservation.
+            </summary>
+            <param name="dto">Reservation Id and success/failure flag.</param>
+            <returns>Updated reservation with new status and PaidAt timestamp.</returns>
+            <response code="200">Payment processed. Reservation is now Confirmed.</response>
+            <response code="404">Reservation not found.</response>
+            <response code="422">
+            Payment failed (PAYMENT_FAILED) or hold expired (HOLD_EXPIRED).
+            The response body contains an error <c>code</c> field for client-side handling.
+            </response>
+        </member>
+        <member name="T:HotelWebApplication.Controllers.PriceRulesController">
+            <summary>
+            Manages price rules for room types.
+            A price rule defines a surcharge or discount (fixed amount or percentage)
+            applied to a date range (seasonal) or a specific date (special event).
+            Read and calculation endpoints are public. Write endpoints require Admin or Moderator role.
+            </summary>
+        </member>
+        <member name="M:HotelWebApplication.Controllers.PriceRulesController.GetByRoomType(System.Int32,HotelWebApplication.Common.Pagination.PagedRequest,System.Threading.CancellationToken)">
+            <summary>
+            Returns a paginated list of price rules for a specific room type.
+            </summary>
+            <param name="roomTypeId">Room type Id to filter by.</param>
+            <param name="request">Pagination and search parameters.</param>
+            <param name="ct">Cancellation token.</param>
+            <returns>Paginated list of price rules.</returns>
+            <response code="200">Returns the price rule list.</response>
+        </member>
+        <member name="M:HotelWebApplication.Controllers.PriceRulesController.GetRulesForPeriod(HotelWebApplication.DTOs.PriceDTOs.PeriodRulesRequestDto,System.Threading.CancellationToken)">
+            <summary>
+            Returns all active price rules that overlap a given date range for a room type.
+            Includes both room-type-specific rules and global rules (RoomTypeId = null).
+            Used by the admin price calendar to visualise active pricing.
+            </summary>
+            <param name="dto">Room type Id, start date and end date of the period.</param>
+            <param name="ct">Cancellation token.</param>
+            <returns>Paginated list of price rules active within the given period.</returns>
+            <response code="200">Returns overlapping price rules.</response>
+        </member>
+        <member name="M:HotelWebApplication.Controllers.PriceRulesController.GetById(System.Int32,System.Threading.CancellationToken)">
+            <summary>
+            Returns a single price rule by its Id.
+            </summary>
+            <param name="id">Price rule Id.</param>
+            <param name="ct">Cancellation token.</param>
+            <returns>Price rule details.</returns>
+            <response code="200">Price rule found.</response>
+            <response code="404">Price rule not found.</response>
+        </member>
+        <member name="M:HotelWebApplication.Controllers.PriceRulesController.GetAll(System.Nullable{System.Int32},HotelWebApplication.Common.Pagination.PagedRequest)">
+            <summary>
+            Returns all price rules, optionally filtered by room type.
+            Includes both specific and global rules.
+            </summary>
+            <param name="roomTypeId">Optional room type Id filter.</param>
+            <param name="request">Pagination parameters.</param>
+            <returns>Paginated list of all price rules.</returns>
+            <response code="200">Returns the full price rule list.</response>
+        </member>
+        <member name="M:HotelWebApplication.Controllers.PriceRulesController.Calculate(HotelWebApplication.DTOs.PriceDTOs.PriceCalculationRequestDto,System.Threading.CancellationToken)">
+            <summary>
+            Calculates the total price for a stay, broken down by day.
+            Applies all active price rules (seasonal, special date, global and room-type-specific).
+            The checkout date is not charged — only nights between check-in and check-out are counted.
+            </summary>
+            <param name="dto">Room type Id, check-in date and check-out date.</param>
+            <param name="ct">Cancellation token.</param>
+            <returns>
+            Price breakdown: total base price, total final price, number of nights,
+            and per-day details with applied rules and price deltas.
+            </returns>
+            <response code="200">Returns the price calculation result.</response>
+            <response code="404">Room type not found.</response>
+            <response code="422">Validation failed (invalid dates, less than 1 night).</response>
+        </member>
+        <member name="M:HotelWebApplication.Controllers.PriceRulesController.Create(HotelWebApplication.DTOs.PriceDTOs.CreatePriceRuleDto,System.Threading.CancellationToken)">
+            <summary>
+            Creates a new price rule.
+            For <c>SpecialDate</c> rules, <c>StartDate</c> and <c>EndDate</c> must be equal.
+            For percentage rules, <c>Value</c> must be between 1 and 100.
+            Admin or Moderator role required.
+            </summary>
+            <param name="dto">Price rule data.</param>
+            <param name="ct">Cancellation token.</param>
+            <returns>HTTP 201 Created with the new rule Id.</returns>
+            <response code="201">Price rule created.</response>
+            <response code="404">Room type not found.</response>
+            <response code="401">Authentication required.</response>
+            <response code="403">Admin or Moderator role required.</response>
+            <response code="422">Validation failed.</response>
+        </member>
+        <member name="M:HotelWebApplication.Controllers.PriceRulesController.Update(System.Int32,HotelWebApplication.DTOs.PriceDTOs.UpdatePriceRuleDto,System.Threading.CancellationToken)">
+            <summary>
+            Updates an existing price rule.
+            Room type cannot be changed after creation.
+            Admin or Moderator role required.
+            </summary>
+            <param name="id">Price rule Id.</param>
+            <param name="dto">Updated price rule data.</param>
+            <param name="ct">Cancellation token.</param>
+            <response code="204">Price rule updated.</response>
+            <response code="404">Price rule not found.</response>
+            <response code="401">Authentication required.</response>
+            <response code="403">Admin or Moderator role required.</response>
+        </member>
+        <member name="M:HotelWebApplication.Controllers.PriceRulesController.Delete(System.Int32,System.Threading.CancellationToken)">
+            <summary>
+            Permanently deletes a price rule.
+            Admin role required.
+            </summary>
+            <param name="id">Price rule Id.</param>
+            <param name="ct">Cancellation token.</param>
+            <response code="204">Price rule deleted.</response>
+            <response code="404">Price rule not found.</response>
+            <response code="401">Authentication required.</response>
+            <response code="403">Admin role required.</response>
+        </member>
+        <member name="M:HotelWebApplication.Controllers.PriceRulesController.GetDiscounted(HotelWebApplication.Common.Pagination.PagedRequest,System.Threading.CancellationToken)">
+            <summary>
+            Returns a paginated list of room types that currently have an active discount of 15% or more.
+            Intended for highlighting promotional offers on the public-facing homepage.
+            </summary>
+            <param name="request">Pagination parameters.</param>
+            <param name="ct">Cancellation token.</param>
+            <returns>Paginated list of discounted room types.</returns>
+            <response code="200">Returns the discounted room types.</response>
+        </member>
+        <member name="T:HotelWebApplication.Controllers.ReservationsController">
+            <summary>
+            Manages hotel reservations.
+            Creating a reservation is public (no authentication required).
+            Viewing the list, editing and cancelling reservations require Admin or Moderator role.
+            </summary>
+        </member>
+        <member name="M:HotelWebApplication.Controllers.ReservationsController.Create(HotelWebApplication.DTOs.ReservationDTOs.CreateReservationDto)">
+            <summary>
+            Creates a new reservation with an atomic availability check.
+            The reservation is placed in <c>Pending</c> status with a 15-minute hold (HeldUntil).
+            If the requested period is already booked, returns 409 Conflict.
+            Call <c>POST /api/payments/mock</c> to confirm the reservation before the hold expires.
+            </summary>
+            <param name="dto">Reservation details: room type, guest info, dates, optional add-on items.</param>
+            <returns>Created reservation with Id, status, HeldUntil and total price.</returns>
+            <response code="201">Reservation created. Status is Pending.</response>
+            <response code="409">The selected dates are already booked for this room type.</response>
+            <response code="422">Validation failed (invalid dates, missing required fields).</response>
+        </member>
+        <member name="M:HotelWebApplication.Controllers.ReservationsController.GetById(System.Guid)">
+            <summary>
+            Returns a single reservation by its GUID.
+            Used to display the booking confirmation page after creation or payment.
+            No authentication required — the client uses the reservation Id obtained from the create response.
+            </summary>
+            <param name="id">Reservation GUID.</param>
+            <returns>Full reservation details including status, dates, total price and add-on items.</returns>
+            <response code="200">Reservation found.</response>
+            <response code="404">Reservation not found.</response>
+        </member>
+        <member name="M:HotelWebApplication.Controllers.ReservationsController.GetAll(HotelWebApplication.DTOs.ReservationDTOs.ReservationFilterRequest)">
+            <summary>
+            Returns a paginated list of all reservations with optional filters.
+            Accessible by Admin and Moderator roles only.
+            Supports filtering by room type, room Id, status, date range and customer email.
+            </summary>
+            <param name="filter">Filter and pagination parameters.</param>
+            <returns>Paginated list of reservations.</returns>
+            <response code="200">Returns the filtered and paginated reservation list.</response>
+            <response code="401">Authentication required.</response>
+            <response code="403">Insufficient permissions (Admin or Moderator required).</response>
+        </member>
+        <member name="M:HotelWebApplication.Controllers.ReservationsController.Update(System.Guid,HotelWebApplication.DTOs.ReservationDTOs.UpdateReservationDto)">
+            <summary>
+            Updates reservation dates, status or notes.
+            When dates are changed, an availability conflict check is performed.
+            Cannot be used to manually set status to <c>Confirmed</c> — use <c>POST /api/payments/mock</c> for that.
+            Accessible by Admin and Moderator roles only.
+            </summary>
+            <param name="id">Reservation GUID.</param>
+            <param name="dto">Fields to update (all optional — only provided fields are applied).</param>
+            <returns>Updated reservation.</returns>
+            <response code="200">Reservation updated successfully.</response>
+            <response code="404">Reservation not found.</response>
+            <response code="409">New dates conflict with an existing reservation.</response>
+            <response code="401">Authentication required.</response>
+            <response code="403">Insufficient permissions.</response>
+        </member>
+        <member name="M:HotelWebApplication.Controllers.ReservationsController.Cancel(System.Guid)">
+            <summary>
+            Cancels a reservation, changing its status to <c>Cancelled</c>.
+            The action is recorded in the audit log.
+            Accessible by Admin and Moderator roles only.
+            </summary>
+            <param name="id">Reservation GUID.</param>
+            <response code="204">Reservation cancelled successfully.</response>
+            <response code="404">Reservation not found.</response>
+            <response code="401">Authentication required.</response>
+            <response code="403">Insufficient permissions.</response>
+        </member>
+        <member name="T:HotelWebApplication.Controllers.RoomsController">
+            <summary>
+            Manages individual room units within the hotel (physical rooms).
+            Each room belongs to a room type and has a room number, floor and availability flag.
+            Read endpoints are public. Write endpoints require Admin or Moderator role.
+            </summary>
+        </member>
+        <member name="M:HotelWebApplication.Controllers.RoomsController.GetPaged(HotelWebApplication.Common.Pagination.PagedRequest,System.Threading.CancellationToken)">
+            <summary>
+            Returns a paginated list of all rooms.
+            Supports search by room number and custom sorting.
+            </summary>
+            <param name="request">Pagination, search and sort parameters.</param>
+            <param name="ct">Cancellation token.</param>
+            <returns>Paginated list of rooms.</returns>
+            <response code="200">Returns the room list.</response>
+        </member>
+        <member name="M:HotelWebApplication.Controllers.RoomsController.GetById(System.Int32,System.Threading.CancellationToken)">
+            <summary>
+            Returns a single room by its Id.
+            </summary>
+            <param name="id">Room Id.</param>
+            <param name="ct">Cancellation token.</param>
+            <returns>Room details.</returns>
+            <response code="200">Room found.</response>
+            <response code="404">Room not found.</response>
+        </member>
+        <member name="M:HotelWebApplication.Controllers.RoomsController.Create(HotelWebApplication.DTOs.RoomDTOs.CreateRoomDto,System.Threading.CancellationToken)">
+            <summary>
+            Creates a new room unit and assigns it to a room type.
+            Admin or Moderator role required.
+            </summary>
+            <param name="dto">Room data: room number, room type Id and floor.</param>
+            <param name="ct">Cancellation token.</param>
+            <returns>HTTP 201 Created with the new room Id.</returns>
+            <response code="201">Room created successfully.</response>
+            <response code="404">Room type not found.</response>
+            <response code="401">Authentication required.</response>
+            <response code="403">Admin or Moderator role required.</response>
+        </member>
+        <member name="M:HotelWebApplication.Controllers.RoomsController.Update(System.Int32,HotelWebApplication.DTOs.RoomDTOs.UpdateRoomDto,System.Threading.CancellationToken)">
+            <summary>
+            Updates room details (number, floor, room type).
+            Admin or Moderator role required.
+            </summary>
+            <param name="id">Room Id.</param>
+            <param name="dto">Updated room data.</param>
+            <param name="ct">Cancellation token.</param>
+            <response code="204">Room updated successfully.</response>
+            <response code="404">Room not found.</response>
+            <response code="401">Authentication required.</response>
+            <response code="403">Admin or Moderator role required.</response>
+        </member>
+        <member name="M:HotelWebApplication.Controllers.RoomsController.ChangeAvailability(System.Int32,HotelWebApplication.DTOs.RoomDTOs.ChangeRoomAvailabilityDto,System.Threading.CancellationToken)">
+            <summary>
+            Toggles room availability without deleting it.
+            Marking a room as unavailable prevents new reservations for it.
+            Admin or Moderator role required.
+            </summary>
+            <param name="id">Room Id.</param>
+            <param name="dto">Availability flag.</param>
+            <param name="ct">Cancellation token.</param>
+            <response code="204">Availability updated.</response>
+            <response code="404">Room not found.</response>
+            <response code="401">Authentication required.</response>
+            <response code="403">Admin or Moderator role required.</response>
+        </member>
+        <member name="M:HotelWebApplication.Controllers.RoomsController.Delete(System.Int32,System.Threading.CancellationToken)">
+            <summary>
+            Permanently deletes a room.
+            Admin role required.
+            </summary>
+            <param name="id">Room Id.</param>
+            <param name="ct">Cancellation token.</param>
+            <response code="204">Room deleted.</response>
+            <response code="404">Room not found.</response>
+            <response code="401">Authentication required.</response>
+            <response code="403">Admin role required.</response>
+        </member>
+        <member name="T:HotelWebApplication.Controllers.RoomTypesController">
+            <summary>
+            Manages room types (e.g. Standard, Deluxe, Suite).
+            Read endpoints are public. Create/update/delete require Admin role.
+            Photo management requires Admin or Moderator role.
+            </summary>
+        </member>
+        <member name="M:HotelWebApplication.Controllers.RoomTypesController.GetPaged(HotelWebApplication.Common.Pagination.RoomTypeFilterRequest,System.Threading.CancellationToken)">
+            <summary>
+            Returns a paginated list of room types with optional filters.
+            Supports filtering by code, active status, capacity, occupancy, price range, tags and availability dates.
+            </summary>
+            <param name="request">Filter and pagination parameters.</param>
+            <param name="ct">Cancellation token.</param>
+            <returns>Paginated list of room types including photos and tags.</returns>
+            <response code="200">Returns the filtered list of room types.</response>
+        </member>
+        <member name="M:HotelWebApplication.Controllers.RoomTypesController.GetById(System.Int32,System.Threading.CancellationToken)">
+            <summary>
+            Returns a single room type by its Id, including photos and associated tags.
+            </summary>
+            <param name="id">Room type Id.</param>
+            <param name="ct">Cancellation token.</param>
+            <returns>Room type details.</returns>
+            <response code="200">Room type found.</response>
+            <response code="404">Room type not found.</response>
+        </member>
+        <member name="M:HotelWebApplication.Controllers.RoomTypesController.GetRoomsByTypeId(System.Int32,HotelWebApplication.Common.Pagination.PagedRequest,System.Threading.CancellationToken)">
+            <summary>
+            Returns a paginated list of individual rooms (physical units) belonging to the specified room type.
+            </summary>
+            <param name="id">Room type Id.</param>
+            <param name="request">Pagination and search parameters.</param>
+            <param name="ct">Cancellation token.</param>
+            <returns>Paginated list of rooms for this room type.</returns>
+            <response code="200">Returns the room list.</response>
+            <response code="404">Room type not found.</response>
+        </member>
+        <member name="M:HotelWebApplication.Controllers.RoomTypesController.Create(HotelWebApplication.DTOs.RoomDTOs.CreateRoomTypeDto,System.Collections.Generic.List{Microsoft.AspNetCore.Http.IFormFile},System.Threading.CancellationToken)">
+            <summary>
+            Creates a new room type with optional photos.
+            Accepts multipart/form-data — include <c>photos</c> files alongside the DTO fields.
+            Admin role required.
+            </summary>
+            <param name="dto">Room type data (code, name, description, capacity, price, tags).</param>
+            <param name="photos">Optional room photos to upload.</param>
+            <param name="ct">Cancellation token.</param>
+            <returns>HTTP 201 Created with the new room type Id in the Location header.</returns>
+            <response code="201">Room type created successfully.</response>
+            <response code="401">Authentication required.</response>
+            <response code="403">Admin role required.</response>
+            <response code="422">Validation failed.</response>
+        </member>
+        <member name="M:HotelWebApplication.Controllers.RoomTypesController.Update(System.Int32,HotelWebApplication.DTOs.RoomDTOs.UpdateRoomTypeDto,System.Threading.CancellationToken)">
+            <summary>
+            Updates an existing room type (name, description, capacity, price, tags, active status).
+            Photos are managed separately via the <c>/photos</c> endpoints.
+            Admin role required.
+            </summary>
+            <param name="id">Room type Id.</param>
+            <param name="dto">Updated room type data.</param>
+            <param name="ct">Cancellation token.</param>
+            <response code="204">Room type updated successfully.</response>
+            <response code="404">Room type not found.</response>
+            <response code="401">Authentication required.</response>
+            <response code="403">Admin role required.</response>
+        </member>
+        <member name="M:HotelWebApplication.Controllers.RoomTypesController.Delete(System.Int32,System.Threading.CancellationToken)">
+            <summary>
+            Deletes a room type and all associated photos (from cloud storage).
+            Admin role required.
+            </summary>
+            <param name="id">Room type Id.</param>
+            <param name="ct">Cancellation token.</param>
+            <response code="204">Room type deleted successfully.</response>
+            <response code="404">Room type not found.</response>
+            <response code="401">Authentication required.</response>
+            <response code="403">Admin role required.</response>
+        </member>
+        <member name="M:HotelWebApplication.Controllers.RoomTypesController.AddPhotos(System.Int32,System.Collections.Generic.List{Microsoft.AspNetCore.Http.IFormFile},System.Threading.CancellationToken)">
+            <summary>
+            Uploads additional photos for an existing room type.
+            Accepts multipart/form-data with one or more image files.
+            Admin or Moderator role required.
+            </summary>
+            <param name="id">Room type Id.</param>
+            <param name="photos">One or more image files to upload.</param>
+            <param name="ct">Cancellation token.</param>
+            <response code="200">Photos uploaded successfully.</response>
+            <response code="404">Room type not found.</response>
+            <response code="401">Authentication required.</response>
+            <response code="403">Admin or Moderator role required.</response>
+        </member>
+        <member name="M:HotelWebApplication.Controllers.RoomTypesController.DeletePhoto(System.Int32,System.Threading.CancellationToken)">
+            <summary>
+            Deletes a single photo by its Id.
+            The file is removed from cloud storage and the database record is deleted.
+            Admin or Moderator role required.
+            </summary>
+            <param name="photoId">Photo Id.</param>
+            <param name="ct">Cancellation token.</param>
+            <response code="204">Photo deleted successfully.</response>
+            <response code="404">Photo not found.</response>
+            <response code="401">Authentication required.</response>
+            <response code="403">Admin or Moderator role required.</response>
+        </member>
+        <member name="T:HotelWebApplication.Controllers.TagsController">
+            <summary>
+            Manages room amenity tags (e.g. Wi-Fi, Sea View, Balcony).
+            Tags support multilingual translations and are associated with room types.
+            Read endpoints are public. Write endpoints require Admin or Moderator role.
+            </summary>
+        </member>
+        <member name="M:HotelWebApplication.Controllers.TagsController.GetPaged(HotelWebApplication.Common.Pagination.PagedRequest,System.Threading.CancellationToken)">
+            <summary>
+            Returns a paginated list of all tags.
+            Supports search by slug and custom sorting.
+            </summary>
+            <param name="request">Pagination, search and sort parameters.</param>
+            <param name="ct">Cancellation token.</param>
+            <returns>Paginated list of tags with translations.</returns>
+            <response code="200">Returns the tag list.</response>
+        </member>
+        <member name="M:HotelWebApplication.Controllers.TagsController.GetById(System.Int32,System.Threading.CancellationToken)">
+            <summary>
+            Returns a single tag by its Id, including all language translations.
+            </summary>
+            <param name="id">Tag Id.</param>
+            <param name="ct">Cancellation token.</param>
+            <returns>Tag details with slug and translations dictionary.</returns>
+            <response code="200">Tag found.</response>
+            <response code="404">Tag not found.</response>
+        </member>
+        <member name="M:HotelWebApplication.Controllers.TagsController.Create(HotelWebApplication.DTOs.RoomDTOs.CreateTagDto,System.Threading.CancellationToken)">
+            <summary>
+            Creates a new tag. The slug is auto-generated from the English translation.
+            The <c>Translations</c> object must contain at least an <c>"en"</c> key.
+            Admin or Moderator role required.
+            </summary>
+            <param name="dto">Tag translations (keyed by language code, e.g. "en", "ru", "az").</param>
+            <param name="ct">Cancellation token.</param>
+            <returns>HTTP 201 Created with the new tag Id.</returns>
+            <response code="201">Tag created successfully.</response>
+            <response code="409">A tag with this name (slug) already exists.</response>
+            <response code="401">Authentication required.</response>
+            <response code="403">Admin or Moderator role required.</response>
+        </member>
+        <member name="M:HotelWebApplication.Controllers.TagsController.Update(System.Int32,HotelWebApplication.DTOs.RoomDTOs.CreateTagDto,System.Threading.CancellationToken)">
+            <summary>
+            Updates the translations of an existing tag.
+            The slug is not changed on update.
+            Admin or Moderator role required.
+            </summary>
+            <param name="id">Tag Id.</param>
+            <param name="dto">Updated translations.</param>
+            <param name="ct">Cancellation token.</param>
+            <response code="204">Tag updated successfully.</response>
+            <response code="404">Tag not found.</response>
+            <response code="401">Authentication required.</response>
+            <response code="403">Admin or Moderator role required.</response>
+        </member>
+        <member name="M:HotelWebApplication.Controllers.TagsController.Delete(System.Int32,System.Threading.CancellationToken)">
+            <summary>
+            Permanently deletes a tag.
+            The tag is automatically disassociated from all room types.
+            Admin role required.
+            </summary>
+            <param name="id">Tag Id.</param>
+            <param name="ct">Cancellation token.</param>
+            <response code="204">Tag deleted.</response>
+            <response code="404">Tag not found.</response>
+            <response code="401">Authentication required.</response>
+            <response code="403">Admin role required.</response>
+        </member>
+        <member name="T:HotelWebApplication.Controllers.UserController">
+            <summary>
+            Manages user profiles, passwords and roles.
+            All endpoints require authentication.
+            Role management requires Admin role.
+            </summary>
+        </member>
+        <member name="M:HotelWebApplication.Controllers.UserController.GetProfile">
+            <summary>
+            Returns the profile of the currently authenticated user.
+            </summary>
+            <returns>User profile: email, display name, phone and role.</returns>
+            <response code="200">Returns the user profile.</response>
+            <response code="401">Authentication required.</response>
+        </member>
+        <member name="M:HotelWebApplication.Controllers.UserController.UpdateProfile(HotelWebApplication.DTOs.UserDTOs.UpdateProfileDto)">
+            <summary>
+            Updates the profile of the currently authenticated user (email, display name, phone).
+            Email uniqueness is validated before saving.
+            </summary>
+            <param name="dto">Fields to update (all optional).</param>
+            <returns>Updated user profile.</returns>
+            <response code="200">Profile updated successfully.</response>
+            <response code="409">The new email is already taken by another account.</response>
+            <response code="401">Authentication required.</response>
+        </member>
+        <member name="M:HotelWebApplication.Controllers.UserController.ChangePassword(HotelWebApplication.DTOs.UserDTOs.ChangePasswordDto)">
+            <summary>
+            Changes the password of the currently authenticated user.
+            The current password must be provided for verification.
+            After a successful change, all active refresh tokens remain valid
+            (force re-login by calling logout separately if needed).
+            </summary>
+            <param name="dto">Current password and new password.</param>
+            <response code="204">Password changed successfully.</response>
+            <response code="401">Current password is incorrect or user is not authenticated.</response>
+            <response code="422">Validation failed (new password too weak).</response>
+        </member>
+        <member name="M:HotelWebApplication.Controllers.UserController.GetAllUsers(HotelWebApplication.Common.Pagination.PagedRequest)">
+            <summary>
+            Returns a paginated list of all registered users.
+            Supports search by email or display name.
+            Admin or Moderator role required.
+            </summary>
+            <param name="request">Pagination and search parameters.</param>
+            <returns>Paginated list of user profiles.</returns>
+            <response code="200">Returns the user list.</response>
+            <response code="401">Authentication required.</response>
+            <response code="403">Admin or Moderator role required.</response>
+        </member>
+        <member name="M:HotelWebApplication.Controllers.UserController.UpdateUserRole(System.Guid,HotelWebApplication.DTOs.UserDTOs.UpdateUserRoleDto)">
+            <summary>
+            Changes the role of a user (e.g. Customer → Moderator).
+            Assigning the Admin role is not allowed via this endpoint.
+            Admin role required.
+            </summary>
+            <param name="userId">Target user Id.</param>
+            <param name="dto">New role.</param>
+            <returns>Updated user profile with the new role.</returns>
+            <response code="200">Role updated successfully.</response>
+            <response code="400">Cannot assign Admin role.</response>
+            <response code="404">User not found.</response>
+            <response code="401">Authentication required.</response>
+            <response code="403">Admin role required.</response>
+        </member>
+        <member name="M:HotelWebApplication.Controllers.UserController.GetMyReservations(HotelWebApplication.Common.Pagination.PagedRequest)">
+            <summary>
+            Returns a paginated list of reservations belonging to the currently authenticated user.
+            Ordered by creation date descending.
+            </summary>
+            <param name="request">Pagination parameters.</param>
+            <returns>Paginated list of the user's reservations.</returns>
+            <response code="200">Returns the reservation list.</response>
+            <response code="401">Authentication required.</response>
+        </member>
+        <member name="M:HotelWebApplication.Controllers.UserController.CancelMyReservation(System.Guid)">
+            <summary>
+            Cancels one of the authenticated user's own reservations.
+            Cancellation is only allowed at least 7 days before the check-in date.
+            </summary>
+            <param name="reservationId">Reservation GUID.</param>
+            <response code="204">Reservation cancelled successfully.</response>
+            <response code="400">Cancellation not allowed (less than 7 days before check-in).</response>
+            <response code="403">The reservation does not belong to the current user.</response>
+            <response code="404">Reservation not found.</response>
+            <response code="401">Authentication required.</response>
+        </member>
+        <member name="T:HotelWebApplication.Data.DatabaseSeeder">
+            <summary>
+            Seeds the database with initial data on first startup.
+            Applies pending migrations, creates admin/moderator accounts,
+            room types, rooms, tags, price rules and sample reservations.
+            Safe to call on every startup — skips entities that already exist.
+            </summary>
+        </member>
+        <member name="M:HotelWebApplication.Data.DatabaseSeeder.SeedRoomTypesAndRoomsAsync(HotelWebApplication.Data.HotelDbContext)">
+            <summary>
+            Seeds room types and physical rooms in a single method.
+            Rooms are inserted after SaveChanges so that RoomType IDs are guaranteed to be set.
+            </summary>
+        </member>
+        <member name="P:HotelWebApplication.DTOs.AuditLogDTOs.AuditLogFilterRequest.EntityType">
+            <summary>
+            Filter by entity type: "Reservation", "Room", "RoomType", "PriceRule", "Tag", "User"
+            </summary>
+        </member>
+        <member name="P:HotelWebApplication.DTOs.AuditLogDTOs.AuditLogFilterRequest.EntityId">
+            <summary>
+            Filter by a specific entity ID
+            </summary>
+        </member>
+        <member name="P:HotelWebApplication.DTOs.AuditLogDTOs.AuditLogFilterRequest.ActionType">
+            <summary>
+            Filter by one action type (for simple queries)
+            </summary>
+        </member>
+        <member name="P:HotelWebApplication.DTOs.AuditLogDTOs.AuditLogFilterRequest.ActionTypes">
+            <summary>
+            Filter by multiple action types (multi-select).
+            Example: ?ActionTypes=Create&amp;ActionTypes=Update&amp;ActionTypes=Delete
+            </summary>
+        </member>
+        <member name="P:HotelWebApplication.DTOs.AuditLogDTOs.AuditLogFilterRequest.ActorUserId">
+            <summary>
+            Filter by one user (for simple queries)
+            </summary>
+        </member>
+        <member name="P:HotelWebApplication.DTOs.AuditLogDTOs.AuditLogFilterRequest.ActorUserIds">
+            <summary>
+            Filter by multiple users (multi-select).
+            Example: ?ActorUserIds=guid1&amp;ActorUserIds=guid2
+            </summary>
+        </member>
+        <member name="P:HotelWebApplication.DTOs.AuditLogDTOs.AuditLogFilterRequest.ActorRole">
+            <summary>
+            Filter by user role: "Admin", "Moderator", "Customer"
+            </summary>
+        </member>
+        <member name="P:HotelWebApplication.DTOs.AuditLogDTOs.AuditLogFilterRequest.From">
+            <summary>
+            Start of date range
+            </summary>
+        </member>
+        <member name="P:HotelWebApplication.DTOs.AuditLogDTOs.AuditLogFilterRequest.To">
+            <summary>
+            End of date range
+            </summary>
+        </member>
+        <member name="P:HotelWebApplication.DTOs.ReservationDTOs.MockPaymentDto.SimulateSuccess">
+            <summary>
+            Simulate success (true) or failure (false)
+            </summary>
+        </member>
+        <member name="T:HotelWebApplication.Extensions.ServiceCollectionExtensions">
+            <summary>
+            Extension methods for <see cref="T:Microsoft.Extensions.DependencyInjection.IServiceCollection"/> that group
+            related service registrations into focused, reusable methods.
+            Called from <c>Program.cs</c> to keep the entry point clean.
+            </summary>
+        </member>
+        <member name="M:HotelWebApplication.Extensions.ServiceCollectionExtensions.AddControllersWithValidation(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            Registers MVC controllers with JSON enum serialization
+            and FluentValidation auto-validation.
+            </summary>
+        </member>
+        <member name="M:HotelWebApplication.Extensions.ServiceCollectionExtensions.AddDatabase(Microsoft.Extensions.DependencyInjection.IServiceCollection,Microsoft.Extensions.Configuration.IConfiguration)">
+            <summary>
+            Registers the SQL Server <see cref="T:HotelWebApplication.Data.HotelDbContext"/> using the
+            <c>DefaultConnection</c> connection string from configuration.
+            </summary>
+        </member>
+        <member name="M:HotelWebApplication.Extensions.ServiceCollectionExtensions.AddApplicationServices(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            Registers all application-level scoped services and the
+            <see cref="T:HotelWebApplication.BackgroundJobs.ReservationCompletionJob"/> background job.
+            </summary>
+        </member>
+        <member name="M:HotelWebApplication.Extensions.ServiceCollectionExtensions.AddJwtAuthentication(Microsoft.Extensions.DependencyInjection.IServiceCollection,Microsoft.Extensions.Configuration.IConfiguration)">
+            <summary>
+            Configures JWT Bearer authentication using <c>Jwt:*</c> settings from configuration.
+            </summary>
+        </member>
+        <member name="M:HotelWebApplication.Extensions.ServiceCollectionExtensions.AddAuthorizationPolicies(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            Registers all role-based authorization policies used across controllers.
+            </summary>
+        </member>
+        <member name="M:HotelWebApplication.Extensions.ServiceCollectionExtensions.AddFrontendCors(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            Configures CORS to allow requests from the React frontend at <c>http://localhost:5173</c>.
+            </summary>
+        </member>
+        <member name="M:HotelWebApplication.Extensions.ServiceCollectionExtensions.AddSwaggerWithJwt(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            Registers Swagger/OpenAPI with JWT Bearer security definition
+            and XML documentation comments.
+            </summary>
+        </member>
+        <member name="T:HotelWebApplication.Extensions.WebApplicationExtensions">
+            <summary>
+            Extension methods for <see cref="T:Microsoft.AspNetCore.Builder.WebApplication"/> that configure
+            the HTTP middleware pipeline in named, focused steps.
+            Called from <c>Program.cs</c> to keep the entry point clean.
+            </summary>
+        </member>
+        <member name="M:HotelWebApplication.Extensions.WebApplicationExtensions.UseExceptionHandling(Microsoft.AspNetCore.Builder.WebApplication)">
+            <summary>
+            Registers exception handling middleware.
+            In development the built-in developer exception page is added first;
+            the custom <see cref="T:HotelWebApplication.Middlewares.GlobalExceptionMiddleware"/> runs in all environments.
+            </summary>
+        </member>
+        <member name="M:HotelWebApplication.Extensions.WebApplicationExtensions.UseSwaggerDocs(Microsoft.AspNetCore.Builder.WebApplication)">
+            <summary>
+            Registers Swagger UI middleware.
+            The UI is available at <c>/swagger</c> in all environments.
+            </summary>
+        </member>
+        <member name="M:HotelWebApplication.Extensions.WebApplicationExtensions.UseSwaggerAutoOpen(Microsoft.AspNetCore.Builder.WebApplication)">
+            <summary>
+            In development, opens the Swagger UI in the default browser
+            automatically when the application starts.
+            Silently ignored if the browser cannot be launched (e.g. in CI/CD).
+            </summary>
+        </member>
+        <member name="M:HotelWebApplication.Extensions.WebApplicationExtensions.SeedDatabaseAsync(Microsoft.AspNetCore.Builder.WebApplication)">
+            <summary>
+            Applies migrations and seeds the database with initial data
+            (admin user, room types, rooms, tags, price rules, sample reservations).
+            Safe to call on every startup — skips entities that already exist.
+            </summary>
+        </member>
+        <member name="T:HotelWebApplication.Migrations.InitialCreate">
+            <inheritdoc />
+        </member>
+        <member name="M:HotelWebApplication.Migrations.InitialCreate.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:HotelWebApplication.Migrations.InitialCreate.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:HotelWebApplication.Migrations.InitialCreate.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="T:HotelWebApplication.Migrations.AddPhoneNumberToUser">
+            <inheritdoc />
+        </member>
+        <member name="M:HotelWebApplication.Migrations.AddPhoneNumberToUser.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:HotelWebApplication.Migrations.AddPhoneNumberToUser.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:HotelWebApplication.Migrations.AddPhoneNumberToUser.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="T:HotelWebApplication.Migrations.AddPhoneNumberToUser2">
+            <inheritdoc />
+        </member>
+        <member name="M:HotelWebApplication.Migrations.AddPhoneNumberToUser2.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:HotelWebApplication.Migrations.AddPhoneNumberToUser2.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:HotelWebApplication.Migrations.AddPhoneNumberToUser2.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="T:HotelWebApplication.Migrations.TagTranslations">
+            <inheritdoc />
+        </member>
+        <member name="M:HotelWebApplication.Migrations.TagTranslations.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:HotelWebApplication.Migrations.TagTranslations.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:HotelWebApplication.Migrations.TagTranslations.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="T:HotelWebApplication.Migrations.TagTranslations2">
+            <inheritdoc />
+        </member>
+        <member name="M:HotelWebApplication.Migrations.TagTranslations2.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:HotelWebApplication.Migrations.TagTranslations2.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:HotelWebApplication.Migrations.TagTranslations2.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:HotelWebApplication.Services.Interfaces.IReservationService.CreateAsync(HotelWebApplication.DTOs.ReservationDTOs.CreateReservationDto,System.String)">
+            <summary>
+            Create a reservation: atomic availability check + Pending + HeldUntil
+            </summary>
+        </member>
+        <member name="M:HotelWebApplication.Services.Interfaces.IReservationService.GetByIdAsync(System.Guid)">
+            <summary>
+            Get a reservation by ID
+            </summary>
+        </member>
+        <member name="M:HotelWebApplication.Services.Interfaces.IReservationService.GetAllAsync(HotelWebApplication.DTOs.ReservationDTOs.ReservationFilterRequest)">
+            <summary>
+            List of reservations (for admin/moderator) with filtering
+            </summary>
+        </member>
+        <member name="M:HotelWebApplication.Services.Interfaces.IReservationService.UpdateAsync(System.Guid,HotelWebApplication.DTOs.ReservationDTOs.UpdateReservationDto,System.Guid,System.String)">
+            <summary>
+            Update dates / status / notes (admin/moderator)
+            </summary>
+        </member>
+        <member name="M:HotelWebApplication.Services.Interfaces.IReservationService.CancelAsync(System.Guid,System.Guid,System.String)">
+            <summary>
+            Cancel Reservation (admin/moderator)
+            </summary>
+        </member>
+        <member name="M:HotelWebApplication.Services.Interfaces.IReservationService.ProcessMockPaymentAsync(System.Guid,System.Boolean,System.String)">
+            <summary>
+            Mock payment: Pending → Confirmed
+            </summary>
+        </member>
+    </members>
+</doc>

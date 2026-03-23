@@ -5,9 +5,9 @@ public class PagedRequest
     public int Page { get; set; } = 1;
     public int PageSize { get; set; } = 10;
 
-    // Сортировка вида: "name:asc,basePrice:desc"
+    // Sorting type: "name:asc,basePrice:desc"
     public string? SortBy { get; set; }
 
-    // Произвольная строка фильтра (сервис будет парсить/применять)
+    // Custom filter string (the service will parse/apply)
     public string? Search { get; set; }
 }

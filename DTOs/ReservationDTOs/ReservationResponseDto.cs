@@ -9,7 +9,7 @@ public class ReservationResponseDto
     public int RoomId { get; set; }
     public string RoomNumber { get; set; } = null!;
 
-    // Тип комнаты — нужен для группировки в календаре
+    // Room type - needed for grouping in the calendar
     public int RoomTypeId { get; set; }
     public string RoomTypeName { get; set; } = null!;
 

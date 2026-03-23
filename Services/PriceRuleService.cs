@@ -224,7 +224,7 @@ public class PriceRuleService : IPriceRuleService
     public Task DeleteAsync(int id, CancellationToken ct = default)
         => DeleteAsync(id, ct, null, null);
 
-    // CALCULATE (без изменений)
+    // CALCULATE
 
     public async Task<PriceCalculationResponseDto> CalculatePriceAsync(PriceCalculationRequestDto dto, CancellationToken ct = default)
     {

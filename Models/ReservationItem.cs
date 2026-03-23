@@ -8,7 +8,7 @@
 
         public Reservation Reservation { get; set; } = null!;
 
-        public string Name { get; set; } = null!; // Завтрак, Трансфер
+        public string Name { get; set; } = null!; // Breakfast, Transfer
 
         public decimal Price { get; set; }
 

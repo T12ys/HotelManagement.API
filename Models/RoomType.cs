@@ -6,7 +6,7 @@ public class RoomType
 {
     public int Id { get; set; }
 
-    public string Code { get; set; } = null!; // enum-friendly (e.g. STANDARD, DELUXE) В дальнейшем проверить лучше сделать просто string или все же перейти на enum 
+    public string Code { get; set; } = null!; 
 
     public string Name { get; set; } = null!;
 

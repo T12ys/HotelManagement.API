@@ -10,7 +10,5 @@ public class CreateRoomTypeDto
     public int MaxOccupancyChildren { get; set; }
     public decimal BasePrice { get; set; }
     public bool IsActive { get; set; } = true;
-
-    // Список тегов по id
     public List<int>? TagIds { get; set; }
 }

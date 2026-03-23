@@ -14,12 +14,12 @@ public class PriceCalculationRequestDtoValidator : AbstractValidator<PriceCalcul
             .GreaterThan(x => x.StartDate)
             .WithMessage("EndDate must be greater than StartDate.");
 
-        // Минимум 1 ночь
+        // Min 1 night
         RuleFor(x => x)
             .Must(x => (x.EndDate.Date - x.StartDate.Date).TotalDays >= 1)
             .WithMessage("Minimum stay is 1 night.");
 
-        // Максимум год вперёд
+        // Maximum a year ahead
         RuleFor(x => x.EndDate)
             .LessThanOrEqualTo(DateTime.UtcNow.Date.AddYears(1))
             .WithMessage("EndDate cannot be more than 1 year in the future.");

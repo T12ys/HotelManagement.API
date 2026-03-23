@@ -10,8 +10,8 @@ public class PeriodRulesRequestDtoValidator : AbstractValidator<PeriodRulesReque
         RuleFor(x => x.RoomTypeId)
             .GreaterThan(0).WithMessage("RoomTypeId is required.");
 
-        // To может быть default — тогда бек подставит год вперёд
-        // Если фронт передал To — проверяем что оно не раньше From
+        // To can be default, in which case the backend will substitute the year ahead.
+        // If the frontend passed To, we check that it is not earlier than From.
         RuleFor(x => x.To)
             .GreaterThanOrEqualTo(x => x.From)
             .When(x => x.To != default)

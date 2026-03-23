@@ -17,6 +17,6 @@ public class CreateReservationDto
 
     public string? Notes { get; set; }
 
-    // Дополнительные услуги (опционально)
+    // Additional services (optional)
     public List<ReservationItemDto>? Items { get; set; }
 }

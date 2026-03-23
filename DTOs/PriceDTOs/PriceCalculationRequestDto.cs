@@ -6,7 +6,7 @@ public class PriceCalculationRequestDto
 
     public DateTime StartDate { get; set; }
 
-    // Дата выезда не включается в оплату
-    // Пример: заезд 1 янв, выезд 3 янв = 2 ночи (1 янв и 2 янв)
+    // Check-out date is not included in the price
+    // Example: check-in on January 1, check-out on January 3 = 2 nights (January 1 and January 2)
     public DateTime EndDate { get; set; }
 }
