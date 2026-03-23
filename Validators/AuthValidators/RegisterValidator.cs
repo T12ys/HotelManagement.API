@@ -16,5 +16,9 @@ public class RegisterValidator : AbstractValidator<RegisterDto>
             .Matches("[a-z]").WithMessage("Password must contain at least one lowercase letter.")
             .Matches("[0-9]").WithMessage("Password must contain at least one digit.")
             .Matches("[^a-zA-Z0-9]").WithMessage("Password must contain at least one special character.");
+        RuleFor(x => x.PhoneNumber)
+            .Matches(@"^\+?[1-9]\d{6,14}$")
+            .WithMessage("Invalid phone number format.")
+            .When(x => !string.IsNullOrEmpty(x.PhoneNumber));
     }
 }

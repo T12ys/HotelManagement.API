@@ -6,9 +6,12 @@ namespace HotelWebApplication.Models
     {
         public Guid Id { get; set; } = Guid.NewGuid();
 
-        // 🔥 Теперь бронь привязана к Room
+        // Теперь бронь привязана к Room
         public int RoomId { get; set; }
         public Room Room { get; set; } = null!;
+
+        public Guid? UserId { get; set; }        
+        public User? User { get; set; }          
 
         public string CustomerName { get; set; } = null!;
         public string CustomerEmail { get; set; } = null!;

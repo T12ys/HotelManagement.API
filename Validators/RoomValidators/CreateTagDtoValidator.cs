@@ -7,12 +7,13 @@ public class CreateTagDtoValidator : AbstractValidator<CreateTagDto>
 {
     public CreateTagDtoValidator()
     {
-        RuleFor(x => x.Name)
+        RuleFor(x => x.Translations)
+            .NotNull()
             .NotEmpty()
-            .MaximumLength(100);
+            .WithMessage("Translations are required.");
 
-        RuleFor(x => x.Slug)
-            .NotEmpty()
-            .MaximumLength(100);
+        RuleFor(x => x.Translations)
+            .Must(t => t.ContainsKey("en") && !string.IsNullOrWhiteSpace(t["en"]))
+            .WithMessage("English translation is required.");
     }
 }

@@ -32,8 +32,8 @@ public class CreateReservationDtoValidator : AbstractValidator<CreateReservation
             .WithMessage("End date must be after start date.");
 
         RuleFor(x => x.GuestCount)
-            .GreaterThan(0).WithMessage("Guest count must be at least 1.")
-            .LessThanOrEqualTo(20).WithMessage("Guest count cannot exceed 20.");
+            .GreaterThan(0).WithMessage("Guest count must be at least 1.");
+        // максимум проверяется в ReservationService по capacity из БД
 
         RuleForEach(x => x.Items).SetValidator(new ReservationItemDtoValidator());
     }
