@@ -8,6 +8,7 @@ using HotelWebApplication.Enums;
 using HotelWebApplication.Models;
 using HotelWebApplication.Services.Interfaces;
 using Microsoft.EntityFrameworkCore;
+using System.Text.Json;
 
 namespace HotelWebApplication.Services;
 
@@ -16,12 +17,18 @@ public class RoomTypeService : IRoomTypeService
     private readonly HotelDbContext _db;
     private readonly IMapper _mapper;
     private readonly IFileStorageService _fileStorage;
+    private readonly IAuditLogService _audit;
 
-    public RoomTypeService(HotelDbContext db, IMapper mapper, IFileStorageService fileStorage)
+    public RoomTypeService(
+        HotelDbContext db,
+        IMapper mapper,
+        IFileStorageService fileStorage,
+        IAuditLogService audit)
     {
         _db = db;
         _mapper = mapper;
         _fileStorage = fileStorage;
+        _audit = audit;
     }
 
     // READ
@@ -34,7 +41,6 @@ public class RoomTypeService : IRoomTypeService
             .AsNoTracking()
             .AsQueryable();
 
-        // Text search
         if (!string.IsNullOrWhiteSpace(request.Search))
         {
             var s = request.Search.ToLower();
@@ -44,51 +50,39 @@ public class RoomTypeService : IRoomTypeService
                 x.Description.ToLower().Contains(s));
         }
 
-        // Code
         if (!string.IsNullOrWhiteSpace(request.Code))
             query = query.Where(x => x.Code == request.Code);
 
-        // IsActive
         if (request.IsActive.HasValue)
             query = query.Where(x => x.IsActive == request.IsActive);
 
-        // Capacity
         if (request.MinCapacity.HasValue)
             query = query.Where(x => x.Capacity >= request.MinCapacity);
 
         if (request.MaxCapacity.HasValue)
             query = query.Where(x => x.Capacity <= request.MaxCapacity);
 
-        // Adults
         if (request.MinAdults.HasValue)
             query = query.Where(x => x.MaxOccupancyAdults >= request.MinAdults);
 
         if (request.MaxAdults.HasValue)
             query = query.Where(x => x.MaxOccupancyAdults <= request.MaxAdults);
 
-        // Children
         if (request.MinChildren.HasValue)
             query = query.Where(x => x.MaxOccupancyChildren >= request.MinChildren);
 
         if (request.MaxChildren.HasValue)
             query = query.Where(x => x.MaxOccupancyChildren <= request.MaxChildren);
 
-        // Price
         if (request.MinPrice.HasValue)
             query = query.Where(x => x.BasePrice >= request.MinPrice);
 
         if (request.MaxPrice.HasValue)
             query = query.Where(x => x.BasePrice <= request.MaxPrice);
 
-        // Tags
         if (request.TagIds?.Any() == true)
-        {
-            query = query.Where(x =>
-                x.Tags.Any(t => request.TagIds.Contains(t.Id)));
-        }
+            query = query.Where(x => x.Tags.Any(t => request.TagIds.Contains(t.Id)));
 
-        // Availability filter — показываем только типы у которых есть
-        // хотя бы одна комната без пересекающейся активной брони
         if (request.CheckIn.HasValue && request.CheckOut.HasValue)
         {
             var checkIn = request.CheckIn.Value.Date;
@@ -105,7 +99,6 @@ public class RoomTypeService : IRoomTypeService
                         res.EndDate > checkIn)));
         }
 
-        // Sorting
         query = query.ApplySorting(request.SortBy);
 
         var total = await query.CountAsync(ct);
@@ -116,11 +109,7 @@ public class RoomTypeService : IRoomTypeService
             .ProjectTo<RoomTypeResponseDto>(_mapper.ConfigurationProvider)
             .ToListAsync(ct);
 
-        return new PagedResult<RoomTypeResponseDto>(
-            items,
-            total,
-            request.Page,
-            request.PageSize);
+        return new PagedResult<RoomTypeResponseDto>(items, total, request.Page, request.PageSize);
     }
 
     public async Task<RoomTypeResponseDto?> GetByIdAsync(int id, CancellationToken ct = default)
@@ -131,19 +120,13 @@ public class RoomTypeService : IRoomTypeService
             .AsNoTracking()
             .FirstOrDefaultAsync(x => x.Id == id, ct);
 
-        return entity == null
-            ? null
-            : _mapper.Map<RoomTypeResponseDto>(entity);
+        return entity == null ? null : _mapper.Map<RoomTypeResponseDto>(entity);
     }
 
     public async Task<PagedResult<RoomResponseDto>> GetRoomsByTypeIdAsync(
-        int roomTypeId,
-        PagedRequest request,
-        CancellationToken ct = default)
+        int roomTypeId, PagedRequest request, CancellationToken ct = default)
     {
-        var roomTypeExists = await _db.RoomTypes
-            .AnyAsync(x => x.Id == roomTypeId, ct);
-
+        var roomTypeExists = await _db.RoomTypes.AnyAsync(x => x.Id == roomTypeId, ct);
         if (!roomTypeExists)
             throw new KeyNotFoundException("RoomType not found");
 
@@ -168,16 +151,17 @@ public class RoomTypeService : IRoomTypeService
             .ProjectTo<RoomResponseDto>(_mapper.ConfigurationProvider)
             .ToListAsync(ct);
 
-        return new PagedResult<RoomResponseDto>(
-            items,
-            total,
-            request.Page,
-            request.PageSize);
+        return new PagedResult<RoomResponseDto>(items, total, request.Page, request.PageSize);
     }
 
     // ADMIN
 
-    public async Task<int> CreateAsync(CreateRoomTypeDto dto, IEnumerable<IFormFile>? photos, CancellationToken ct = default)
+    public async Task<int> CreateAsync(
+        CreateRoomTypeDto dto,
+        IEnumerable<IFormFile>? photos,
+        CancellationToken ct = default,
+        Guid? actorUserId = null,
+        string? ip = null)
     {
         var entity = _mapper.Map<RoomType>(dto);
 
@@ -197,11 +181,7 @@ public class RoomTypeService : IRoomTypeService
             foreach (var file in photos)
             {
                 var url = await _fileStorage.SaveFileAsync(file, ct);
-                entity.Photos.Add(new RoomPhoto
-                {
-                    Url = url,
-                    SortOrder = sort++
-                });
+                entity.Photos.Add(new RoomPhoto { Url = url, SortOrder = sort++ });
             }
         }
 
@@ -210,20 +190,50 @@ public class RoomTypeService : IRoomTypeService
         _db.RoomTypes.Add(entity);
         await _db.SaveChangesAsync(ct);
 
+        await _audit.LogAsync(
+            actionType: "Create",
+            entityType: "RoomType",
+            entityId: entity.Id.ToString(),
+            newValue: JsonSerializer.Serialize(new
+            {
+                entity.Code,
+                entity.Name,
+                entity.BasePrice,
+                entity.Capacity,
+                entity.IsActive
+            }),
+            actorUserId: actorUserId,
+            ip: ip);
+
         return entity.Id;
     }
 
-    public async Task UpdateAsync(int id, UpdateRoomTypeDto dto, CancellationToken ct = default)
+    // Перегрузка для обратной совместимости (вызов из контроллера без actor)
+    public Task<int> CreateAsync(CreateRoomTypeDto dto, IEnumerable<IFormFile>? photos, CancellationToken ct = default)
+        => CreateAsync(dto, photos, ct, null, null);
+
+    public async Task UpdateAsync(
+        int id,
+        UpdateRoomTypeDto dto,
+        CancellationToken ct = default,
+        Guid? actorUserId = null,
+        string? ip = null)
     {
         var entity = await _db.RoomTypes
             .Include(x => x.Tags)
-            .FirstOrDefaultAsync(x => x.Id == id, ct);
+            .FirstOrDefaultAsync(x => x.Id == id, ct)
+            ?? throw new KeyNotFoundException("RoomType not found");
 
-        if (entity == null)
-            throw new KeyNotFoundException("RoomType not found");
+        var oldSnapshot = JsonSerializer.Serialize(new
+        {
+            entity.Code,
+            entity.Name,
+            entity.BasePrice,
+            entity.Capacity,
+            entity.IsActive
+        });
 
         _mapper.Map(dto, entity);
-
         entity.Tags.Clear();
 
         if (dto.TagIds?.Any() == true)
@@ -238,57 +248,118 @@ public class RoomTypeService : IRoomTypeService
 
         entity.Capacity = entity.MaxOccupancyAdults + entity.MaxOccupancyChildren;
         await _db.SaveChangesAsync(ct);
+
+        await _audit.LogAsync(
+            actionType: "Update",
+            entityType: "RoomType",
+            entityId: id.ToString(),
+            oldValue: oldSnapshot,
+            newValue: JsonSerializer.Serialize(new
+            {
+                entity.Code,
+                entity.Name,
+                entity.BasePrice,
+                entity.Capacity,
+                entity.IsActive
+            }),
+            actorUserId: actorUserId,
+            ip: ip);
     }
 
-    public async Task DeleteAsync(int id, CancellationToken ct = default)
+    public Task UpdateAsync(int id, UpdateRoomTypeDto dto, CancellationToken ct = default)
+        => UpdateAsync(id, dto, ct, null, null);
+
+    public async Task DeleteAsync(
+        int id,
+        CancellationToken ct = default,
+        Guid? actorUserId = null,
+        string? ip = null)
     {
         var entity = await _db.RoomTypes
             .Include(x => x.Photos)
-            .FirstOrDefaultAsync(x => x.Id == id, ct);
+            .FirstOrDefaultAsync(x => x.Id == id, ct)
+            ?? throw new KeyNotFoundException("RoomType not found");
 
-        if (entity == null)
-            throw new KeyNotFoundException("RoomType not found");
+        var snapshot = JsonSerializer.Serialize(new { entity.Code, entity.Name });
 
         foreach (var photo in entity.Photos)
             await _fileStorage.DeleteFileAsync(photo.Url, ct);
 
         _db.RoomTypes.Remove(entity);
         await _db.SaveChangesAsync(ct);
+
+        await _audit.LogAsync(
+            actionType: "Delete",
+            entityType: "RoomType",
+            entityId: id.ToString(),
+            oldValue: snapshot,
+            actorUserId: actorUserId,
+            ip: ip);
     }
+
+    public Task DeleteAsync(int id, CancellationToken ct = default)
+        => DeleteAsync(id, ct, null, null);
 
     // PHOTOS
 
-    public async Task AddPhotosAsync(int roomTypeId, IEnumerable<IFormFile> photos, CancellationToken ct = default)
+    public async Task AddPhotosAsync(
+        int roomTypeId,
+        IEnumerable<IFormFile> photos,
+        CancellationToken ct = default,
+        Guid? actorUserId = null,
+        string? ip = null)
     {
         var entity = await _db.RoomTypes
             .FirstOrDefaultAsync(x => x.Id == roomTypeId, ct)
             ?? throw new KeyNotFoundException("RoomType not found");
 
         int sort = 0;
+        var addedUrls = new List<string>();
+
         foreach (var file in photos)
         {
             var url = await _fileStorage.SaveFileAsync(file, ct);
-            entity.Photos.Add(new RoomPhoto
-            {
-                Url = url,
-                SortOrder = sort++
-            });
+            entity.Photos.Add(new RoomPhoto { Url = url, SortOrder = sort++ });
+            addedUrls.Add(url);
         }
 
         await _db.SaveChangesAsync(ct);
+
+        await _audit.LogAsync(
+            actionType: "AddPhotos",
+            entityType: "RoomType",
+            entityId: roomTypeId.ToString(),
+            newValue: JsonSerializer.Serialize(new { Count = addedUrls.Count }),
+            actorUserId: actorUserId,
+            ip: ip);
     }
 
-    public async Task DeletePhotoAsync(int photoId, CancellationToken ct = default)
+    public Task AddPhotosAsync(int roomTypeId, IEnumerable<IFormFile> photos, CancellationToken ct = default)
+        => AddPhotosAsync(roomTypeId, photos, ct, null, null);
+
+    public async Task DeletePhotoAsync(
+        int photoId,
+        CancellationToken ct = default,
+        Guid? actorUserId = null,
+        string? ip = null)
     {
-        var photo = await _db.RoomPhotos
-            .FirstOrDefaultAsync(x => x.Id == photoId, ct);
+        var photo = await _db.RoomPhotos.FirstOrDefaultAsync(x => x.Id == photoId, ct);
+        if (photo == null) return;
 
-        if (photo == null)
-            return;
-
+        var roomTypeId = photo.RoomTypeId;
         await _fileStorage.DeleteFileAsync(photo.Url, ct);
-
         _db.RoomPhotos.Remove(photo);
         await _db.SaveChangesAsync(ct);
+
+        await _audit.LogAsync(
+            actionType: "DeletePhoto",
+            entityType: "RoomType",
+            entityId: roomTypeId.ToString(),
+            oldValue: JsonSerializer.Serialize(new { PhotoId = photoId, photo.Url }),
+            actorUserId: actorUserId,
+            ip: ip);
     }
+
+    public Task DeletePhotoAsync(int photoId, CancellationToken ct = default)
+        => DeletePhotoAsync(photoId, ct, null, null);
 }

@@ -8,6 +8,7 @@ using HotelWebApplication.DTOs.RoomDTOs;
 using HotelWebApplication.Models;
 using HotelWebApplication.Services.Interfaces;
 using Microsoft.EntityFrameworkCore;
+using System.Text.Json;
 
 namespace HotelWebApplication.Services;
 
@@ -15,11 +16,13 @@ public class PriceRuleService : IPriceRuleService
 {
     private readonly HotelDbContext _db;
     private readonly IMapper _mapper;
+    private readonly IAuditLogService _audit;
 
-    public PriceRuleService(HotelDbContext db, IMapper mapper)
+    public PriceRuleService(HotelDbContext db, IMapper mapper, IAuditLogService audit)
     {
         _db = db;
         _mapper = mapper;
+        _audit = audit;
     }
 
     // READ
@@ -74,17 +77,11 @@ public class PriceRuleService : IPriceRuleService
 
     public async Task<PriceRuleResponseDto?> GetByIdAsync(int id, CancellationToken ct = default)
     {
-        var rule = await _db.PriceRules
-            .AsNoTracking()
-            .FirstOrDefaultAsync(x => x.Id == id, ct);
-
+        var rule = await _db.PriceRules.AsNoTracking().FirstOrDefaultAsync(x => x.Id == id, ct);
         return rule == null ? null : _mapper.Map<PriceRuleResponseDto>(rule);
     }
 
-    public async Task<PagedResult<PriceRuleResponseDto>> GetAllAsync(
-    int? roomTypeId,
-    PagedRequest request,
-    CancellationToken ct = default)
+    public async Task<PagedResult<PriceRuleResponseDto>> GetAllAsync(int? roomTypeId, PagedRequest request, CancellationToken ct = default)
     {
         var query = _db.PriceRules.AsNoTracking().AsQueryable();
 
@@ -111,7 +108,11 @@ public class PriceRuleService : IPriceRuleService
 
     // WRITE
 
-    public async Task<int> CreateAsync(CreatePriceRuleDto dto, CancellationToken ct = default)
+    public async Task<int> CreateAsync(
+        CreatePriceRuleDto dto,
+        CancellationToken ct = default,
+        Guid? actorUserId = null,
+        string? ip = null)
     {
         if (dto.RoomTypeId.HasValue)
         {
@@ -127,38 +128,107 @@ public class PriceRuleService : IPriceRuleService
         _db.PriceRules.Add(entity);
         await _db.SaveChangesAsync(ct);
 
+        await _audit.LogAsync(
+            actionType: "Create",
+            entityType: "PriceRule",
+            entityId: entity.Id.ToString(),
+            newValue: JsonSerializer.Serialize(new
+            {
+                entity.Name,
+                entity.RoomTypeId,
+                entity.StartDate,
+                entity.EndDate,
+                entity.Value,
+                entity.IsPercent,
+                entity.IsIncrease
+            }),
+            actorUserId: actorUserId,
+            ip: ip);
+
         return entity.Id;
     }
 
-    public async Task UpdateAsync(int id, UpdatePriceRuleDto dto, CancellationToken ct = default)
+    public Task<int> CreateAsync(CreatePriceRuleDto dto, CancellationToken ct = default)
+        => CreateAsync(dto, ct, null, null);
+
+    public async Task UpdateAsync(
+        int id,
+        UpdatePriceRuleDto dto,
+        CancellationToken ct = default,
+        Guid? actorUserId = null,
+        string? ip = null)
     {
-        var entity = await _db.PriceRules.FirstOrDefaultAsync(x => x.Id == id, ct);
-        if (entity == null)
-            throw new KeyNotFoundException("PriceRule not found.");
+        var entity = await _db.PriceRules.FirstOrDefaultAsync(x => x.Id == id, ct)
+            ?? throw new KeyNotFoundException("PriceRule not found.");
+
+        var oldSnapshot = JsonSerializer.Serialize(new
+        {
+            entity.Name,
+            entity.StartDate,
+            entity.EndDate,
+            entity.Value,
+            entity.IsPercent,
+            entity.IsIncrease,
+            entity.IsActive
+        });
 
         _mapper.Map(dto, entity);
         entity.UpdatedAt = DateTime.UtcNow;
-
         await _db.SaveChangesAsync(ct);
+
+        await _audit.LogAsync(
+            actionType: "Update",
+            entityType: "PriceRule",
+            entityId: id.ToString(),
+            oldValue: oldSnapshot,
+            newValue: JsonSerializer.Serialize(new
+            {
+                entity.Name,
+                entity.StartDate,
+                entity.EndDate,
+                entity.Value,
+                entity.IsPercent,
+                entity.IsIncrease,
+                entity.IsActive
+            }),
+            actorUserId: actorUserId,
+            ip: ip);
     }
 
-    public async Task DeleteAsync(int id, CancellationToken ct = default)
+    public Task UpdateAsync(int id, UpdatePriceRuleDto dto, CancellationToken ct = default)
+        => UpdateAsync(id, dto, ct, null, null);
+
+    public async Task DeleteAsync(
+        int id,
+        CancellationToken ct = default,
+        Guid? actorUserId = null,
+        string? ip = null)
     {
-        var entity = await _db.PriceRules.FirstOrDefaultAsync(x => x.Id == id, ct);
-        if (entity == null)
-            throw new KeyNotFoundException("PriceRule not found.");
+        var entity = await _db.PriceRules.FirstOrDefaultAsync(x => x.Id == id, ct)
+            ?? throw new KeyNotFoundException("PriceRule not found.");
+
+        var snapshot = JsonSerializer.Serialize(new { entity.Name, entity.RoomTypeId });
 
         _db.PriceRules.Remove(entity);
         await _db.SaveChangesAsync(ct);
+
+        await _audit.LogAsync(
+            actionType: "Delete",
+            entityType: "PriceRule",
+            entityId: id.ToString(),
+            oldValue: snapshot,
+            actorUserId: actorUserId,
+            ip: ip);
     }
 
-    // CALCULATE
+    public Task DeleteAsync(int id, CancellationToken ct = default)
+        => DeleteAsync(id, ct, null, null);
+
+    // CALCULATE (без изменений)
 
     public async Task<PriceCalculationResponseDto> CalculatePriceAsync(PriceCalculationRequestDto dto, CancellationToken ct = default)
     {
-        var roomType = await _db.RoomTypes
-            .AsNoTracking()
-            .FirstOrDefaultAsync(x => x.Id == dto.RoomTypeId, ct)
+        var roomType = await _db.RoomTypes.AsNoTracking().FirstOrDefaultAsync(x => x.Id == dto.RoomTypeId, ct)
             ?? throw new KeyNotFoundException("RoomType not found.");
 
         var rules = await LoadRulesForRangeAsync(dto.RoomTypeId, dto.StartDate, dto.EndDate, ct);
@@ -181,11 +251,9 @@ public class PriceRuleService : IPriceRuleService
                     ? Math.Round(basePrice * rule.Value / 100, 2)
                     : rule.Value;
 
-                if (!rule.IsIncrease)
-                    delta = -delta;
+                if (!rule.IsIncrease) delta = -delta;
 
                 dailyPrice += delta;
-
                 appliedRules.Add(new AppliedRuleDto
                 {
                     RuleId = rule.Id,
@@ -218,8 +286,6 @@ public class PriceRuleService : IPriceRuleService
         };
     }
 
-    // HELPERS
-
     public async Task<PagedResult<RoomTypeResponseDto>> GetDiscountedRoomTypesAsync(PagedRequest request, CancellationToken ct = default)
     {
         var today = DateTime.UtcNow.Date;
@@ -233,9 +299,7 @@ public class PriceRuleService : IPriceRuleService
 
         var rules = await _db.PriceRules
             .AsNoTracking()
-            .Where(x => x.IsActive
-                && x.StartDate <= today
-                && x.EndDate >= today)
+            .Where(x => x.IsActive && x.StartDate <= today && x.EndDate >= today)
             .ToListAsync(ct);
 
         var discounted = roomTypes
@@ -273,11 +337,8 @@ public class PriceRuleService : IPriceRuleService
 
         return new PagedResult<RoomTypeResponseDto>(items, total, request.Page, request.PageSize);
     }
-    private async Task<List<PriceRule>> LoadRulesForRangeAsync(
-        int roomTypeId,
-        DateTime from,
-        DateTime to,
-        CancellationToken ct)
+
+    private async Task<List<PriceRule>> LoadRulesForRangeAsync(int roomTypeId, DateTime from, DateTime to, CancellationToken ct)
     {
         return await _db.PriceRules
             .AsNoTracking()

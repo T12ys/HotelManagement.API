@@ -5,6 +5,7 @@ using HotelWebApplication.Services;
 using HotelWebApplication.Services.Interfaces;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using System.Security.Claims;
 
 namespace HotelWebApplication.Controllers;
 
@@ -22,9 +23,7 @@ public class PriceRulesController : ControllerBase
     [HttpGet]
     [AllowAnonymous]
     public async Task<ActionResult<PagedResult<PriceRuleResponseDto>>> GetByRoomType(
-        [FromQuery] int roomTypeId,
-        [FromQuery] PagedRequest request,
-        CancellationToken ct)
+        [FromQuery] int roomTypeId, [FromQuery] PagedRequest request, CancellationToken ct)
     {
         return Ok(await _service.GetByRoomTypeAsync(roomTypeId, request, ct));
     }
@@ -32,8 +31,7 @@ public class PriceRulesController : ControllerBase
     [HttpGet("period")]
     [AllowAnonymous]
     public async Task<ActionResult<PagedResult<PriceRuleResponseDto>>> GetRulesForPeriod(
-        [FromQuery] PeriodRulesRequestDto dto,
-        CancellationToken ct)
+        [FromQuery] PeriodRulesRequestDto dto, CancellationToken ct)
     {
         if (dto.To == default)
             dto.To = DateTime.UtcNow.Date.AddYears(1);
@@ -60,8 +58,7 @@ public class PriceRulesController : ControllerBase
     [HttpGet("calculate")]
     [AllowAnonymous]
     public async Task<ActionResult<PriceCalculationResponseDto>> Calculate(
-        [FromQuery] PriceCalculationRequestDto dto,
-        CancellationToken ct)
+        [FromQuery] PriceCalculationRequestDto dto, CancellationToken ct)
     {
         return Ok(await _service.CalculatePriceAsync(dto, ct));
     }
@@ -70,7 +67,10 @@ public class PriceRulesController : ControllerBase
     [Authorize(Policy = "PriceRuleWrite")]
     public async Task<IActionResult> Create([FromBody] CreatePriceRuleDto dto, CancellationToken ct)
     {
-        var id = await _service.CreateAsync(dto, ct);
+        var id = await ((PriceRuleService)_service).CreateAsync(
+            dto, ct,
+            actorUserId: GetCurrentUserId(),
+            ip: GetIp());
         return CreatedAtAction(nameof(GetById), new { id }, null);
     }
 
@@ -78,7 +78,10 @@ public class PriceRulesController : ControllerBase
     [Authorize(Policy = "PriceRuleWrite")]
     public async Task<IActionResult> Update(int id, [FromBody] UpdatePriceRuleDto dto, CancellationToken ct)
     {
-        await _service.UpdateAsync(id, dto, ct);
+        await ((PriceRuleService)_service).UpdateAsync(
+            id, dto, ct,
+            actorUserId: GetCurrentUserId(),
+            ip: GetIp());
         return NoContent();
     }
 
@@ -86,16 +89,28 @@ public class PriceRulesController : ControllerBase
     [Authorize(Policy = "PriceRuleDelete")]
     public async Task<IActionResult> Delete(int id, CancellationToken ct)
     {
-        await _service.DeleteAsync(id, ct);
+        await ((PriceRuleService)_service).DeleteAsync(
+            id, ct,
+            actorUserId: GetCurrentUserId(),
+            ip: GetIp());
         return NoContent();
     }
 
     [HttpGet("discounted")]
     [AllowAnonymous]
     public async Task<ActionResult<PagedResult<RoomTypeResponseDto>>> GetDiscounted(
-    [FromQuery] PagedRequest request,
-    CancellationToken ct)
+        [FromQuery] PagedRequest request, CancellationToken ct)
     {
         return Ok(await _service.GetDiscountedRoomTypesAsync(request, ct));
     }
+
+    // ── helpers ──────────────────────────────────────────────────────────────
+
+    private Guid? GetCurrentUserId()
+    {
+        var claim = User.FindFirstValue(ClaimTypes.NameIdentifier);
+        return claim != null ? Guid.Parse(claim) : null;
+    }
+
+    private string? GetIp() => HttpContext.Connection.RemoteIpAddress?.ToString();
 }

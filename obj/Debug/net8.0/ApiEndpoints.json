@@ -23,8 +23,23 @@
         "IsRequired": false
       },
       {
+        "Name": "ActionTypes",
+        "Type": "System.Collections.Generic.List\u00601[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": false
+      },
+      {
         "Name": "ActorUserId",
         "Type": "System.Nullable\u00601[[System.Guid, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": false
+      },
+      {
+        "Name": "ActorUserIds",
+        "Type": "System.Collections.Generic.List\u00601[[System.Guid, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": false
+      },
+      {
+        "Name": "ActorRole",
+        "Type": "System.String",
         "IsRequired": false
       },
       {
@@ -92,6 +107,26 @@
     "ReturnTypes": [
       {
         "Type": "System.Collections.Generic.List\u00601[[HotelWebApplication.DTOs.AuditLogDTOs.AuditLogResponseDto, HotelWebApplication, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "HotelWebApplication.Controllers.AuditLogsController",
+    "Method": "GetActionTypes",
+    "RelativePath": "api/admin/audit-logs/action-types",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.List\u00601[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -1295,46 +1330,6 @@
         "IsRequired": true
       }
     ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "HotelWebApplication.Controllers.TestController",
-    "Method": "AdminEndpoint",
-    "RelativePath": "api/Test/admin",
-    "HttpMethod": "GET",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "HotelWebApplication.Controllers.TestController",
-    "Method": "AnyAuthenticated",
-    "RelativePath": "api/Test/anyuser",
-    "HttpMethod": "GET",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "HotelWebApplication.Controllers.TestController",
-    "Method": "ModeratorEndpoint",
-    "RelativePath": "api/Test/moderator",
-    "HttpMethod": "GET",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "HotelWebApplication.Controllers.TestController",
-    "Method": "PublicEndpoint",
-    "RelativePath": "api/Test/public",
-    "HttpMethod": "GET",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [],
     "ReturnTypes": []
   },
   {

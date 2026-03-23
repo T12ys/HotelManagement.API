@@ -1,8 +1,10 @@
 ﻿using HotelWebApplication.Common.Pagination;
 using HotelWebApplication.DTOs.RoomDTOs;
+using HotelWebApplication.Services;
 using HotelWebApplication.Services.Interfaces;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using System.Security.Claims;
 
 namespace HotelWebApplication.Controllers;
 
@@ -20,8 +22,7 @@ public class RoomTypesController : ControllerBase
     [HttpGet]
     [AllowAnonymous]
     public async Task<ActionResult<PagedResult<RoomTypeResponseDto>>> GetPaged(
-    [FromQuery] RoomTypeFilterRequest request,
-    CancellationToken ct)
+        [FromQuery] RoomTypeFilterRequest request, CancellationToken ct)
     {
         return Ok(await _service.GetPagedAsync(request, ct));
     }
@@ -34,21 +35,26 @@ public class RoomTypesController : ControllerBase
         return result == null ? NotFound() : Ok(result);
     }
 
-    
     [HttpGet("{id:int}/rooms")]
     [AllowAnonymous]
-    public async Task<ActionResult<PagedResult<RoomResponseDto>>> GetRoomsByTypeId(int id,[FromQuery] PagedRequest request,CancellationToken ct)
+    public async Task<ActionResult<PagedResult<RoomResponseDto>>> GetRoomsByTypeId(
+        int id, [FromQuery] PagedRequest request, CancellationToken ct)
     {
         var result = await _service.GetRoomsByTypeIdAsync(id, request, ct);
         return Ok(result);
     }
 
-
     [HttpPost]
     [Authorize(Policy = "RoomTypeWrite")]
-    public async Task<IActionResult> Create([FromForm] CreateRoomTypeDto dto,[FromForm] List<IFormFile>? photos, CancellationToken ct)
+    public async Task<IActionResult> Create(
+        [FromForm] CreateRoomTypeDto dto,
+        [FromForm] List<IFormFile>? photos,
+        CancellationToken ct)
     {
-        var id = await _service.CreateAsync(dto, photos, ct);
+        var id = await ((RoomTypeService)_service).CreateAsync(
+            dto, photos, ct,
+            actorUserId: GetCurrentUserId(),
+            ip: GetIp());
         return CreatedAtAction(nameof(GetById), new { id }, null);
     }
 
@@ -56,7 +62,10 @@ public class RoomTypesController : ControllerBase
     [Authorize(Policy = "RoomTypeWrite")]
     public async Task<IActionResult> Update(int id, [FromBody] UpdateRoomTypeDto dto, CancellationToken ct)
     {
-        await _service.UpdateAsync(id, dto, ct);
+        await ((RoomTypeService)_service).UpdateAsync(
+            id, dto, ct,
+            actorUserId: GetCurrentUserId(),
+            ip: GetIp());
         return NoContent();
     }
 
@@ -64,7 +73,10 @@ public class RoomTypesController : ControllerBase
     [Authorize(Policy = "RoomTypeDelete")]
     public async Task<IActionResult> Delete(int id, CancellationToken ct)
     {
-        await _service.DeleteAsync(id, ct);
+        await ((RoomTypeService)_service).DeleteAsync(
+            id, ct,
+            actorUserId: GetCurrentUserId(),
+            ip: GetIp());
         return NoContent();
     }
 
@@ -72,7 +84,10 @@ public class RoomTypesController : ControllerBase
     [Authorize(Policy = "PhotoManagement")]
     public async Task<IActionResult> AddPhotos(int id, [FromForm] List<IFormFile> photos, CancellationToken ct)
     {
-        await _service.AddPhotosAsync(id, photos, ct);
+        await ((RoomTypeService)_service).AddPhotosAsync(
+            id, photos, ct,
+            actorUserId: GetCurrentUserId(),
+            ip: GetIp());
         return Ok();
     }
 
@@ -80,7 +95,20 @@ public class RoomTypesController : ControllerBase
     [Authorize(Policy = "PhotoManagement")]
     public async Task<IActionResult> DeletePhoto(int photoId, CancellationToken ct)
     {
-        await _service.DeletePhotoAsync(photoId, ct);
+        await ((RoomTypeService)_service).DeletePhotoAsync(
+            photoId, ct,
+            actorUserId: GetCurrentUserId(),
+            ip: GetIp());
         return NoContent();
     }
+
+    // ── helpers ──────────────────────────────────────────────────────────────
+
+    private Guid? GetCurrentUserId()
+    {
+        var claim = User.FindFirstValue(ClaimTypes.NameIdentifier);
+        return claim != null ? Guid.Parse(claim) : null;
+    }
+
+    private string? GetIp() => HttpContext.Connection.RemoteIpAddress?.ToString();
 }

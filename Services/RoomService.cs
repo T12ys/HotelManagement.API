@@ -7,6 +7,7 @@ using HotelWebApplication.DTOs.RoomDTOs;
 using HotelWebApplication.Models;
 using HotelWebApplication.Services.Interfaces;
 using Microsoft.EntityFrameworkCore;
+using System.Text.Json;
 
 namespace HotelWebApplication.Services;
 
@@ -14,16 +15,18 @@ public class RoomService : IRoomService
 {
     private readonly HotelDbContext _db;
     private readonly IMapper _mapper;
+    private readonly IAuditLogService _audit;
 
-    public RoomService(HotelDbContext db, IMapper mapper)
+    public RoomService(HotelDbContext db, IMapper mapper, IAuditLogService audit)
     {
         _db = db;
         _mapper = mapper;
+        _audit = audit;
     }
 
     // READ
 
-    public async Task<PagedResult<RoomResponseDto>> GetPagedAsync(PagedRequest request,CancellationToken ct = default)
+    public async Task<PagedResult<RoomResponseDto>> GetPagedAsync(PagedRequest request, CancellationToken ct = default)
     {
         var query = _db.Rooms
             .Include(x => x.RoomType)
@@ -46,11 +49,7 @@ public class RoomService : IRoomService
             .ProjectTo<RoomResponseDto>(_mapper.ConfigurationProvider)
             .ToListAsync(ct);
 
-        return new PagedResult<RoomResponseDto>(
-            items,
-            total,
-            request.Page,
-            request.PageSize);
+        return new PagedResult<RoomResponseDto>(items, total, request.Page, request.PageSize);
     }
 
     public async Task<RoomResponseDto?> GetByIdAsync(int id, CancellationToken ct = default)
@@ -60,19 +59,18 @@ public class RoomService : IRoomService
             .AsNoTracking()
             .FirstOrDefaultAsync(x => x.Id == id, ct);
 
-        return entity == null
-            ? null
-            : _mapper.Map<RoomResponseDto>(entity);
+        return entity == null ? null : _mapper.Map<RoomResponseDto>(entity);
     }
 
     // WRITE
 
-    public async Task<int> CreateAsync(CreateRoomDto dto, CancellationToken ct = default)
+    public async Task<int> CreateAsync(
+        CreateRoomDto dto,
+        CancellationToken ct = default,
+        Guid? actorUserId = null,
+        string? ip = null)
     {
-        // Проверяем существование RoomType
-        var roomTypeExists = await _db.RoomTypes
-            .AnyAsync(x => x.Id == dto.RoomTypeId, ct);
-
+        var roomTypeExists = await _db.RoomTypes.AnyAsync(x => x.Id == dto.RoomTypeId, ct);
         if (!roomTypeExists)
             throw new KeyNotFoundException("RoomType not found");
 
@@ -81,42 +79,115 @@ public class RoomService : IRoomService
         _db.Rooms.Add(entity);
         await _db.SaveChangesAsync(ct);
 
+        await _audit.LogAsync(
+            actionType: "Create",
+            entityType: "Room",
+            entityId: entity.Id.ToString(),
+            newValue: JsonSerializer.Serialize(new
+            {
+                entity.Number,
+                entity.RoomTypeId,
+                entity.Floor
+            }),
+            actorUserId: actorUserId,
+            ip: ip);
+
         return entity.Id;
     }
 
-    public async Task UpdateAsync(int id, UpdateRoomDto dto, CancellationToken ct = default)
-    {
-        var entity = await _db.Rooms
-            .FirstOrDefaultAsync(x => x.Id == id, ct);
+    public Task<int> CreateAsync(CreateRoomDto dto, CancellationToken ct = default)
+        => CreateAsync(dto, ct, null, null);
 
-        if (entity == null)
-            throw new KeyNotFoundException("Room not found");
+    public async Task UpdateAsync(
+        int id,
+        UpdateRoomDto dto,
+        CancellationToken ct = default,
+        Guid? actorUserId = null,
+        string? ip = null)
+    {
+        var entity = await _db.Rooms.FirstOrDefaultAsync(x => x.Id == id, ct)
+            ?? throw new KeyNotFoundException("Room not found");
+
+        var oldSnapshot = JsonSerializer.Serialize(new
+        {
+            entity.Number,
+            entity.RoomTypeId,
+            entity.Floor
+        });
 
         _mapper.Map(dto, entity);
-
         await _db.SaveChangesAsync(ct);
+
+        await _audit.LogAsync(
+            actionType: "Update",
+            entityType: "Room",
+            entityId: id.ToString(),
+            oldValue: oldSnapshot,
+            newValue: JsonSerializer.Serialize(new
+            {
+                entity.Number,
+                entity.RoomTypeId,
+                entity.Floor
+            }),
+            actorUserId: actorUserId,
+            ip: ip);
     }
 
-    public async Task ChangeAvailabilityAsync(int id, ChangeRoomAvailabilityDto dto, CancellationToken ct = default)
+    public Task UpdateAsync(int id, UpdateRoomDto dto, CancellationToken ct = default)
+        => UpdateAsync(id, dto, ct, null, null);
+
+    public async Task ChangeAvailabilityAsync(
+        int id,
+        ChangeRoomAvailabilityDto dto,
+        CancellationToken ct = default,
+        Guid? actorUserId = null,
+        string? ip = null)
     {
-        var entity = await _db.Rooms
-            .FirstOrDefaultAsync(x => x.Id == id, ct) ?? throw new KeyNotFoundException("Room not found");
+        var entity = await _db.Rooms.FirstOrDefaultAsync(x => x.Id == id, ct)
+            ?? throw new KeyNotFoundException("Room not found");
+
+        var oldAvailability = entity.IsAvailable;
         entity.IsAvailable = dto.IsAvailable;
-
         await _db.SaveChangesAsync(ct);
+
+        await _audit.LogAsync(
+            actionType: "ChangeAvailability",
+            entityType: "Room",
+            entityId: id.ToString(),
+            oldValue: JsonSerializer.Serialize(new { IsAvailable = oldAvailability }),
+            newValue: JsonSerializer.Serialize(new { dto.IsAvailable }),
+            actorUserId: actorUserId,
+            ip: ip);
     }
 
-    // DELETE (Admin only)
+    public Task ChangeAvailabilityAsync(int id, ChangeRoomAvailabilityDto dto, CancellationToken ct = default)
+        => ChangeAvailabilityAsync(id, dto, ct, null, null);
 
-    public async Task DeleteAsync(int id, CancellationToken ct = default)
+    // DELETE
+
+    public async Task DeleteAsync(
+        int id,
+        CancellationToken ct = default,
+        Guid? actorUserId = null,
+        string? ip = null)
     {
-        var entity = await _db.Rooms
-            .FirstOrDefaultAsync(x => x.Id == id, ct);
+        var entity = await _db.Rooms.FirstOrDefaultAsync(x => x.Id == id, ct)
+            ?? throw new KeyNotFoundException("Room not found");
 
-        if (entity == null)
-            throw new KeyNotFoundException("Room not found");
+        var snapshot = JsonSerializer.Serialize(new { entity.Number, entity.RoomTypeId });
 
         _db.Rooms.Remove(entity);
         await _db.SaveChangesAsync(ct);
+
+        await _audit.LogAsync(
+            actionType: "Delete",
+            entityType: "Room",
+            entityId: id.ToString(),
+            oldValue: snapshot,
+            actorUserId: actorUserId,
+            ip: ip);
     }
+
+    public Task DeleteAsync(int id, CancellationToken ct = default)
+        => DeleteAsync(id, ct, null, null);
 }
