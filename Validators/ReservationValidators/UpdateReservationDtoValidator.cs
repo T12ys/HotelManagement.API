@@ -8,7 +8,7 @@ public class UpdateReservationDtoValidator : AbstractValidator<UpdateReservation
 {
     public UpdateReservationDtoValidator()
     {
-        // Если переданы даты — проверяем что EndDate > StartDate
+        // If dates are passed, check that EndDate > StartDate
         When(x => x.StartDate.HasValue && x.EndDate.HasValue, () =>
         {
             RuleFor(x => x.EndDate!.Value)
@@ -16,7 +16,7 @@ public class UpdateReservationDtoValidator : AbstractValidator<UpdateReservation
                 .WithMessage("End date must be after start date.");
         });
 
-        // Нельзя вручную выставить статус Confirmed через PUT — это делает /payments/mock
+        // You can't manually set the Confirmed status via PUT - /payments/mock does that.
         RuleFor(x => x.Status)
             .NotEqual(ReservationStatus.Confirmed)
             .When(x => x.Status.HasValue)

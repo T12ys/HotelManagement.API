@@ -33,7 +33,7 @@ public class CreateReservationDtoValidator : AbstractValidator<CreateReservation
 
         RuleFor(x => x.GuestCount)
             .GreaterThan(0).WithMessage("Guest count must be at least 1.");
-        // максимум проверяется в ReservationService по capacity из БД
+        // the maximum is checked in the ReservationService by the capacity from the DB
 
         RuleForEach(x => x.Items).SetValidator(new ReservationItemDtoValidator());
     }

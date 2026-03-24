@@ -2,6 +2,6 @@
 
 public enum RuleType
 {
-    SeasonalRange,  // правило на диапазон дат 
-    SpecialDate     // правило на конкретную дату
+    SeasonalRange,  // rule for date range
+    SpecialDate     // rule for a specific date
 }

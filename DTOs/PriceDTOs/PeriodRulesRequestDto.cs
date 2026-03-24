@@ -6,7 +6,7 @@ public class PeriodRulesRequestDto
 
     public DateTime From { get; set; }
 
-    // Конец периода — если фронт не передал, бек подставит год вперёд ( в контролере)
+    // End of period - if the front has not transmitted, the back will substitute the year ahead (in the controller)
     public DateTime To { get; set; }
 
     public int Page { get; set; } = 1;

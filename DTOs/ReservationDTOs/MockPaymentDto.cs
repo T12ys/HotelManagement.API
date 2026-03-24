@@ -5,7 +5,7 @@ public class MockPaymentDto
     public Guid ReservationId { get; set; }
 
     /// <summary>
-    /// Симулировать успех (true) или неудачу (false)
+    /// Simulate success (true) or failure (false)
     /// </summary>
     public bool SimulateSuccess { get; set; } = true;
 }

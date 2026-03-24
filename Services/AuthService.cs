@@ -11,7 +11,7 @@ using System.Text;
 
 namespace HotelWebApplication.Services;
 
-//Примечание: AuthService не использует IHttpContextAccessor — контроллер будет управлять cookie.
+//Note: AuthService does not use IHttpContextAccessor - the controller will manage the cookie.
 
 public class AuthService : IAuthService
 {
@@ -41,12 +41,11 @@ public class AuthService : IAuthService
 
         var access = GenerateAccessToken(user, out var expiresAt);
 
-        // генерируем refresh токен
         var refresh = CreateRefreshTokenString();
         var refreshEntity = new RefreshToken
         {
             UserId = user.Id,
-            Token = HashToken(refresh), // храним только хэш
+            Token = HashToken(refresh), 
             ExpiresAt = DateTime.UtcNow.AddDays(int.Parse(_cfg["Jwt:RefreshTokenDays"] ?? "7")),
             CreatedAt = DateTime.UtcNow
         };
@@ -88,10 +87,8 @@ public class AuthService : IAuthService
         if (user == null || !user.IsActive)
             throw new UnauthorizedAccessException("User not found or inactive.");
 
-        // Ревокируем текущий токен
         existing.RevokedAt = DateTime.UtcNow;
 
-        // Генерируем новый токен
         var newRefresh = CreateRefreshTokenString();
         var newRefreshEntity = new RefreshToken
         {
@@ -157,7 +154,6 @@ public class AuthService : IAuthService
         _db.Users.Add(user);
         await _db.SaveChangesAsync(ct);
 
-        // Генерируем токены
         var access = GenerateAccessToken(user, out var expiresAt);
         var refresh = CreateRefreshTokenString();
 

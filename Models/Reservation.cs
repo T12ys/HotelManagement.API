@@ -5,8 +5,6 @@ namespace HotelWebApplication.Models
     public class Reservation
     {
         public Guid Id { get; set; } = Guid.NewGuid();
-
-        // Теперь бронь привязана к Room
         public int RoomId { get; set; }
         public Room Room { get; set; } = null!;
 
@@ -34,7 +32,6 @@ namespace HotelWebApplication.Models
 
         public string Source { get; set; } = "web";
 
-        // оптимистичная блокировка
         public byte[]? ConcurrencyToken { get; set; }
 
         public ICollection<ReservationItem> ReservationItems { get; set; }

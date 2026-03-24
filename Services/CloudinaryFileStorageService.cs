@@ -48,7 +48,7 @@ public class CloudinaryFileStorageService : IFileStorageService
         if (result.Error != null)
             throw new InvalidOperationException($"Cloudinary upload error: {result.Error.Message}");
 
-        // Возвращаем полный HTTPS URL вместо относительного пути
+        // Return the full HTTPS URL instead of the relative path
         return result.SecureUrl.ToString();
     }
 
@@ -56,7 +56,7 @@ public class CloudinaryFileStorageService : IFileStorageService
     {
         if (string.IsNullOrWhiteSpace(fileUrl)) return;
 
-        // Извлекаем publicId из URL: "hotel/rooms/abc123"
+        // Extracting publicId from URL: "hotel/rooms/abc123"
         var publicId = ExtractPublicId(fileUrl);
         if (publicId == null) return;
 
@@ -66,20 +66,20 @@ public class CloudinaryFileStorageService : IFileStorageService
 
     private static string? ExtractPublicId(string url)
     {
-        // URL вида: https://res.cloudinary.com/{cloud}/image/upload/v123/hotel/rooms/abc123.jpg
+        // URL like: https://res.cloudinary.com/{cloud}/image/upload/v123/hotel/rooms/abc123.jpg
         try
         {
             var uri = new Uri(url);
             var segments = uri.AbsolutePath.Split('/');
-            // Найти индекс "upload", взять всё после него без расширения
+            // Find the "upload" index, take everything after it without the extension
             var uploadIndex = Array.IndexOf(segments, "upload");
             if (uploadIndex < 0 || uploadIndex + 2 >= segments.Length) return null;
 
-            // Пропустить версию (v1234567890)
+            // Skip version (v1234567890)
             var startIndex = segments[uploadIndex + 1].StartsWith("v") ? uploadIndex + 2 : uploadIndex + 1;
             var pathParts = segments[startIndex..];
             var fullPath = string.Join("/", pathParts);
-            return Path.ChangeExtension(fullPath, null); // убрать расширение
+            return Path.ChangeExtension(fullPath, null); // remove extension
         }
         catch
         {

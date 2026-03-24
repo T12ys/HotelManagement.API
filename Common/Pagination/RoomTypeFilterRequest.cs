@@ -20,9 +20,9 @@ public class RoomTypeFilterRequest : PagedRequest
     public List<int>? TagIds { get; set; }
 
     /// <summary>
-    /// Фильтр по доступности: показывать только типы комнат,
-    /// у которых есть хотя бы одна свободная комната в указанный период.
-    /// Оба поля должны быть заполнены для активации фильтра.
+    /// Availability filter: show only room types that
+    /// have at least one available room during the specified period.
+    /// Both fields must be filled in to activate the filter.
     /// </summary>
     public DateTime? CheckIn { get; set; }
     public DateTime? CheckOut { get; set; }

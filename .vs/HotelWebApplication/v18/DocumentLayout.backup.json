@@ -1,5 +1,6 @@
 {
   "Version": 1,
+<<<<<<< HEAD
   "WorkspaceRootPath": "C:\\Users\\User\\source\\repos\\HotelManagement.API\\",
   "Documents": [
     {
@@ -251,6 +252,10 @@
       "RelativeMoniker": "D:0:0:{594C47E0-970F-3A58-F5D7-EAB015877E10}|HotelWebApplication.csproj|solutionrelative:models\\roomtype.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
+=======
+  "WorkspaceRootPath": "C:\\Users\\Elshan\\source\\repos\\HotelManagementAPI\\",
+  "Documents": [],
+>>>>>>> origin/elshan
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
@@ -258,7 +263,11 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
+<<<<<<< HEAD
           "SelectedChildIndex": 2,
+=======
+          "SelectedChildIndex": -1,
+>>>>>>> origin/elshan
           "Children": [
             {
               "$type": "Bookmark",
@@ -267,6 +276,7 @@
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+<<<<<<< HEAD
             },
             {
               "$type": "Document",
@@ -1012,6 +1022,8 @@
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-03-23T12:09:43.339Z"
+=======
+>>>>>>> origin/elshan
             }
           ]
         }

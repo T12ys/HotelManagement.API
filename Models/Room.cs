@@ -4,7 +4,7 @@ public class Room
 {
     public int Id { get; set; }
 
-    // Номер комнаты или внутренний код
+    // Room number or internal code
     public string Number { get; set; } = null!;
 
     public int RoomTypeId { get; set; }

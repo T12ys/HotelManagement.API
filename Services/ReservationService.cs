@@ -24,7 +24,7 @@ public class ReservationService : IReservationService
         _priceRules = priceRules;
     }
 
-    // ─── CREATE ───────────────────────────────────────────────────────────────
+    // CREATE
     public async Task<ReservationResponseDto> CreateAsync(CreateReservationDto dto, string? ip = null)
     {
         await ExpireHeldReservationsAsync();
@@ -50,7 +50,7 @@ public class ReservationService : IReservationService
             var reservation = new Reservation
             {
                 RoomId = room.Id,
-                UserId = dto.UserId, // ← добавить
+                UserId = dto.UserId, 
                 CustomerName = dto.CustomerName,
                 CustomerEmail = dto.CustomerEmail,
                 CustomerPhone = dto.CustomerPhone,
@@ -99,7 +99,7 @@ public class ReservationService : IReservationService
         }
     }
 
-    // ─── GET BY ID ────────────────────────────────────────────────────────────
+    // GET BY ID
     public async Task<ReservationResponseDto?> GetByIdAsync(Guid id)
     {
         var r = await _db.Reservations
@@ -110,7 +110,7 @@ public class ReservationService : IReservationService
         return r is null ? null : MapToResponse(r);
     }
 
-    // ─── GET ALL ──────────────────────────────────────────────────────────────
+    // GET ALL 
     public async Task<PagedResult<ReservationResponseDto>> GetAllAsync(ReservationFilterRequest filter)
     {
         var query = _db.Reservations
@@ -148,7 +148,7 @@ public class ReservationService : IReservationService
             items.Select(MapToResponse), total, filter.Page, filter.PageSize);
     }
 
-    // ─── UPDATE ───────────────────────────────────────────────────────────────
+    // UPDATE
     public async Task<ReservationResponseDto> UpdateAsync(
         Guid id, UpdateReservationDto dto, Guid actorUserId, string? ip = null)
     {
@@ -211,7 +211,7 @@ public class ReservationService : IReservationService
         return MapToResponse(reservation);
     }
 
-    // ─── CANCEL ───────────────────────────────────────────────────────────────
+    // CANCEL
     public async Task CancelAsync(Guid id, Guid actorUserId, string? ip = null)
     {
         var reservation = await _db.Reservations.FindAsync(id)
@@ -231,7 +231,7 @@ public class ReservationService : IReservationService
             actorUserId: actorUserId, ip: ip);
     }
 
-    // ─── MOCK PAYMENT ─────────────────────────────────────────────────────────
+    // MOCK PAYMENT
     public async Task<ReservationResponseDto> ProcessMockPaymentAsync(
         Guid reservationId, bool simulateSuccess, string? ip = null)
     {
@@ -279,7 +279,7 @@ public class ReservationService : IReservationService
         return MapToResponse(reservation);
     }
 
-    // ─── HELPERS ──────────────────────────────────────────────────────────────
+    // HELPERS 
 
     private async Task ExpireHeldReservationsAsync()
     {

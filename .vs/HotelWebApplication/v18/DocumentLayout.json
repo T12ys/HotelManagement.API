@@ -278,7 +278,7 @@
               "RelativeToolTip": "Validators\\ReservationValidators\\CreateReservationDtoValidator.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAACwAAAAFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-23T12:09:43.075Z",
+              "WhenOpened": "2026-03-24T16:39:33.962Z",
               "EditorCaption": ""
             },
             {
@@ -291,7 +291,7 @@
               "RelativeToolTip": "Validators\\RoomValidators\\CreateTagDtoValidator.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-23T12:09:43.077Z"
+              "WhenOpened": "2026-03-24T16:39:33.991Z"
             },
             {
               "$type": "Document",
@@ -303,7 +303,7 @@
               "RelativeToolTip": "Services\\TagService.cs",
               "ViewState": "AgIAAGQAAAAAAAAAAAAcwHoAAAAFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-23T12:09:43.079Z"
+              "WhenOpened": "2026-03-24T16:39:33.994Z"
             },
             {
               "$type": "Document",
@@ -315,7 +315,7 @@
               "RelativeToolTip": "appsettings.json",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABkAAAAuAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2026-03-23T12:09:43.081Z"
+              "WhenOpened": "2026-03-24T16:39:33.996Z"
             },
             {
               "$type": "Document",
@@ -327,7 +327,7 @@
               "RelativeToolTip": "DTOs\\RoomDTOs\\CreateTagDto.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-23T12:09:43.084Z"
+              "WhenOpened": "2026-03-24T16:39:33.998Z"
             },
             {
               "$type": "Document",
@@ -339,7 +339,7 @@
               "RelativeToolTip": "Validators\\AuthValidators\\RegisterValidator.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABcAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-23T12:09:43.087Z"
+              "WhenOpened": "2026-03-24T16:39:34Z"
             },
             {
               "$type": "Document",
@@ -351,7 +351,7 @@
               "RelativeToolTip": "Validators\\RoomValidators\\CreateRoomDtoValidator.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-23T12:09:43.089Z"
+              "WhenOpened": "2026-03-24T16:39:34.002Z"
             },
             {
               "$type": "Document",
@@ -363,7 +363,7 @@
               "RelativeToolTip": "Services\\Interfaces\\IReservationService.cs",
               "ViewState": "AgIAAAsAAAAAAAAAAAAQwCUAAABmAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-23T12:09:43.091Z"
+              "WhenOpened": "2026-03-24T16:39:34.003Z"
             },
             {
               "$type": "Document",
@@ -375,7 +375,7 @@
               "RelativeToolTip": "Data\\HotelDbContext.cs",
               "ViewState": "AgIAAGUAAAAAAAAAAAAmwJgAAAAhAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-23T12:09:43.093Z"
+              "WhenOpened": "2026-03-24T16:39:34.005Z"
             },
             {
               "$type": "Document",
@@ -387,7 +387,7 @@
               "RelativeToolTip": "Validators\\RoomValidators\\CreateRoomTypeDtoValidator.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABgAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-23T12:09:43.096Z"
+              "WhenOpened": "2026-03-24T16:39:34.007Z"
             },
             {
               "$type": "Document",
@@ -399,7 +399,7 @@
               "RelativeToolTip": "DTOs\\RoomDTOs\\CreateRoomTypeDto.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAuAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-23T12:09:43.098Z"
+              "WhenOpened": "2026-03-24T16:39:34.009Z"
             },
             {
               "$type": "Document",
@@ -411,7 +411,7 @@
               "RelativeToolTip": "Models\\Tag.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAxAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-23T12:09:43.099Z"
+              "WhenOpened": "2026-03-24T16:39:34.011Z"
             },
             {
               "$type": "Document",
@@ -423,7 +423,7 @@
               "RelativeToolTip": "Common\\Extensions\\QueryableExtensions.cs",
               "ViewState": "AgIAABgAAAAAAAAAAAAAwCUAAAA9AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-23T12:09:43.102Z"
+              "WhenOpened": "2026-03-24T16:39:34.013Z"
             },
             {
               "$type": "Document",
@@ -435,7 +435,7 @@
               "RelativeToolTip": "Mappings\\MappingProfile.cs",
               "ViewState": "AgIAACMAAAAAAAAAAAAYwDcAAABEAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-23T12:09:43.105Z"
+              "WhenOpened": "2026-03-24T16:39:34.015Z"
             },
             {
               "$type": "Document",
@@ -447,7 +447,7 @@
               "RelativeToolTip": "DTOs\\RoomDTOs\\TagResponseDto.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-23T12:09:43.107Z"
+              "WhenOpened": "2026-03-24T16:39:34.016Z"
             },
             {
               "$type": "Document",
@@ -459,7 +459,7 @@
               "RelativeToolTip": "Common\\Pagination\\PagedRequest.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAnAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-23T12:09:43.11Z"
+              "WhenOpened": "2026-03-24T16:39:34.018Z"
             },
             {
               "$type": "Document",
@@ -471,7 +471,7 @@
               "RelativeToolTip": "Controllers\\TagsController.cs",
               "ViewState": "AgIAABIAAAAAAAAAAAAIwCYAAAA1AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-23T12:09:43.112Z"
+              "WhenOpened": "2026-03-24T16:39:34.02Z"
             },
             {
               "$type": "Document",
@@ -483,7 +483,7 @@
               "RelativeToolTip": "Services\\Interfaces\\ITagService.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAABMAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-23T12:09:43.116Z"
+              "WhenOpened": "2026-03-24T16:39:34.022Z"
             },
             {
               "$type": "Document",
@@ -495,7 +495,7 @@
               "RelativeToolTip": "Enums\\UserRole.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-23T12:09:43.12Z"
+              "WhenOpened": "2026-03-24T16:39:34.024Z"
             },
             {
               "$type": "Document",
@@ -507,7 +507,7 @@
               "RelativeToolTip": "Enums\\RuleType.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-23T12:09:43.123Z"
+              "WhenOpened": "2026-03-24T16:39:34.026Z"
             },
             {
               "$type": "Document",
@@ -519,7 +519,7 @@
               "RelativeToolTip": "Common\\Pagination\\RoomTypeFilterRequest.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAqAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-23T12:09:43.126Z"
+              "WhenOpened": "2026-03-24T16:39:34.027Z"
             },
             {
               "$type": "Document",
@@ -531,7 +531,7 @@
               "RelativeToolTip": "Services\\UserService.cs",
               "ViewState": "AgIAAFoAAAAAAAAAAAAuwHQAAAApAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-23T12:09:43.26Z"
+              "WhenOpened": "2026-03-24T16:39:34.029Z"
             },
             {
               "$type": "Document",
@@ -543,7 +543,7 @@
               "RelativeToolTip": "DTOs\\AuthDTOs\\AuthResponseDto.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAsAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-23T12:09:43.263Z"
+              "WhenOpened": "2026-03-24T16:39:34.031Z"
             },
             {
               "$type": "Document",
@@ -555,7 +555,7 @@
               "RelativeToolTip": "DTOs\\AuthDTOs\\RegisterDto.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAsAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-23T12:09:43.265Z"
+              "WhenOpened": "2026-03-24T16:39:34.033Z"
             },
             {
               "$type": "Document",
@@ -567,7 +567,7 @@
               "RelativeToolTip": "Services\\AuthService.cs",
               "ViewState": "AgIAAGgAAAAAAAAAAAAiwLYAAAArAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-23T12:09:43.267Z"
+              "WhenOpened": "2026-03-24T16:39:34.035Z"
             },
             {
               "$type": "Document",
@@ -579,7 +579,7 @@
               "RelativeToolTip": "Models\\User.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAUwAoAAAA5AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-23T12:09:43.269Z"
+              "WhenOpened": "2026-03-24T16:39:34.037Z"
             },
             {
               "$type": "Document",
@@ -591,7 +591,7 @@
               "RelativeToolTip": "DTOs\\UserDTOs\\UpdateProfileDto.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAsAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-23T12:09:43.271Z"
+              "WhenOpened": "2026-03-24T16:39:34.039Z"
             },
             {
               "$type": "Document",
@@ -603,7 +603,7 @@
               "RelativeToolTip": "DTOs\\UserDTOs\\UserResponseDto.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAsAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-23T12:09:43.273Z"
+              "WhenOpened": "2026-03-24T16:39:34.04Z"
             },
             {
               "$type": "Document",
@@ -615,7 +615,7 @@
               "RelativeToolTip": "Services\\Interfaces\\IAuthService.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAABKAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-23T12:09:43.275Z"
+              "WhenOpened": "2026-03-24T16:39:34.042Z"
             },
             {
               "$type": "Document",
@@ -627,7 +627,7 @@
               "RelativeToolTip": "Services\\Interfaces\\IUserService.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAABuAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-23T12:09:43.277Z"
+              "WhenOpened": "2026-03-24T16:39:34.044Z"
             },
             {
               "$type": "Document",
@@ -639,7 +639,7 @@
               "RelativeToolTip": "Controllers\\ReservationsController.cs",
               "ViewState": "AgIAAF0AAAAAAAAAAAAuwHcAAAAfAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-23T12:09:43.279Z"
+              "WhenOpened": "2026-03-24T16:39:34.046Z"
             },
             {
               "$type": "Document",
@@ -651,7 +651,7 @@
               "RelativeToolTip": "DTOs\\ReservationDTOs\\CreateReservationDto.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-23T12:09:43.281Z"
+              "WhenOpened": "2026-03-24T16:39:34.048Z"
             },
             {
               "$type": "Document",
@@ -663,7 +663,7 @@
               "RelativeToolTip": "Models\\Reservation.cs",
               "ViewState": "AgIAAAwAAAAAAAAAAAAYwBgAAABSAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-23T12:09:43.283Z"
+              "WhenOpened": "2026-03-24T16:39:34.05Z"
             },
             {
               "$type": "Document",
@@ -675,7 +675,7 @@
               "RelativeToolTip": "Services\\ReservationService.cs",
               "ViewState": "AgIAAFYBAAAAAAAAAAAuwGQBAAAsAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-23T12:09:43.285Z"
+              "WhenOpened": "2026-03-24T16:39:34.051Z"
             },
             {
               "$type": "Document",
@@ -687,7 +687,7 @@
               "RelativeToolTip": "Controllers\\AuthController.cs",
               "ViewState": "AgIAADgAAAAAAAAAAAAmwEYAAAAaAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-23T12:09:43.286Z"
+              "WhenOpened": "2026-03-24T16:39:34.053Z"
             },
             {
               "$type": "Document",
@@ -699,7 +699,7 @@
               "RelativeToolTip": "Validators\\AuthValidators\\LoginValidator.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-23T12:09:43.289Z"
+              "WhenOpened": "2026-03-24T16:39:34.055Z"
             },
             {
               "$type": "Document",
@@ -711,7 +711,7 @@
               "RelativeToolTip": "DTOs\\AuthDTOs\\LoginDto.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-23T12:09:43.29Z"
+              "WhenOpened": "2026-03-24T16:39:34.057Z"
             },
             {
               "$type": "Document",
@@ -723,7 +723,7 @@
               "RelativeToolTip": "Controllers\\UserController.cs",
               "ViewState": "AgIAADQAAAAAAAAAAAAcwEsAAAAFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-23T12:09:43.292Z"
+              "WhenOpened": "2026-03-24T16:39:34.059Z"
             },
             {
               "$type": "Document",
@@ -735,7 +735,7 @@
               "RelativeToolTip": "DTOs\\UserDTOs\\UpdateUserRoleDto.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-23T12:09:43.295Z"
+              "WhenOpened": "2026-03-24T16:39:34.061Z"
             },
             {
               "$type": "Document",
@@ -747,7 +747,7 @@
               "RelativeToolTip": "DTOs\\UserDTOs\\ChangePasswordDto.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-23T12:09:43.296Z"
+              "WhenOpened": "2026-03-24T16:39:34.063Z"
             },
             {
               "$type": "Document",
@@ -759,7 +759,7 @@
               "RelativeToolTip": "DTOs\\AuthDTOs\\RefreshTokenRequestDto.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-23T12:09:43.298Z"
+              "WhenOpened": "2026-03-24T16:39:34.064Z"
             },
             {
               "$type": "Document",
@@ -771,7 +771,7 @@
               "RelativeToolTip": "Models\\ReservationItem.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-23T12:09:43.3Z"
+              "WhenOpened": "2026-03-24T16:39:34.066Z"
             },
             {
               "$type": "Document",
@@ -783,7 +783,7 @@
               "RelativeToolTip": "DTOs\\ReservationDTOs\\ReservationItemDto.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-23T12:09:43.302Z"
+              "WhenOpened": "2026-03-24T16:39:34.068Z"
             },
             {
               "$type": "Document",
@@ -795,7 +795,7 @@
               "RelativeToolTip": "DTOs\\ReservationDTOs\\ReservationResponseDto.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAlAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-23T12:09:43.304Z"
+              "WhenOpened": "2026-03-24T16:39:34.07Z"
             },
             {
               "$type": "Document",
@@ -807,7 +807,7 @@
               "RelativeToolTip": "DTOs\\ReservationDTOs\\UpdateReservationDto.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-23T12:09:43.306Z"
+              "WhenOpened": "2026-03-24T16:39:34.072Z"
             },
             {
               "$type": "Document",
@@ -819,7 +819,7 @@
               "RelativeToolTip": "DTOs\\ReservationDTOs\\ReservationItemResponseDto.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAA7AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-23T12:09:43.307Z"
+              "WhenOpened": "2026-03-24T16:39:34.074Z"
             },
             {
               "$type": "Document",
@@ -831,7 +831,7 @@
               "RelativeToolTip": "DTOs\\ReservationDTOs\\ReservationFilterRequest.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAnAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-23T12:09:43.309Z"
+              "WhenOpened": "2026-03-24T16:39:34.075Z"
             },
             {
               "$type": "Document",
@@ -843,7 +843,7 @@
               "RelativeToolTip": "DTOs\\ReservationDTOs\\MockPaymentDto.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-23T12:09:43.312Z"
+              "WhenOpened": "2026-03-24T16:39:34.077Z"
             },
             {
               "$type": "Document",
@@ -855,7 +855,7 @@
               "RelativeToolTip": "Services\\Interfaces\\IPriceRuleService.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-23T12:09:43.314Z"
+              "WhenOpened": "2026-03-24T16:39:34.079Z"
             },
             {
               "$type": "Document",
@@ -867,7 +867,7 @@
               "RelativeToolTip": "Services\\Interfaces\\IRoomTypeService.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-23T12:09:43.315Z"
+              "WhenOpened": "2026-03-24T16:39:34.081Z"
             },
             {
               "$type": "Document",
@@ -879,7 +879,7 @@
               "RelativeToolTip": "Services\\Interfaces\\IFileStorageService.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-23T12:09:43.317Z"
+              "WhenOpened": "2026-03-24T16:39:34.083Z"
             },
             {
               "$type": "Document",
@@ -891,7 +891,7 @@
               "RelativeToolTip": "Program.cs",
               "ViewState": "AgIAAFoAAAAAAAAAAAAAAIEAAABEAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-23T12:09:43.319Z"
+              "WhenOpened": "2026-03-24T16:39:34.085Z"
             },
             {
               "$type": "Document",
@@ -903,7 +903,7 @@
               "RelativeToolTip": "Common\\Pagination\\PagedResult.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-23T12:09:43.32Z"
+              "WhenOpened": "2026-03-24T16:39:34.087Z"
             },
             {
               "$type": "Document",
@@ -915,7 +915,7 @@
               "RelativeToolTip": "Services\\RoomTypeService.cs",
               "ViewState": "AgIAAPoAAAAAAAAAAAAuwAwBAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-23T12:09:43.323Z"
+              "WhenOpened": "2026-03-24T16:39:34.089Z"
             },
             {
               "$type": "Document",
@@ -927,7 +927,7 @@
               "RelativeToolTip": "Controllers\\RoomTypesController.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAD4AAAAcAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-23T12:09:43.325Z"
+              "WhenOpened": "2026-03-24T16:39:34.091Z"
             },
             {
               "$type": "Document",
@@ -939,7 +939,7 @@
               "RelativeToolTip": "Controllers\\PriceRulesController.cs",
               "ViewState": "AgIAAAwAAAAAAAAAAAAqwAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-23T12:09:43.327Z"
+              "WhenOpened": "2026-03-24T16:39:34.093Z"
             },
             {
               "$type": "Document",
@@ -951,7 +951,7 @@
               "RelativeToolTip": "Controllers\\PaymentsController.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-23T12:09:43.328Z"
+              "WhenOpened": "2026-03-24T16:39:34.095Z"
             },
             {
               "$type": "Document",
@@ -963,7 +963,7 @@
               "RelativeToolTip": "Controllers\\AuditLogsController.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-23T12:09:43.33Z"
+              "WhenOpened": "2026-03-24T16:39:34.097Z"
             },
             {
               "$type": "Document",
@@ -975,7 +975,7 @@
               "RelativeToolTip": "Enums\\ReservationStatus.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-23T12:09:43.332Z"
+              "WhenOpened": "2026-03-24T16:39:34.099Z"
             },
             {
               "$type": "Document",
@@ -987,7 +987,7 @@
               "RelativeToolTip": "Validators\\PriceRuleValidators\\PriceCalculationRequestDtoValidator.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-23T12:09:43.335Z"
+              "WhenOpened": "2026-03-24T16:39:34.101Z"
             },
             {
               "$type": "Document",
@@ -999,7 +999,7 @@
               "RelativeToolTip": "Services\\AuditLogService.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-23T12:09:43.337Z"
+              "WhenOpened": "2026-03-24T16:39:34.103Z"
             },
             {
               "$type": "Document",
@@ -1011,7 +1011,7 @@
               "RelativeToolTip": "Models\\RoomType.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-23T12:09:43.339Z"
+              "WhenOpened": "2026-03-24T16:39:34.105Z"
             }
           ]
         }

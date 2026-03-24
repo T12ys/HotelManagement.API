@@ -15,15 +15,15 @@ public class DailyPriceDto
 {
     public DateTime Date { get; set; }
 
-    // Базовая цена из RoomType (до  учета всех правил (модификаторов))
+    // Base price from RoomType (before all rules (modifiers) are taken into account)
     public decimal BasePrice { get; set; }
 
-    // Итоговая цена на 1 день после после учета всех правил на этот день
+    // The final price for 1 day after taking into account all the rules for that day
     public decimal FinalPrice { get; set; }
 
     public bool HasModifiers => AppliedRules.Count > 0;
 
-    // Список применённых правил
+    // List of applied rules
     public List<AppliedRuleDto> AppliedRules { get; set; } = new();
 }
 
@@ -32,7 +32,7 @@ public class AppliedRuleDto
     public int RuleId { get; set; }
     public string RuleName { get; set; } = null!;
 
-    // Изменение цены в абсолютных числах на этот день
-    // Отрицательное = скидка, положительное = надбавка
+    // Price change in absolute numbers for this day
+    // Negative = discount, positive = premium
     public decimal PriceDelta { get; set; }
 }

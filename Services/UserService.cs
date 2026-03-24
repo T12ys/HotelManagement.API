@@ -79,7 +79,7 @@ public class UserService : IUserService
         return MapToDto(user);
     }
 
-    // Перегрузка для обратной совместимости (вызов из контроллера без actor)
+    // Overload for backward compatibility (call from controller without actor)
     public Task<UserResponseDto> UpdateProfileAsync(Guid userId, UpdateProfileDto dto, CancellationToken ct = default)
         => UpdateProfileAsync(userId, dto, ct, null, null);
 

@@ -2,7 +2,7 @@
 
 namespace HotelWebApplication.Services;
 
-//Не используется
+//Not used
 
 public class LocalFileStorageService : IFileStorageService
 {

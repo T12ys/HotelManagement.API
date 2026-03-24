@@ -4,7 +4,7 @@ namespace HotelWebApplication.DTOs.PriceDTOs;
 
 public class UpdatePriceRuleDto
 {
-    // RoomTypeId намеренно отсутствует — тип номера не меняем после создания
+    // RoomTypeId is intentionally missing - we don't change the room type after creation
 
     public string Name { get; set; } = null!;
     public RuleType RuleType { get; set; }
