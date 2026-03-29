@@ -166,13 +166,18 @@ public class RoomService : IRoomService
     // DELETE
 
     public async Task DeleteAsync(
-        int id,
-        CancellationToken ct = default,
-        Guid? actorUserId = null,
-        string? ip = null)
+    int id,
+    CancellationToken ct = default,
+    Guid? actorUserId = null,
+    string? ip = null)
     {
         var entity = await _db.Rooms.FirstOrDefaultAsync(x => x.Id == id, ct)
             ?? throw new KeyNotFoundException("Room not found");
+
+        
+        var hasReservations = await _db.Reservations.AnyAsync(r => r.RoomId == id, ct);
+        if (hasReservations)
+            throw new InvalidOperationException("Cannot delete room with existing reservations");
 
         var snapshot = JsonSerializer.Serialize(new { entity.Number, entity.RoomTypeId });
 

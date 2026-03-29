@@ -3,16 +3,112 @@
   "WorkspaceRootPath": "C:\\Users\\User\\source\\repos\\HotelManagement.API\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{594C47E0-970F-3A58-F5D7-EAB015877E10}|HotelWebApplication.csproj|c:\\users\\user\\source\\repos\\hotelmanagement.api\\validators\\uservalidators\\updateprofilevalidator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{594C47E0-970F-3A58-F5D7-EAB015877E10}|HotelWebApplication.csproj|solutionrelative:validators\\uservalidators\\updateprofilevalidator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{594C47E0-970F-3A58-F5D7-EAB015877E10}|HotelWebApplication.csproj|c:\\users\\user\\source\\repos\\hotelmanagement.api\\validators\\uservalidators\\changepasswordvalidator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{594C47E0-970F-3A58-F5D7-EAB015877E10}|HotelWebApplication.csproj|solutionrelative:validators\\uservalidators\\changepasswordvalidator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{594C47E0-970F-3A58-F5D7-EAB015877E10}|HotelWebApplication.csproj|c:\\users\\user\\source\\repos\\hotelmanagement.api\\validators\\roomvalidators\\createtagdtovalidator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{594C47E0-970F-3A58-F5D7-EAB015877E10}|HotelWebApplication.csproj|solutionrelative:validators\\roomvalidators\\createtagdtovalidator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{594C47E0-970F-3A58-F5D7-EAB015877E10}|HotelWebApplication.csproj|c:\\users\\user\\source\\repos\\hotelmanagement.api\\services\\roomservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{594C47E0-970F-3A58-F5D7-EAB015877E10}|HotelWebApplication.csproj|solutionrelative:services\\roomservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{594C47E0-970F-3A58-F5D7-EAB015877E10}|HotelWebApplication.csproj|c:\\users\\user\\source\\repos\\hotelmanagement.api\\services\\tagservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{594C47E0-970F-3A58-F5D7-EAB015877E10}|HotelWebApplication.csproj|solutionrelative:services\\tagservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{594C47E0-970F-3A58-F5D7-EAB015877E10}|HotelWebApplication.csproj|c:\\users\\user\\source\\repos\\hotelmanagement.api\\validators\\authvalidators\\registervalidator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{594C47E0-970F-3A58-F5D7-EAB015877E10}|HotelWebApplication.csproj|solutionrelative:validators\\authvalidators\\registervalidator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{594C47E0-970F-3A58-F5D7-EAB015877E10}|HotelWebApplication.csproj|c:\\users\\user\\source\\repos\\hotelmanagement.api\\validators\\authvalidators\\loginvalidator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{594C47E0-970F-3A58-F5D7-EAB015877E10}|HotelWebApplication.csproj|solutionrelative:validators\\authvalidators\\loginvalidator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{594C47E0-970F-3A58-F5D7-EAB015877E10}|HotelWebApplication.csproj|c:\\users\\user\\source\\repos\\hotelmanagement.api\\extensions\\servicecollectionextensions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{594C47E0-970F-3A58-F5D7-EAB015877E10}|HotelWebApplication.csproj|solutionrelative:extensions\\servicecollectionextensions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{594C47E0-970F-3A58-F5D7-EAB015877E10}|HotelWebApplication.csproj|c:\\users\\user\\source\\repos\\hotelmanagement.api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{594C47E0-970F-3A58-F5D7-EAB015877E10}|HotelWebApplication.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{594C47E0-970F-3A58-F5D7-EAB015877E10}|HotelWebApplication.csproj|c:\\users\\user\\source\\repos\\hotelmanagement.api\\services\\userservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{594C47E0-970F-3A58-F5D7-EAB015877E10}|HotelWebApplication.csproj|solutionrelative:services\\userservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{594C47E0-970F-3A58-F5D7-EAB015877E10}|HotelWebApplication.csproj|c:\\users\\user\\source\\repos\\hotelmanagement.api\\models\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{594C47E0-970F-3A58-F5D7-EAB015877E10}|HotelWebApplication.csproj|solutionrelative:models\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{594C47E0-970F-3A58-F5D7-EAB015877E10}|HotelWebApplication.csproj|c:\\users\\user\\source\\repos\\hotelmanagement.api\\models\\tag.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{594C47E0-970F-3A58-F5D7-EAB015877E10}|HotelWebApplication.csproj|solutionrelative:models\\tag.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{594C47E0-970F-3A58-F5D7-EAB015877E10}|HotelWebApplication.csproj|c:\\users\\user\\source\\repos\\hotelmanagement.api\\models\\auditlog.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{594C47E0-970F-3A58-F5D7-EAB015877E10}|HotelWebApplication.csproj|solutionrelative:models\\auditlog.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{594C47E0-970F-3A58-F5D7-EAB015877E10}|HotelWebApplication.csproj|c:\\users\\user\\source\\repos\\hotelmanagement.api\\services\\authservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{594C47E0-970F-3A58-F5D7-EAB015877E10}|HotelWebApplication.csproj|solutionrelative:services\\authservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{594C47E0-970F-3A58-F5D7-EAB015877E10}|HotelWebApplication.csproj|c:\\users\\user\\source\\repos\\hotelmanagement.api\\services\\roomtypeservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{594C47E0-970F-3A58-F5D7-EAB015877E10}|HotelWebApplication.csproj|solutionrelative:services\\roomtypeservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{594C47E0-970F-3A58-F5D7-EAB015877E10}|HotelWebApplication.csproj|c:\\users\\user\\source\\repos\\hotelmanagement.api\\services\\reservationservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{594C47E0-970F-3A58-F5D7-EAB015877E10}|HotelWebApplication.csproj|solutionrelative:services\\reservationservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{594C47E0-970F-3A58-F5D7-EAB015877E10}|HotelWebApplication.csproj|c:\\users\\user\\source\\repos\\hotelmanagement.api\\services\\cloudinaryfilestorageservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{594C47E0-970F-3A58-F5D7-EAB015877E10}|HotelWebApplication.csproj|solutionrelative:services\\cloudinaryfilestorageservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{594C47E0-970F-3A58-F5D7-EAB015877E10}|HotelWebApplication.csproj|c:\\users\\user\\source\\repos\\hotelmanagement.api\\services\\localfilestorageservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{594C47E0-970F-3A58-F5D7-EAB015877E10}|HotelWebApplication.csproj|solutionrelative:services\\localfilestorageservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{594C47E0-970F-3A58-F5D7-EAB015877E10}|HotelWebApplication.csproj|c:\\users\\user\\source\\repos\\hotelmanagement.api\\services\\priceruleservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{594C47E0-970F-3A58-F5D7-EAB015877E10}|HotelWebApplication.csproj|solutionrelative:services\\priceruleservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{594C47E0-970F-3A58-F5D7-EAB015877E10}|HotelWebApplication.csproj|c:\\users\\user\\source\\repos\\hotelmanagement.api\\backgroundjobs\\reservationcompletionjob.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{594C47E0-970F-3A58-F5D7-EAB015877E10}|HotelWebApplication.csproj|solutionrelative:backgroundjobs\\reservationcompletionjob.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{594C47E0-970F-3A58-F5D7-EAB015877E10}|HotelWebApplication.csproj|c:\\users\\user\\source\\repos\\hotelmanagement.api\\data\\roleseeder.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{594C47E0-970F-3A58-F5D7-EAB015877E10}|HotelWebApplication.csproj|solutionrelative:data\\roleseeder.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{594C47E0-970F-3A58-F5D7-EAB015877E10}|HotelWebApplication.csproj|c:\\users\\user\\source\\repos\\hotelmanagement.api\\data\\hoteldbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{594C47E0-970F-3A58-F5D7-EAB015877E10}|HotelWebApplication.csproj|solutionrelative:data\\hoteldbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{594C47E0-970F-3A58-F5D7-EAB015877E10}|HotelWebApplication.csproj|c:\\users\\user\\source\\repos\\hotelmanagement.api\\data\\databaseseeder.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{594C47E0-970F-3A58-F5D7-EAB015877E10}|HotelWebApplication.csproj|solutionrelative:data\\databaseseeder.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{594C47E0-970F-3A58-F5D7-EAB015877E10}|HotelWebApplication.csproj|c:\\users\\user\\source\\repos\\hotelmanagement.api\\hotelwebapplication.http||{5703B403-55E7-4C63-8C88-A8F52C7A45C5}",
+      "RelativeMoniker": "D:0:0:{594C47E0-970F-3A58-F5D7-EAB015877E10}|HotelWebApplication.csproj|solutionrelative:hotelwebapplication.http||{5703B403-55E7-4C63-8C88-A8F52C7A45C5}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{594C47E0-970F-3A58-F5D7-EAB015877E10}|HotelWebApplication.csproj|c:\\users\\user\\source\\repos\\hotelmanagement.api\\controllers\\tagscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{594C47E0-970F-3A58-F5D7-EAB015877E10}|HotelWebApplication.csproj|solutionrelative:controllers\\tagscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{594C47E0-970F-3A58-F5D7-EAB015877E10}|HotelWebApplication.csproj|c:\\users\\user\\source\\repos\\hotelmanagement.api\\validators\\reservationvalidators\\createreservationdtovalidator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{594C47E0-970F-3A58-F5D7-EAB015877E10}|HotelWebApplication.csproj|solutionrelative:validators\\reservationvalidators\\createreservationdtovalidator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{594C47E0-970F-3A58-F5D7-EAB015877E10}|HotelWebApplication.csproj|c:\\users\\user\\source\\repos\\hotelmanagement.api\\services\\interfaces\\ireservationservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{594C47E0-970F-3A58-F5D7-EAB015877E10}|HotelWebApplication.csproj|solutionrelative:services\\interfaces\\ireservationservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{594C47E0-970F-3A58-F5D7-EAB015877E10}|HotelWebApplication.csproj|c:\\users\\user\\source\\repos\\hotelmanagement.api\\validators\\roomvalidators\\createtagdtovalidator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{594C47E0-970F-3A58-F5D7-EAB015877E10}|HotelWebApplication.csproj|solutionrelative:validators\\roomvalidators\\createtagdtovalidator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{594C47E0-970F-3A58-F5D7-EAB015877E10}|HotelWebApplication.csproj|c:\\users\\user\\source\\repos\\hotelmanagement.api\\validators\\roomvalidators\\createroomtypedtovalidator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -23,14 +119,6 @@
       "RelativeMoniker": "D:0:0:{594C47E0-970F-3A58-F5D7-EAB015877E10}|HotelWebApplication.csproj|solutionrelative:validators\\roomvalidators\\createroomdtovalidator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{594C47E0-970F-3A58-F5D7-EAB015877E10}|HotelWebApplication.csproj|c:\\users\\user\\source\\repos\\hotelmanagement.api\\validators\\authvalidators\\registervalidator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{594C47E0-970F-3A58-F5D7-EAB015877E10}|HotelWebApplication.csproj|solutionrelative:validators\\authvalidators\\registervalidator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{594C47E0-970F-3A58-F5D7-EAB015877E10}|HotelWebApplication.csproj|c:\\users\\user\\source\\repos\\hotelmanagement.api\\services\\tagservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{594C47E0-970F-3A58-F5D7-EAB015877E10}|HotelWebApplication.csproj|solutionrelative:services\\tagservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{594C47E0-970F-3A58-F5D7-EAB015877E10}|HotelWebApplication.csproj|c:\\users\\user\\source\\repos\\hotelmanagement.api\\dtos\\roomdtos\\createtagdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{594C47E0-970F-3A58-F5D7-EAB015877E10}|HotelWebApplication.csproj|solutionrelative:dtos\\roomdtos\\createtagdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -39,20 +127,12 @@
       "RelativeMoniker": "D:0:0:{594C47E0-970F-3A58-F5D7-EAB015877E10}|HotelWebApplication.csproj|solutionrelative:appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{594C47E0-970F-3A58-F5D7-EAB015877E10}|HotelWebApplication.csproj|c:\\users\\user\\source\\repos\\hotelmanagement.api\\data\\hoteldbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{594C47E0-970F-3A58-F5D7-EAB015877E10}|HotelWebApplication.csproj|solutionrelative:data\\hoteldbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{594C47E0-970F-3A58-F5D7-EAB015877E10}|HotelWebApplication.csproj|c:\\users\\user\\source\\repos\\hotelmanagement.api\\dtos\\roomdtos\\createroomtypedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{594C47E0-970F-3A58-F5D7-EAB015877E10}|HotelWebApplication.csproj|solutionrelative:dtos\\roomdtos\\createroomtypedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{594C47E0-970F-3A58-F5D7-EAB015877E10}|HotelWebApplication.csproj|c:\\users\\user\\source\\repos\\hotelmanagement.api\\common\\pagination\\pagedrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{594C47E0-970F-3A58-F5D7-EAB015877E10}|HotelWebApplication.csproj|solutionrelative:common\\pagination\\pagedrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{594C47E0-970F-3A58-F5D7-EAB015877E10}|HotelWebApplication.csproj|c:\\users\\user\\source\\repos\\hotelmanagement.api\\models\\tag.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{594C47E0-970F-3A58-F5D7-EAB015877E10}|HotelWebApplication.csproj|solutionrelative:models\\tag.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{594C47E0-970F-3A58-F5D7-EAB015877E10}|HotelWebApplication.csproj|c:\\users\\user\\source\\repos\\hotelmanagement.api\\common\\extensions\\queryableextensions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -65,10 +145,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{594C47E0-970F-3A58-F5D7-EAB015877E10}|HotelWebApplication.csproj|c:\\users\\user\\source\\repos\\hotelmanagement.api\\dtos\\roomdtos\\tagresponsedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{594C47E0-970F-3A58-F5D7-EAB015877E10}|HotelWebApplication.csproj|solutionrelative:dtos\\roomdtos\\tagresponsedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{594C47E0-970F-3A58-F5D7-EAB015877E10}|HotelWebApplication.csproj|c:\\users\\user\\source\\repos\\hotelmanagement.api\\controllers\\tagscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{594C47E0-970F-3A58-F5D7-EAB015877E10}|HotelWebApplication.csproj|solutionrelative:controllers\\tagscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{594C47E0-970F-3A58-F5D7-EAB015877E10}|HotelWebApplication.csproj|c:\\users\\user\\source\\repos\\hotelmanagement.api\\services\\interfaces\\itagservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -85,18 +161,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{594C47E0-970F-3A58-F5D7-EAB015877E10}|HotelWebApplication.csproj|c:\\users\\user\\source\\repos\\hotelmanagement.api\\common\\pagination\\roomtypefilterrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{594C47E0-970F-3A58-F5D7-EAB015877E10}|HotelWebApplication.csproj|solutionrelative:common\\pagination\\roomtypefilterrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{594C47E0-970F-3A58-F5D7-EAB015877E10}|HotelWebApplication.csproj|c:\\users\\user\\source\\repos\\hotelmanagement.api\\models\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{594C47E0-970F-3A58-F5D7-EAB015877E10}|HotelWebApplication.csproj|solutionrelative:models\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{594C47E0-970F-3A58-F5D7-EAB015877E10}|HotelWebApplication.csproj|c:\\users\\user\\source\\repos\\hotelmanagement.api\\services\\authservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{594C47E0-970F-3A58-F5D7-EAB015877E10}|HotelWebApplication.csproj|solutionrelative:services\\authservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{594C47E0-970F-3A58-F5D7-EAB015877E10}|HotelWebApplication.csproj|c:\\users\\user\\source\\repos\\hotelmanagement.api\\services\\userservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{594C47E0-970F-3A58-F5D7-EAB015877E10}|HotelWebApplication.csproj|solutionrelative:services\\userservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{594C47E0-970F-3A58-F5D7-EAB015877E10}|HotelWebApplication.csproj|c:\\users\\user\\source\\repos\\hotelmanagement.api\\dtos\\authdtos\\authresponsedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -135,20 +199,12 @@
       "RelativeMoniker": "D:0:0:{594C47E0-970F-3A58-F5D7-EAB015877E10}|HotelWebApplication.csproj|solutionrelative:models\\reservation.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{594C47E0-970F-3A58-F5D7-EAB015877E10}|HotelWebApplication.csproj|c:\\users\\user\\source\\repos\\hotelmanagement.api\\services\\reservationservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{594C47E0-970F-3A58-F5D7-EAB015877E10}|HotelWebApplication.csproj|solutionrelative:services\\reservationservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{594C47E0-970F-3A58-F5D7-EAB015877E10}|HotelWebApplication.csproj|c:\\users\\user\\source\\repos\\hotelmanagement.api\\controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{594C47E0-970F-3A58-F5D7-EAB015877E10}|HotelWebApplication.csproj|solutionrelative:controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{594C47E0-970F-3A58-F5D7-EAB015877E10}|HotelWebApplication.csproj|c:\\users\\user\\source\\repos\\hotelmanagement.api\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{594C47E0-970F-3A58-F5D7-EAB015877E10}|HotelWebApplication.csproj|solutionrelative:controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{594C47E0-970F-3A58-F5D7-EAB015877E10}|HotelWebApplication.csproj|c:\\users\\user\\source\\repos\\hotelmanagement.api\\validators\\authvalidators\\loginvalidator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{594C47E0-970F-3A58-F5D7-EAB015877E10}|HotelWebApplication.csproj|solutionrelative:validators\\authvalidators\\loginvalidator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{594C47E0-970F-3A58-F5D7-EAB015877E10}|HotelWebApplication.csproj|c:\\users\\user\\source\\repos\\hotelmanagement.api\\dtos\\authdtos\\refreshtokenrequestdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -207,16 +263,8 @@
       "RelativeMoniker": "D:0:0:{594C47E0-970F-3A58-F5D7-EAB015877E10}|HotelWebApplication.csproj|solutionrelative:services\\interfaces\\ifilestorageservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{594C47E0-970F-3A58-F5D7-EAB015877E10}|HotelWebApplication.csproj|c:\\users\\user\\source\\repos\\hotelmanagement.api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{594C47E0-970F-3A58-F5D7-EAB015877E10}|HotelWebApplication.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{594C47E0-970F-3A58-F5D7-EAB015877E10}|HotelWebApplication.csproj|c:\\users\\user\\source\\repos\\hotelmanagement.api\\common\\pagination\\pagedresult.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{594C47E0-970F-3A58-F5D7-EAB015877E10}|HotelWebApplication.csproj|solutionrelative:common\\pagination\\pagedresult.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{594C47E0-970F-3A58-F5D7-EAB015877E10}|HotelWebApplication.csproj|c:\\users\\user\\source\\repos\\hotelmanagement.api\\services\\roomtypeservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{594C47E0-970F-3A58-F5D7-EAB015877E10}|HotelWebApplication.csproj|solutionrelative:services\\roomtypeservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{594C47E0-970F-3A58-F5D7-EAB015877E10}|HotelWebApplication.csproj|c:\\users\\user\\source\\repos\\hotelmanagement.api\\controllers\\roomtypescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -258,7 +306,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 9,
           "Children": [
             {
               "$type": "Bookmark",
@@ -270,16 +318,63 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "CreateReservationDtoValidator.cs",
-              "DocumentMoniker": "C:\\Users\\User\\source\\repos\\HotelManagement.API\\Validators\\ReservationValidators\\CreateReservationDtoValidator.cs",
-              "RelativeDocumentMoniker": "Validators\\ReservationValidators\\CreateReservationDtoValidator.cs",
-              "ToolTip": "C:\\Users\\User\\source\\repos\\HotelManagement.API\\Validators\\ReservationValidators\\CreateReservationDtoValidator.cs",
-              "RelativeToolTip": "Validators\\ReservationValidators\\CreateReservationDtoValidator.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAACwAAAAFAAAAAAAAAA==",
+              "DocumentIndex": 7,
+              "Title": "ServiceCollectionExtensions.cs",
+              "DocumentMoniker": "C:\\Users\\User\\source\\repos\\HotelManagement.API\\Extensions\\ServiceCollectionExtensions.cs",
+              "RelativeDocumentMoniker": "Extensions\\ServiceCollectionExtensions.cs",
+              "ToolTip": "C:\\Users\\User\\source\\repos\\HotelManagement.API\\Extensions\\ServiceCollectionExtensions.cs",
+              "RelativeToolTip": "Extensions\\ServiceCollectionExtensions.cs",
+              "ViewState": "AgIAAKcAAAAAAAAAAAAYwLoAAAAvAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-24T16:39:33.962Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-03-26T22:37:04.232Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "LoginValidator.cs",
+              "DocumentMoniker": "C:\\Users\\User\\source\\repos\\HotelManagement.API\\Validators\\AuthValidators\\LoginValidator.cs",
+              "RelativeDocumentMoniker": "Validators\\AuthValidators\\LoginValidator.cs",
+              "ToolTip": "C:\\Users\\User\\source\\repos\\HotelManagement.API\\Validators\\AuthValidators\\LoginValidator.cs",
+              "RelativeToolTip": "Validators\\AuthValidators\\LoginValidator.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAsAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-24T16:39:34.055Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "TagService.cs",
+              "DocumentMoniker": "C:\\Users\\User\\source\\repos\\HotelManagement.API\\Services\\TagService.cs",
+              "RelativeDocumentMoniker": "Services\\TagService.cs",
+              "ToolTip": "C:\\Users\\User\\source\\repos\\HotelManagement.API\\Services\\TagService.cs",
+              "RelativeToolTip": "Services\\TagService.cs",
+              "ViewState": "AgIAAEIAAAAAAAAAAAAowI8AAAAiAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-24T16:39:33.994Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "AuditLog.cs",
+              "DocumentMoniker": "C:\\Users\\User\\source\\repos\\HotelManagement.API\\Models\\AuditLog.cs",
+              "RelativeDocumentMoniker": "Models\\AuditLog.cs",
+              "ToolTip": "C:\\Users\\User\\source\\repos\\HotelManagement.API\\Models\\AuditLog.cs",
+              "RelativeToolTip": "Models\\AuditLog.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-27T21:12:27.892Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "RoomService.cs",
+              "DocumentMoniker": "C:\\Users\\User\\source\\repos\\HotelManagement.API\\Services\\RoomService.cs",
+              "RelativeDocumentMoniker": "Services\\RoomService.cs",
+              "ToolTip": "C:\\Users\\User\\source\\repos\\HotelManagement.API\\Services\\RoomService.cs",
+              "RelativeToolTip": "Services\\RoomService.cs",
+              "ViewState": "AgIAAJgAAAAAAAAAAAAAwLQAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-26T22:39:04.605Z"
             },
             {
               "$type": "Document",
@@ -289,121 +384,50 @@
               "RelativeDocumentMoniker": "Validators\\RoomValidators\\CreateTagDtoValidator.cs",
               "ToolTip": "C:\\Users\\User\\source\\repos\\HotelManagement.API\\Validators\\RoomValidators\\CreateTagDtoValidator.cs",
               "RelativeToolTip": "Validators\\RoomValidators\\CreateTagDtoValidator.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAABAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABUAAABtAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-03-24T16:39:33.991Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "TagService.cs",
-              "DocumentMoniker": "C:\\Users\\User\\source\\repos\\HotelManagement.API\\Services\\TagService.cs",
-              "RelativeDocumentMoniker": "Services\\TagService.cs",
-              "ToolTip": "C:\\Users\\User\\source\\repos\\HotelManagement.API\\Services\\TagService.cs",
-              "RelativeToolTip": "Services\\TagService.cs",
-              "ViewState": "AgIAAGQAAAAAAAAAAAAcwHoAAAAFAAAAAAAAAA==",
+              "DocumentIndex": 1,
+              "Title": "ChangePasswordValidator.cs",
+              "DocumentMoniker": "C:\\Users\\User\\source\\repos\\HotelManagement.API\\Validators\\UserValidators\\ChangePasswordValidator.cs",
+              "RelativeDocumentMoniker": "Validators\\UserValidators\\ChangePasswordValidator.cs",
+              "ToolTip": "C:\\Users\\User\\source\\repos\\HotelManagement.API\\Validators\\UserValidators\\ChangePasswordValidator.cs",
+              "RelativeToolTip": "Validators\\UserValidators\\ChangePasswordValidator.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABQAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-24T16:39:33.994Z"
+              "WhenOpened": "2026-03-27T21:52:22.351Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "UpdateProfileValidator.cs",
+              "DocumentMoniker": "C:\\Users\\User\\source\\repos\\HotelManagement.API\\Validators\\UserValidators\\UpdateProfileValidator.cs",
+              "RelativeDocumentMoniker": "Validators\\UserValidators\\UpdateProfileValidator.cs",
+              "ToolTip": "C:\\Users\\User\\source\\repos\\HotelManagement.API\\Validators\\UserValidators\\UpdateProfileValidator.cs",
+              "RelativeToolTip": "Validators\\UserValidators\\UpdateProfileValidator.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABYAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-27T21:52:49.101Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 8,
-              "Title": "appsettings.json",
-              "DocumentMoniker": "C:\\Users\\User\\source\\repos\\HotelManagement.API\\appsettings.json",
-              "RelativeDocumentMoniker": "appsettings.json",
-              "ToolTip": "C:\\Users\\User\\source\\repos\\HotelManagement.API\\appsettings.json",
-              "RelativeToolTip": "appsettings.json",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABkAAAAuAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2026-03-24T16:39:33.996Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "CreateTagDto.cs",
-              "DocumentMoniker": "C:\\Users\\User\\source\\repos\\HotelManagement.API\\DTOs\\RoomDTOs\\CreateTagDto.cs",
-              "RelativeDocumentMoniker": "DTOs\\RoomDTOs\\CreateTagDto.cs",
-              "ToolTip": "C:\\Users\\User\\source\\repos\\HotelManagement.API\\DTOs\\RoomDTOs\\CreateTagDto.cs",
-              "RelativeToolTip": "DTOs\\RoomDTOs\\CreateTagDto.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAAABAAAAAAAAAA==",
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\User\\source\\repos\\HotelManagement.API\\Program.cs",
+              "RelativeDocumentMoniker": "Program.cs",
+              "ToolTip": "C:\\Users\\User\\source\\repos\\HotelManagement.API\\Program.cs",
+              "RelativeToolTip": "Program.cs",
+              "ViewState": "AgIAAAAAAACwkLkyqK4gwAUAAAAYAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-24T16:39:33.998Z"
+              "WhenOpened": "2026-03-26T22:36:31.322Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "RegisterValidator.cs",
-              "DocumentMoniker": "C:\\Users\\User\\source\\repos\\HotelManagement.API\\Validators\\AuthValidators\\RegisterValidator.cs",
-              "RelativeDocumentMoniker": "Validators\\AuthValidators\\RegisterValidator.cs",
-              "ToolTip": "C:\\Users\\User\\source\\repos\\HotelManagement.API\\Validators\\AuthValidators\\RegisterValidator.cs",
-              "RelativeToolTip": "Validators\\AuthValidators\\RegisterValidator.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABcAAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-24T16:39:34Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "CreateRoomDtoValidator.cs",
-              "DocumentMoniker": "C:\\Users\\User\\source\\repos\\HotelManagement.API\\Validators\\RoomValidators\\CreateRoomDtoValidator.cs",
-              "RelativeDocumentMoniker": "Validators\\RoomValidators\\CreateRoomDtoValidator.cs",
-              "ToolTip": "C:\\Users\\User\\source\\repos\\HotelManagement.API\\Validators\\RoomValidators\\CreateRoomDtoValidator.cs",
-              "RelativeToolTip": "Validators\\RoomValidators\\CreateRoomDtoValidator.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-24T16:39:34.002Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "IReservationService.cs",
-              "DocumentMoniker": "C:\\Users\\User\\source\\repos\\HotelManagement.API\\Services\\Interfaces\\IReservationService.cs",
-              "RelativeDocumentMoniker": "Services\\Interfaces\\IReservationService.cs",
-              "ToolTip": "C:\\Users\\User\\source\\repos\\HotelManagement.API\\Services\\Interfaces\\IReservationService.cs",
-              "RelativeToolTip": "Services\\Interfaces\\IReservationService.cs",
-              "ViewState": "AgIAAAsAAAAAAAAAAAAQwCUAAABmAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-24T16:39:34.003Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "HotelDbContext.cs",
-              "DocumentMoniker": "C:\\Users\\User\\source\\repos\\HotelManagement.API\\Data\\HotelDbContext.cs",
-              "RelativeDocumentMoniker": "Data\\HotelDbContext.cs",
-              "ToolTip": "C:\\Users\\User\\source\\repos\\HotelManagement.API\\Data\\HotelDbContext.cs",
-              "RelativeToolTip": "Data\\HotelDbContext.cs",
-              "ViewState": "AgIAAGUAAAAAAAAAAAAmwJgAAAAhAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-24T16:39:34.005Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "CreateRoomTypeDtoValidator.cs",
-              "DocumentMoniker": "C:\\Users\\User\\source\\repos\\HotelManagement.API\\Validators\\RoomValidators\\CreateRoomTypeDtoValidator.cs",
-              "RelativeDocumentMoniker": "Validators\\RoomValidators\\CreateRoomTypeDtoValidator.cs",
-              "ToolTip": "C:\\Users\\User\\source\\repos\\HotelManagement.API\\Validators\\RoomValidators\\CreateRoomTypeDtoValidator.cs",
-              "RelativeToolTip": "Validators\\RoomValidators\\CreateRoomTypeDtoValidator.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABgAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-24T16:39:34.007Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 10,
-              "Title": "CreateRoomTypeDto.cs",
-              "DocumentMoniker": "C:\\Users\\User\\source\\repos\\HotelManagement.API\\DTOs\\RoomDTOs\\CreateRoomTypeDto.cs",
-              "RelativeDocumentMoniker": "DTOs\\RoomDTOs\\CreateRoomTypeDto.cs",
-              "ToolTip": "C:\\Users\\User\\source\\repos\\HotelManagement.API\\DTOs\\RoomDTOs\\CreateRoomTypeDto.cs",
-              "RelativeToolTip": "DTOs\\RoomDTOs\\CreateRoomTypeDto.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAuAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-24T16:39:34.009Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 11,
               "Title": "Tag.cs",
               "DocumentMoniker": "C:\\Users\\User\\source\\repos\\HotelManagement.API\\Models\\Tag.cs",
               "RelativeDocumentMoniker": "Models\\Tag.cs",
@@ -415,7 +439,271 @@
             },
             {
               "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "RegisterValidator.cs",
+              "DocumentMoniker": "C:\\Users\\User\\source\\repos\\HotelManagement.API\\Validators\\AuthValidators\\RegisterValidator.cs",
+              "RelativeDocumentMoniker": "Validators\\AuthValidators\\RegisterValidator.cs",
+              "ToolTip": "C:\\Users\\User\\source\\repos\\HotelManagement.API\\Validators\\AuthValidators\\RegisterValidator.cs",
+              "RelativeToolTip": "Validators\\AuthValidators\\RegisterValidator.cs",
+              "ViewState": "AgIAAAcAAAAAAAAAAAA1wBMAAAArAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-24T16:39:34Z"
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 13,
+              "Title": "AuthService.cs",
+              "DocumentMoniker": "C:\\Users\\User\\source\\repos\\HotelManagement.API\\Services\\AuthService.cs",
+              "RelativeDocumentMoniker": "Services\\AuthService.cs",
+              "ToolTip": "C:\\Users\\User\\source\\repos\\HotelManagement.API\\Services\\AuthService.cs",
+              "RelativeToolTip": "Services\\AuthService.cs",
+              "ViewState": "AgIAALgAAAAAAAAAAAAmwM4AAAAfAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-24T16:39:34.035Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "RoomTypeService.cs",
+              "DocumentMoniker": "C:\\Users\\User\\source\\repos\\HotelManagement.API\\Services\\RoomTypeService.cs",
+              "RelativeDocumentMoniker": "Services\\RoomTypeService.cs",
+              "ToolTip": "C:\\Users\\User\\source\\repos\\HotelManagement.API\\Services\\RoomTypeService.cs",
+              "RelativeToolTip": "Services\\RoomTypeService.cs",
+              "ViewState": "AgIAACsBAAAAAAAAAAA0wFkBAABXAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-24T16:39:34.089Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "ReservationService.cs",
+              "DocumentMoniker": "C:\\Users\\User\\source\\repos\\HotelManagement.API\\Services\\ReservationService.cs",
+              "RelativeDocumentMoniker": "Services\\ReservationService.cs",
+              "ToolTip": "C:\\Users\\User\\source\\repos\\HotelManagement.API\\Services\\ReservationService.cs",
+              "RelativeToolTip": "Services\\ReservationService.cs",
+              "ViewState": "AgIAAEoBAAAAAAAAAAAuwGQBAAAsAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-24T16:39:34.051Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "User.cs",
+              "DocumentMoniker": "C:\\Users\\User\\source\\repos\\HotelManagement.API\\Models\\User.cs",
+              "RelativeDocumentMoniker": "Models\\User.cs",
+              "ToolTip": "C:\\Users\\User\\source\\repos\\HotelManagement.API\\Models\\User.cs",
+              "RelativeToolTip": "Models\\User.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAA/AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-24T16:39:34.037Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "UserService.cs",
+              "DocumentMoniker": "C:\\Users\\User\\source\\repos\\HotelManagement.API\\Services\\UserService.cs",
+              "RelativeDocumentMoniker": "Services\\UserService.cs",
+              "ToolTip": "C:\\Users\\User\\source\\repos\\HotelManagement.API\\Services\\UserService.cs",
+              "RelativeToolTip": "Services\\UserService.cs",
+              "ViewState": "AgIAAIoAAAAAAAAAAAAmwLEAAAAZAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-24T16:39:34.029Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "PriceRuleService.cs",
+              "DocumentMoniker": "C:\\Users\\User\\source\\repos\\HotelManagement.API\\Services\\PriceRuleService.cs",
+              "RelativeDocumentMoniker": "Services\\PriceRuleService.cs",
+              "ToolTip": "C:\\Users\\User\\source\\repos\\HotelManagement.API\\Services\\PriceRuleService.cs",
+              "RelativeToolTip": "Services\\PriceRuleService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-26T22:39:08.383Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "LocalFileStorageService.cs",
+              "DocumentMoniker": "C:\\Users\\User\\source\\repos\\HotelManagement.API\\Services\\LocalFileStorageService.cs",
+              "RelativeDocumentMoniker": "Services\\LocalFileStorageService.cs",
+              "ToolTip": "C:\\Users\\User\\source\\repos\\HotelManagement.API\\Services\\LocalFileStorageService.cs",
+              "RelativeToolTip": "Services\\LocalFileStorageService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-26T22:39:09.141Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "CloudinaryFileStorageService.cs",
+              "DocumentMoniker": "C:\\Users\\User\\source\\repos\\HotelManagement.API\\Services\\CloudinaryFileStorageService.cs",
+              "RelativeDocumentMoniker": "Services\\CloudinaryFileStorageService.cs",
+              "ToolTip": "C:\\Users\\User\\source\\repos\\HotelManagement.API\\Services\\CloudinaryFileStorageService.cs",
+              "RelativeToolTip": "Services\\CloudinaryFileStorageService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-26T22:39:09.96Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 19,
+              "Title": "ReservationCompletionJob.cs",
+              "DocumentMoniker": "C:\\Users\\User\\source\\repos\\HotelManagement.API\\BackgroundJobs\\ReservationCompletionJob.cs",
+              "RelativeDocumentMoniker": "BackgroundJobs\\ReservationCompletionJob.cs",
+              "ToolTip": "C:\\Users\\User\\source\\repos\\HotelManagement.API\\BackgroundJobs\\ReservationCompletionJob.cs",
+              "RelativeToolTip": "BackgroundJobs\\ReservationCompletionJob.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-26T22:36:24.374Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 20,
+              "Title": "RoleSeeder.cs",
+              "DocumentMoniker": "C:\\Users\\User\\source\\repos\\HotelManagement.API\\Data\\RoleSeeder.cs",
+              "RelativeDocumentMoniker": "Data\\RoleSeeder.cs",
+              "ToolTip": "C:\\Users\\User\\source\\repos\\HotelManagement.API\\Data\\RoleSeeder.cs",
+              "RelativeToolTip": "Data\\RoleSeeder.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-26T22:36:14.302Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 22,
+              "Title": "DatabaseSeeder.cs",
+              "DocumentMoniker": "C:\\Users\\User\\source\\repos\\HotelManagement.API\\Data\\DatabaseSeeder.cs",
+              "RelativeDocumentMoniker": "Data\\DatabaseSeeder.cs",
+              "ToolTip": "C:\\Users\\User\\source\\repos\\HotelManagement.API\\Data\\DatabaseSeeder.cs",
+              "RelativeToolTip": "Data\\DatabaseSeeder.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-26T22:36:12.034Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 29,
+              "Title": "CreateTagDto.cs",
+              "DocumentMoniker": "C:\\Users\\User\\source\\repos\\HotelManagement.API\\DTOs\\RoomDTOs\\CreateTagDto.cs",
+              "RelativeDocumentMoniker": "DTOs\\RoomDTOs\\CreateTagDto.cs",
+              "ToolTip": "C:\\Users\\User\\source\\repos\\HotelManagement.API\\DTOs\\RoomDTOs\\CreateTagDto.cs",
+              "RelativeToolTip": "DTOs\\RoomDTOs\\CreateTagDto.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-24T16:39:33.998Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 28,
+              "Title": "CreateRoomDtoValidator.cs",
+              "DocumentMoniker": "C:\\Users\\User\\source\\repos\\HotelManagement.API\\Validators\\RoomValidators\\CreateRoomDtoValidator.cs",
+              "RelativeDocumentMoniker": "Validators\\RoomValidators\\CreateRoomDtoValidator.cs",
+              "ToolTip": "C:\\Users\\User\\source\\repos\\HotelManagement.API\\Validators\\RoomValidators\\CreateRoomDtoValidator.cs",
+              "RelativeToolTip": "Validators\\RoomValidators\\CreateRoomDtoValidator.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-24T16:39:34.002Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 26,
+              "Title": "IReservationService.cs",
+              "DocumentMoniker": "C:\\Users\\User\\source\\repos\\HotelManagement.API\\Services\\Interfaces\\IReservationService.cs",
+              "RelativeDocumentMoniker": "Services\\Interfaces\\IReservationService.cs",
+              "ToolTip": "C:\\Users\\User\\source\\repos\\HotelManagement.API\\Services\\Interfaces\\IReservationService.cs",
+              "RelativeToolTip": "Services\\Interfaces\\IReservationService.cs",
+              "ViewState": "AgIAAAsAAAAAAAAAAAAQwCUAAABmAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-24T16:39:34.003Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 24,
+              "Title": "TagsController.cs",
+              "DocumentMoniker": "C:\\Users\\User\\source\\repos\\HotelManagement.API\\Controllers\\TagsController.cs",
+              "RelativeDocumentMoniker": "Controllers\\TagsController.cs",
+              "ToolTip": "C:\\Users\\User\\source\\repos\\HotelManagement.API\\Controllers\\TagsController.cs",
+              "RelativeToolTip": "Controllers\\TagsController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAIMAAAA6AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-24T16:39:34.02Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 21,
+              "Title": "HotelDbContext.cs",
+              "DocumentMoniker": "C:\\Users\\User\\source\\repos\\HotelManagement.API\\Data\\HotelDbContext.cs",
+              "RelativeDocumentMoniker": "Data\\HotelDbContext.cs",
+              "ToolTip": "C:\\Users\\User\\source\\repos\\HotelManagement.API\\Data\\HotelDbContext.cs",
+              "RelativeToolTip": "Data\\HotelDbContext.cs",
+              "ViewState": "AgIAAGUAAAAAAAAAAAAmwJgAAAAhAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-24T16:39:34.005Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 23,
+              "Title": "HotelWebApplication.http",
+              "DocumentMoniker": "C:\\Users\\User\\source\\repos\\HotelManagement.API\\HotelWebApplication.http",
+              "RelativeDocumentMoniker": "HotelWebApplication.http",
+              "ToolTip": "C:\\Users\\User\\source\\repos\\HotelManagement.API\\HotelWebApplication.http",
+              "RelativeToolTip": "HotelWebApplication.http",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003502|",
+              "WhenOpened": "2026-03-25T03:20:38.371Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 25,
+              "Title": "CreateReservationDtoValidator.cs",
+              "DocumentMoniker": "C:\\Users\\User\\source\\repos\\HotelManagement.API\\Validators\\ReservationValidators\\CreateReservationDtoValidator.cs",
+              "RelativeDocumentMoniker": "Validators\\ReservationValidators\\CreateReservationDtoValidator.cs",
+              "ToolTip": "C:\\Users\\User\\source\\repos\\HotelManagement.API\\Validators\\ReservationValidators\\CreateReservationDtoValidator.cs",
+              "RelativeToolTip": "Validators\\ReservationValidators\\CreateReservationDtoValidator.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAACwAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-24T16:39:33.962Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 30,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "C:\\Users\\User\\source\\repos\\HotelManagement.API\\appsettings.json",
+              "RelativeDocumentMoniker": "appsettings.json",
+              "ToolTip": "C:\\Users\\User\\source\\repos\\HotelManagement.API\\appsettings.json",
+              "RelativeToolTip": "appsettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABkAAAAuAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2026-03-24T16:39:33.996Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 27,
+              "Title": "CreateRoomTypeDtoValidator.cs",
+              "DocumentMoniker": "C:\\Users\\User\\source\\repos\\HotelManagement.API\\Validators\\RoomValidators\\CreateRoomTypeDtoValidator.cs",
+              "RelativeDocumentMoniker": "Validators\\RoomValidators\\CreateRoomTypeDtoValidator.cs",
+              "ToolTip": "C:\\Users\\User\\source\\repos\\HotelManagement.API\\Validators\\RoomValidators\\CreateRoomTypeDtoValidator.cs",
+              "RelativeToolTip": "Validators\\RoomValidators\\CreateRoomTypeDtoValidator.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABgAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-24T16:39:34.007Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 31,
+              "Title": "CreateRoomTypeDto.cs",
+              "DocumentMoniker": "C:\\Users\\User\\source\\repos\\HotelManagement.API\\DTOs\\RoomDTOs\\CreateRoomTypeDto.cs",
+              "RelativeDocumentMoniker": "DTOs\\RoomDTOs\\CreateRoomTypeDto.cs",
+              "ToolTip": "C:\\Users\\User\\source\\repos\\HotelManagement.API\\DTOs\\RoomDTOs\\CreateRoomTypeDto.cs",
+              "RelativeToolTip": "DTOs\\RoomDTOs\\CreateRoomTypeDto.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAuAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-24T16:39:34.009Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 33,
               "Title": "QueryableExtensions.cs",
               "DocumentMoniker": "C:\\Users\\User\\source\\repos\\HotelManagement.API\\Common\\Extensions\\QueryableExtensions.cs",
               "RelativeDocumentMoniker": "Common\\Extensions\\QueryableExtensions.cs",
@@ -427,7 +715,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 14,
+              "DocumentIndex": 34,
               "Title": "MappingProfile.cs",
               "DocumentMoniker": "C:\\Users\\User\\source\\repos\\HotelManagement.API\\Mappings\\MappingProfile.cs",
               "RelativeDocumentMoniker": "Mappings\\MappingProfile.cs",
@@ -439,7 +727,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 15,
+              "DocumentIndex": 35,
               "Title": "TagResponseDto.cs",
               "DocumentMoniker": "C:\\Users\\User\\source\\repos\\HotelManagement.API\\DTOs\\RoomDTOs\\TagResponseDto.cs",
               "RelativeDocumentMoniker": "DTOs\\RoomDTOs\\TagResponseDto.cs",
@@ -451,7 +739,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 32,
               "Title": "PagedRequest.cs",
               "DocumentMoniker": "C:\\Users\\User\\source\\repos\\HotelManagement.API\\Common\\Pagination\\PagedRequest.cs",
               "RelativeDocumentMoniker": "Common\\Pagination\\PagedRequest.cs",
@@ -463,19 +751,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 16,
-              "Title": "TagsController.cs",
-              "DocumentMoniker": "C:\\Users\\User\\source\\repos\\HotelManagement.API\\Controllers\\TagsController.cs",
-              "RelativeDocumentMoniker": "Controllers\\TagsController.cs",
-              "ToolTip": "C:\\Users\\User\\source\\repos\\HotelManagement.API\\Controllers\\TagsController.cs",
-              "RelativeToolTip": "Controllers\\TagsController.cs",
-              "ViewState": "AgIAABIAAAAAAAAAAAAIwCYAAAA1AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-24T16:39:34.02Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 17,
+              "DocumentIndex": 36,
               "Title": "ITagService.cs",
               "DocumentMoniker": "C:\\Users\\User\\source\\repos\\HotelManagement.API\\Services\\Interfaces\\ITagService.cs",
               "RelativeDocumentMoniker": "Services\\Interfaces\\ITagService.cs",
@@ -487,7 +763,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 18,
+              "DocumentIndex": 37,
               "Title": "UserRole.cs",
               "DocumentMoniker": "C:\\Users\\User\\source\\repos\\HotelManagement.API\\Enums\\UserRole.cs",
               "RelativeDocumentMoniker": "Enums\\UserRole.cs",
@@ -499,7 +775,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 19,
+              "DocumentIndex": 38,
               "Title": "RuleType.cs",
               "DocumentMoniker": "C:\\Users\\User\\source\\repos\\HotelManagement.API\\Enums\\RuleType.cs",
               "RelativeDocumentMoniker": "Enums\\RuleType.cs",
@@ -511,7 +787,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 20,
+              "DocumentIndex": 39,
               "Title": "RoomTypeFilterRequest.cs",
               "DocumentMoniker": "C:\\Users\\User\\source\\repos\\HotelManagement.API\\Common\\Pagination\\RoomTypeFilterRequest.cs",
               "RelativeDocumentMoniker": "Common\\Pagination\\RoomTypeFilterRequest.cs",
@@ -523,19 +799,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 23,
-              "Title": "UserService.cs",
-              "DocumentMoniker": "C:\\Users\\User\\source\\repos\\HotelManagement.API\\Services\\UserService.cs",
-              "RelativeDocumentMoniker": "Services\\UserService.cs",
-              "ToolTip": "C:\\Users\\User\\source\\repos\\HotelManagement.API\\Services\\UserService.cs",
-              "RelativeToolTip": "Services\\UserService.cs",
-              "ViewState": "AgIAAFoAAAAAAAAAAAAuwHQAAAApAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-24T16:39:34.029Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 24,
+              "DocumentIndex": 40,
               "Title": "AuthResponseDto.cs",
               "DocumentMoniker": "C:\\Users\\User\\source\\repos\\HotelManagement.API\\DTOs\\AuthDTOs\\AuthResponseDto.cs",
               "RelativeDocumentMoniker": "DTOs\\AuthDTOs\\AuthResponseDto.cs",
@@ -547,7 +811,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 25,
+              "DocumentIndex": 41,
               "Title": "RegisterDto.cs",
               "DocumentMoniker": "C:\\Users\\User\\source\\repos\\HotelManagement.API\\DTOs\\AuthDTOs\\RegisterDto.cs",
               "RelativeDocumentMoniker": "DTOs\\AuthDTOs\\RegisterDto.cs",
@@ -559,31 +823,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 22,
-              "Title": "AuthService.cs",
-              "DocumentMoniker": "C:\\Users\\User\\source\\repos\\HotelManagement.API\\Services\\AuthService.cs",
-              "RelativeDocumentMoniker": "Services\\AuthService.cs",
-              "ToolTip": "C:\\Users\\User\\source\\repos\\HotelManagement.API\\Services\\AuthService.cs",
-              "RelativeToolTip": "Services\\AuthService.cs",
-              "ViewState": "AgIAAGgAAAAAAAAAAAAiwLYAAAArAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-24T16:39:34.035Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 21,
-              "Title": "User.cs",
-              "DocumentMoniker": "C:\\Users\\User\\source\\repos\\HotelManagement.API\\Models\\User.cs",
-              "RelativeDocumentMoniker": "Models\\User.cs",
-              "ToolTip": "C:\\Users\\User\\source\\repos\\HotelManagement.API\\Models\\User.cs",
-              "RelativeToolTip": "Models\\User.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAUwAoAAAA5AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-24T16:39:34.037Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 26,
+              "DocumentIndex": 42,
               "Title": "UpdateProfileDto.cs",
               "DocumentMoniker": "C:\\Users\\User\\source\\repos\\HotelManagement.API\\DTOs\\UserDTOs\\UpdateProfileDto.cs",
               "RelativeDocumentMoniker": "DTOs\\UserDTOs\\UpdateProfileDto.cs",
@@ -595,7 +835,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 27,
+              "DocumentIndex": 43,
               "Title": "UserResponseDto.cs",
               "DocumentMoniker": "C:\\Users\\User\\source\\repos\\HotelManagement.API\\DTOs\\UserDTOs\\UserResponseDto.cs",
               "RelativeDocumentMoniker": "DTOs\\UserDTOs\\UserResponseDto.cs",
@@ -607,7 +847,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 28,
+              "DocumentIndex": 44,
               "Title": "IAuthService.cs",
               "DocumentMoniker": "C:\\Users\\User\\source\\repos\\HotelManagement.API\\Services\\Interfaces\\IAuthService.cs",
               "RelativeDocumentMoniker": "Services\\Interfaces\\IAuthService.cs",
@@ -619,7 +859,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 29,
+              "DocumentIndex": 45,
               "Title": "IUserService.cs",
               "DocumentMoniker": "C:\\Users\\User\\source\\repos\\HotelManagement.API\\Services\\Interfaces\\IUserService.cs",
               "RelativeDocumentMoniker": "Services\\Interfaces\\IUserService.cs",
@@ -631,7 +871,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 30,
+              "DocumentIndex": 46,
               "Title": "ReservationsController.cs",
               "DocumentMoniker": "C:\\Users\\User\\source\\repos\\HotelManagement.API\\Controllers\\ReservationsController.cs",
               "RelativeDocumentMoniker": "Controllers\\ReservationsController.cs",
@@ -643,7 +883,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 31,
+              "DocumentIndex": 47,
               "Title": "CreateReservationDto.cs",
               "DocumentMoniker": "C:\\Users\\User\\source\\repos\\HotelManagement.API\\DTOs\\ReservationDTOs\\CreateReservationDto.cs",
               "RelativeDocumentMoniker": "DTOs\\ReservationDTOs\\CreateReservationDto.cs",
@@ -655,7 +895,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 32,
+              "DocumentIndex": 48,
               "Title": "Reservation.cs",
               "DocumentMoniker": "C:\\Users\\User\\source\\repos\\HotelManagement.API\\Models\\Reservation.cs",
               "RelativeDocumentMoniker": "Models\\Reservation.cs",
@@ -667,19 +907,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 33,
-              "Title": "ReservationService.cs",
-              "DocumentMoniker": "C:\\Users\\User\\source\\repos\\HotelManagement.API\\Services\\ReservationService.cs",
-              "RelativeDocumentMoniker": "Services\\ReservationService.cs",
-              "ToolTip": "C:\\Users\\User\\source\\repos\\HotelManagement.API\\Services\\ReservationService.cs",
-              "RelativeToolTip": "Services\\ReservationService.cs",
-              "ViewState": "AgIAAFYBAAAAAAAAAAAuwGQBAAAsAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-24T16:39:34.051Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 35,
+              "DocumentIndex": 50,
               "Title": "AuthController.cs",
               "DocumentMoniker": "C:\\Users\\User\\source\\repos\\HotelManagement.API\\Controllers\\AuthController.cs",
               "RelativeDocumentMoniker": "Controllers\\AuthController.cs",
@@ -691,19 +919,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 36,
-              "Title": "LoginValidator.cs",
-              "DocumentMoniker": "C:\\Users\\User\\source\\repos\\HotelManagement.API\\Validators\\AuthValidators\\LoginValidator.cs",
-              "RelativeDocumentMoniker": "Validators\\AuthValidators\\LoginValidator.cs",
-              "ToolTip": "C:\\Users\\User\\source\\repos\\HotelManagement.API\\Validators\\AuthValidators\\LoginValidator.cs",
-              "RelativeToolTip": "Validators\\AuthValidators\\LoginValidator.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-24T16:39:34.055Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 38,
+              "DocumentIndex": 52,
               "Title": "LoginDto.cs",
               "DocumentMoniker": "C:\\Users\\User\\source\\repos\\HotelManagement.API\\DTOs\\AuthDTOs\\LoginDto.cs",
               "RelativeDocumentMoniker": "DTOs\\AuthDTOs\\LoginDto.cs",
@@ -715,7 +931,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 34,
+              "DocumentIndex": 49,
               "Title": "UserController.cs",
               "DocumentMoniker": "C:\\Users\\User\\source\\repos\\HotelManagement.API\\Controllers\\UserController.cs",
               "RelativeDocumentMoniker": "Controllers\\UserController.cs",
@@ -727,7 +943,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 39,
+              "DocumentIndex": 53,
               "Title": "UpdateUserRoleDto.cs",
               "DocumentMoniker": "C:\\Users\\User\\source\\repos\\HotelManagement.API\\DTOs\\UserDTOs\\UpdateUserRoleDto.cs",
               "RelativeDocumentMoniker": "DTOs\\UserDTOs\\UpdateUserRoleDto.cs",
@@ -739,7 +955,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 40,
+              "DocumentIndex": 54,
               "Title": "ChangePasswordDto.cs",
               "DocumentMoniker": "C:\\Users\\User\\source\\repos\\HotelManagement.API\\DTOs\\UserDTOs\\ChangePasswordDto.cs",
               "RelativeDocumentMoniker": "DTOs\\UserDTOs\\ChangePasswordDto.cs",
@@ -751,7 +967,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 37,
+              "DocumentIndex": 51,
               "Title": "RefreshTokenRequestDto.cs",
               "DocumentMoniker": "C:\\Users\\User\\source\\repos\\HotelManagement.API\\DTOs\\AuthDTOs\\RefreshTokenRequestDto.cs",
               "RelativeDocumentMoniker": "DTOs\\AuthDTOs\\RefreshTokenRequestDto.cs",
@@ -763,7 +979,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 41,
+              "DocumentIndex": 55,
               "Title": "ReservationItem.cs",
               "DocumentMoniker": "C:\\Users\\User\\source\\repos\\HotelManagement.API\\Models\\ReservationItem.cs",
               "RelativeDocumentMoniker": "Models\\ReservationItem.cs",
@@ -775,7 +991,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 42,
+              "DocumentIndex": 56,
               "Title": "ReservationItemDto.cs",
               "DocumentMoniker": "C:\\Users\\User\\source\\repos\\HotelManagement.API\\DTOs\\ReservationDTOs\\ReservationItemDto.cs",
               "RelativeDocumentMoniker": "DTOs\\ReservationDTOs\\ReservationItemDto.cs",
@@ -787,7 +1003,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 43,
+              "DocumentIndex": 57,
               "Title": "ReservationResponseDto.cs",
               "DocumentMoniker": "C:\\Users\\User\\source\\repos\\HotelManagement.API\\DTOs\\ReservationDTOs\\ReservationResponseDto.cs",
               "RelativeDocumentMoniker": "DTOs\\ReservationDTOs\\ReservationResponseDto.cs",
@@ -799,7 +1015,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 44,
+              "DocumentIndex": 58,
               "Title": "UpdateReservationDto.cs",
               "DocumentMoniker": "C:\\Users\\User\\source\\repos\\HotelManagement.API\\DTOs\\ReservationDTOs\\UpdateReservationDto.cs",
               "RelativeDocumentMoniker": "DTOs\\ReservationDTOs\\UpdateReservationDto.cs",
@@ -811,7 +1027,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 45,
+              "DocumentIndex": 59,
               "Title": "ReservationItemResponseDto.cs",
               "DocumentMoniker": "C:\\Users\\User\\source\\repos\\HotelManagement.API\\DTOs\\ReservationDTOs\\ReservationItemResponseDto.cs",
               "RelativeDocumentMoniker": "DTOs\\ReservationDTOs\\ReservationItemResponseDto.cs",
@@ -823,7 +1039,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 46,
+              "DocumentIndex": 60,
               "Title": "ReservationFilterRequest.cs",
               "DocumentMoniker": "C:\\Users\\User\\source\\repos\\HotelManagement.API\\DTOs\\ReservationDTOs\\ReservationFilterRequest.cs",
               "RelativeDocumentMoniker": "DTOs\\ReservationDTOs\\ReservationFilterRequest.cs",
@@ -835,7 +1051,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 47,
+              "DocumentIndex": 61,
               "Title": "MockPaymentDto.cs",
               "DocumentMoniker": "C:\\Users\\User\\source\\repos\\HotelManagement.API\\DTOs\\ReservationDTOs\\MockPaymentDto.cs",
               "RelativeDocumentMoniker": "DTOs\\ReservationDTOs\\MockPaymentDto.cs",
@@ -847,7 +1063,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 49,
+              "DocumentIndex": 63,
               "Title": "IPriceRuleService.cs",
               "DocumentMoniker": "C:\\Users\\User\\source\\repos\\HotelManagement.API\\Services\\Interfaces\\IPriceRuleService.cs",
               "RelativeDocumentMoniker": "Services\\Interfaces\\IPriceRuleService.cs",
@@ -859,7 +1075,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 48,
+              "DocumentIndex": 62,
               "Title": "IRoomTypeService.cs",
               "DocumentMoniker": "C:\\Users\\User\\source\\repos\\HotelManagement.API\\Services\\Interfaces\\IRoomTypeService.cs",
               "RelativeDocumentMoniker": "Services\\Interfaces\\IRoomTypeService.cs",
@@ -871,7 +1087,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 50,
+              "DocumentIndex": 64,
               "Title": "IFileStorageService.cs",
               "DocumentMoniker": "C:\\Users\\User\\source\\repos\\HotelManagement.API\\Services\\Interfaces\\IFileStorageService.cs",
               "RelativeDocumentMoniker": "Services\\Interfaces\\IFileStorageService.cs",
@@ -883,19 +1099,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 51,
-              "Title": "Program.cs",
-              "DocumentMoniker": "C:\\Users\\User\\source\\repos\\HotelManagement.API\\Program.cs",
-              "RelativeDocumentMoniker": "Program.cs",
-              "ToolTip": "C:\\Users\\User\\source\\repos\\HotelManagement.API\\Program.cs",
-              "RelativeToolTip": "Program.cs",
-              "ViewState": "AgIAAFoAAAAAAAAAAAAAAIEAAABEAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-24T16:39:34.085Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 52,
+              "DocumentIndex": 65,
               "Title": "PagedResult.cs",
               "DocumentMoniker": "C:\\Users\\User\\source\\repos\\HotelManagement.API\\Common\\Pagination\\PagedResult.cs",
               "RelativeDocumentMoniker": "Common\\Pagination\\PagedResult.cs",
@@ -907,19 +1111,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 53,
-              "Title": "RoomTypeService.cs",
-              "DocumentMoniker": "C:\\Users\\User\\source\\repos\\HotelManagement.API\\Services\\RoomTypeService.cs",
-              "RelativeDocumentMoniker": "Services\\RoomTypeService.cs",
-              "ToolTip": "C:\\Users\\User\\source\\repos\\HotelManagement.API\\Services\\RoomTypeService.cs",
-              "RelativeToolTip": "Services\\RoomTypeService.cs",
-              "ViewState": "AgIAAPoAAAAAAAAAAAAuwAwBAAAJAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-24T16:39:34.089Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 54,
+              "DocumentIndex": 66,
               "Title": "RoomTypesController.cs",
               "DocumentMoniker": "C:\\Users\\User\\source\\repos\\HotelManagement.API\\Controllers\\RoomTypesController.cs",
               "RelativeDocumentMoniker": "Controllers\\RoomTypesController.cs",
@@ -931,7 +1123,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 55,
+              "DocumentIndex": 67,
               "Title": "PriceRulesController.cs",
               "DocumentMoniker": "C:\\Users\\User\\source\\repos\\HotelManagement.API\\Controllers\\PriceRulesController.cs",
               "RelativeDocumentMoniker": "Controllers\\PriceRulesController.cs",
@@ -943,7 +1135,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 56,
+              "DocumentIndex": 68,
               "Title": "PaymentsController.cs",
               "DocumentMoniker": "C:\\Users\\User\\source\\repos\\HotelManagement.API\\Controllers\\PaymentsController.cs",
               "RelativeDocumentMoniker": "Controllers\\PaymentsController.cs",
@@ -955,7 +1147,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 57,
+              "DocumentIndex": 69,
               "Title": "AuditLogsController.cs",
               "DocumentMoniker": "C:\\Users\\User\\source\\repos\\HotelManagement.API\\Controllers\\AuditLogsController.cs",
               "RelativeDocumentMoniker": "Controllers\\AuditLogsController.cs",
@@ -967,7 +1159,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 58,
+              "DocumentIndex": 70,
               "Title": "ReservationStatus.cs",
               "DocumentMoniker": "C:\\Users\\User\\source\\repos\\HotelManagement.API\\Enums\\ReservationStatus.cs",
               "RelativeDocumentMoniker": "Enums\\ReservationStatus.cs",
@@ -979,7 +1171,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 59,
+              "DocumentIndex": 71,
               "Title": "PriceCalculationRequestDtoValidator.cs",
               "DocumentMoniker": "C:\\Users\\User\\source\\repos\\HotelManagement.API\\Validators\\PriceRuleValidators\\PriceCalculationRequestDtoValidator.cs",
               "RelativeDocumentMoniker": "Validators\\PriceRuleValidators\\PriceCalculationRequestDtoValidator.cs",
@@ -991,7 +1183,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 60,
+              "DocumentIndex": 72,
               "Title": "AuditLogService.cs",
               "DocumentMoniker": "C:\\Users\\User\\source\\repos\\HotelManagement.API\\Services\\AuditLogService.cs",
               "RelativeDocumentMoniker": "Services\\AuditLogService.cs",
@@ -1003,7 +1195,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 61,
+              "DocumentIndex": 73,
               "Title": "RoomType.cs",
               "DocumentMoniker": "C:\\Users\\User\\source\\repos\\HotelManagement.API\\Models\\RoomType.cs",
               "RelativeDocumentMoniker": "Models\\RoomType.cs",
